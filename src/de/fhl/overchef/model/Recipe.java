@@ -15,6 +15,7 @@ public class Recipe {
 	private int cookTime = 0;
 
 	private List<String> prepStep = new ArrayList<String>();
+	//key:Ingredient, value:Relationship
 	private Map<Ingredient, Relationship> ingredients = new HashMap<Ingredient, Relationship>();
 	private List<Picture> pictures = new ArrayList<Picture>();
 
