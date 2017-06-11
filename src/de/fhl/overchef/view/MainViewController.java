@@ -1,15 +1,20 @@
-package de.fhl.overchef.controller;
+package de.fhl.overchef.view;
+
 
 import de.fhl.overchef.model.Recipe;
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.MainApp;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MainViewController {
+	@FXML
 	private TableView<Recipe> recipeTable;
+	@FXML
 	private TableColumn<Recipe, String> recipeNameCol = new TableColumn<Recipe, String>("Recipe");
+	@FXML
 	private TableColumn<Ingredient, String> ingredientNameCol = new TableColumn<Ingredient, String>("Ingredient");
 
 	private MainApp mainApp;
@@ -24,6 +29,7 @@ public class MainViewController {
 	 */
 	private void initialize() {
 		recipeNameCol.setCellValueFactory(new PropertyValueFactory<Recipe, String>("recipeName"));
+		ingredientNameCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("ingredinetName"));
 		// Initialize the recipe table with the two columns.
 		recipeNameCol.setCellValueFactory(cellData -> cellData.getValue().recipeNameProperty());
 		ingredientNameCol.setCellValueFactory(cellData -> cellData.getValue().ingredientNameProperty());

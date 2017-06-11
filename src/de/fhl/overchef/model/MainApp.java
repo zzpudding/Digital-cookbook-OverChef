@@ -2,7 +2,7 @@ package de.fhl.overchef.model;
 
 import java.io.IOException;
 
-import de.fhl.overchef.controller.MainViewController;
+import de.fhl.overchef.view.MainViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
