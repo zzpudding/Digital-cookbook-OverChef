@@ -7,35 +7,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Recipe {
 	private int id = 0;
-	private String recipeName = null;
-	private int serveNum = 0;
-	private int prepTime = 0;
-	private int cookTime = 0;
+	private StringProperty recipeName = null;
+	private IntegerProperty serveNum;
+	private IntegerProperty prepTime;
+	private IntegerProperty cookTime;
 
 	private List<String> prepStep = new ArrayList<String>();
-	//key:Ingredient, value:Relationship
 	private Map<Ingredient, Relationship> ingredients = new HashMap<Ingredient, Relationship>();
 	private List<Picture> pictures = new ArrayList<Picture>();
 
 	public Recipe(String recipeName, int serveNum, int prepTime, int cookTime) {
-		this.recipeName = recipeName;
-		this.serveNum = serveNum;
-		this.prepTime = prepTime;
-		this.cookTime = cookTime;
-	}
-	
-	public void addIngredient(Ingredient ingredient, Relationship r) {
-		this.ingredients.put(ingredient, r);
+		this.recipeName = new SimpleStringProperty(recipeName);
+		this.serveNum = new SimpleIntegerProperty(serveNum);
+		this.prepTime = new SimpleIntegerProperty(prepTime);
+		this.cookTime = new SimpleIntegerProperty(cookTime);
 	}
 
-	public void addPrepStep(String string) {
-		this.prepStep.add(string);
+	public void addIngredient(Ingredient i, Relationship r) {
+		this.ingredients.put(i, r);
+	}
+
+	public void addPrepStep(String s) {
+		this.prepStep.add(s);
 	}
 
 	/**
-	 * add a picture to recipe with the given path of picture chosen by user and save it in file system
+	 * add a picture to recipe with the given path of picture chosen by user and
+	 * save it in file system
+	 * 
 	 * @param path
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -44,31 +50,52 @@ public class Recipe {
 		Picture picture = new Picture(path);
 		picture.writePicture();
 		this.pictures.add(picture);
-		
+
 	}
-	
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public String getRecipeName() {
+
+	public StringProperty recipeNameProperty() {
 		return recipeName;
 	}
 
-	public void setRecipeName(String recipeName) {
-		this.recipeName = recipeName;
+	public int getId() {
+		return id;
 	}
-	
-	public int getServeNum() {
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getRecipeName() {
+		return recipeName.get();
+	}
+
+	public void setRecipeName(String recipeName) {
+		this.recipeName.set(recipeName);
+	}
+
+	public IntegerProperty getServeNum() {
 		return serveNum;
 	}
 
 	public void setServeNum(int serveNum) {
-		this.serveNum = serveNum;
+		 this.serveNum.set(serveNum);
+	}
+
+	public IntegerProperty getPrepTime() {
+		return prepTime;
+	}
+
+	public void setPrepTime(int prepTime) {
+		 this.prepTime.set(prepTime);
+	}
+
+
+	public IntegerProperty getCookTime() {
+		return cookTime;
+	}
+
+	public void setCookTime(int cookTime) {
+		this.cookTime.set(cookTime);
 	}
 
 	public List<String> getPrepStep() {
@@ -79,22 +106,6 @@ public class Recipe {
 		this.prepStep = prepStep;
 	}
 
-	public int getPrepTime() {
-		return prepTime;
-	}
-
-	public void setPrepTime(int prepTime) {
-		this.prepTime = prepTime;
-	}
-
-	public int getCookTime() {
-		return cookTime;
-	}
-
-	public void setCookTime(int cookTime) {
-		this.cookTime = cookTime;
-	}
-	
 	public Map<Ingredient, Relationship> getIngredients() {
 		return ingredients;
 	}

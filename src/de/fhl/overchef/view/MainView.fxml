@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="750.0" prefWidth="1180.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="750.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.controller.MainViewController">
    <children>
       <TextField layoutX="380.0" layoutY="59.0" prefHeight="54.0" prefWidth="690.0" promptText="please enter keyword..." AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="34.0">
          <font>

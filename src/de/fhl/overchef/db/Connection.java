@@ -2,6 +2,7 @@ package de.fhl.overchef.db;
 
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Recipe;
+import javafx.beans.property.IntegerProperty;
 
 public class Connection {
 	private Connection instance = null;
