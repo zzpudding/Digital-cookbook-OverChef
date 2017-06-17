@@ -15,16 +15,16 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainViewController {
@@ -36,10 +36,9 @@ public class MainViewController {
 	private TableColumn<Recipe, String> recipeNameCol = new TableColumn<Recipe, String>();
 	@FXML
 	private TableColumn<Recipe, String> ingredientNameCol = new TableColumn<Recipe, String>();
-
 	private OverchefMainApp OverchefMainApp;
 	private ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
-	
+
 	/**
 	 * Compare a certain recipe's name with keywords and return their relevance. 
 	 * Will also do boundary check and replace characters which could cause exception.
@@ -119,7 +118,6 @@ public class MainViewController {
 		if (searchField.getText().isEmpty()){
 				return recipeData;
 		}else{
-				
 			ObservableList<Recipe> recipeData = OverchefMainApp.getRecipeData();
 				Map<Recipe, Integer> tempMap = new HashMap<>();
 				for (int i = 0; i < recipeData.size(); i++) {
@@ -148,15 +146,13 @@ public class MainViewController {
 	@FXML
 	private void initialize() {
 	}
-	
-	
+
 	private void searchedTableView(ObservableList<Recipe> RecipeDatas) {
 		recipeTable.setItems(RecipeDatas);
 		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
 		ingredientNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
 	}
-	
-	
+
 	public void showSearchResult() {
 		searchedTableView(searchResult());
 	}
@@ -164,13 +160,13 @@ public class MainViewController {
 	public ObservableList<Recipe> getRecipeData() {
 		return recipeData;
 	}
-	
+
 	@FXML
 	private void addNewRecipe() throws Exception{
 		Recipe newRecipe = new Recipe("",0,0,0);
 		new RecipeModifyView(newRecipe).start(new Stage());
 	}
-	
+
 	@FXML
 	private void viewRecipeDetails(){
 		recipeTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -197,12 +193,20 @@ public class MainViewController {
 			}
 		return recipeData;
 	}
+
 	/**
 	 * Is called by the main application to give a reference back to itself.
 	 * 
 	 * @param mainApp
 	 */
 	public void setMainApp(OverchefMainApp mainApp) {
+		searchField.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(ObservableValue<? extends String> observable,
+		            String oldValue, String newValue) {
+		    	showSearchResult();
+		    }
+		});
 		this.OverchefMainApp = mainApp;
 		recipeData=mainApp.getRecipeData();
 		recipeTable.setItems(sortRecipeData());

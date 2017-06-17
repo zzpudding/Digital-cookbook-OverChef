@@ -7,29 +7,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Picture;
 import de.fhl.overchef.model.Recipe;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 public class RecipeModifyController {
@@ -42,16 +33,15 @@ public class RecipeModifyController {
 	@FXML
 	private Button cancelButton;
 	private Stage primaryStage;
-	
+
 	private FileChooser chooser;
 	private String path;
 	private File chosenPicture;
 	private Picture picture;
-//	private Recipe recipe;
-//	@FXML
-//	private Label alertMessage;
-//	private Stage alertWindow;
-	
+	// private Recipe recipe;
+	// @FXML
+	// private Label alertMessage;
+	// private Stage alertWindow;
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
@@ -61,12 +51,11 @@ public class RecipeModifyController {
 		this.primaryStage = primaryStage;
 	}
 
-
 	@FXML
 	private Label ingredientWarnLabel;
 	@FXML
 	private Label recipeNameWarnLabel;
-	
+
 	@FXML
 	private TextField recipeName;
 	@FXML
@@ -118,11 +107,9 @@ public class RecipeModifyController {
 	 * //check if the whole format of this view meet the requirement.
 	 */
 	public void checkFormat() {
-
 		checkRecipeName();
 		checkIngredientName();
 		checkIngredientQuantity();
-
 	}
 
 	/**
@@ -134,20 +121,20 @@ public class RecipeModifyController {
 		if (msg.matches(regex)) {
 			recipeName.setStyle("");
 			allPass = true;
-			
-			//set warning label
+
+			// set warning label
 			recipeNameWarnLabel.setText("");
-			
+
 		} else {
 			allPass = false;
-			
 			recipeName.setStyle("-fx-text-inner-color: #EE2C2C;");
-			
-			//set warning label
+			// set warning label
 			recipeNameWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 			recipeNameWarnLabel.setText("Recipe Name Must Be Pure Letter And CANNOT Be Null!");
+		
 		}
 	}
+
 
 	/**
 	 * check if the ingredient name are pure-letter words
@@ -158,16 +145,16 @@ public class RecipeModifyController {
 		if (msg.matches(regex)) {
 			ingredientName1.setStyle("");
 			allPass = true;
-			
-			//set warning label
+
+			// set warning label
 			ingredientWarnLabel.setText("");
-			
+
 		} else {
-			
-			//set warning label
+
+			// set warning label
 			ingredientWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 			ingredientWarnLabel.setText("Ingredient Name Must be Pure Letter!");
-			
+
 			ingredientName1.setStyle("-fx-text-inner-color: #EE2C2C;");
 			allPass = false;
 		}
@@ -183,16 +170,15 @@ public class RecipeModifyController {
 		if (msg.matches(regex)) {
 			ingredientQuantity1.setStyle("");
 			allPass = true;
-			
-			//set warning label
+
+			// set warning label
 			ingredientWarnLabel.setText("");
-			
+
 		} else {
-			
-			//set warning label
+
+			// set warning label
 			ingredientWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 			ingredientWarnLabel.setText("Ingredient Quantity Must be Pure Number!");
-			
 			ingredientQuantity1.setStyle("-fx-text-inner-color: #EE2C2C;");
 			allPass = false;
 		}
@@ -226,45 +212,45 @@ public class RecipeModifyController {
 		newIngredientUnit.setPromptText("unit");
 		newIngredientDescription.setPromptText("description");
 
-		//check ingreedient name format
+		// check ingreedient name format
 		newIngredientName.setOnKeyTyped(e -> {
 			String msg = newIngredientName.getText();
 			String regex = "[\\s*\\p{Alpha}+\\s*]*";
 			if (msg.matches(regex)) {
 				newIngredientName.setStyle("");
 				allPass = true;
-				
-				//set warning label
+
+				// set warning label
 				ingredientWarnLabel.setText("");
-				
+
 			} else {
-				
-				//set warning label
+
+				// set warning label
 				ingredientWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 				ingredientWarnLabel.setText("Ingredient Name Must be Pure Letter!");
-				
+
 				newIngredientName.setStyle("-fx-text-inner-color: #EE2C2C;");
 				allPass = false;
 			}
 		});
 
-		//check ingredient quantity format
+		// check ingredient quantity format
 		newIngredientQuantity.setOnKeyTyped(e -> {
 			String msg = newIngredientQuantity.getText();
 			String regex = "\\d*";
 			if (msg.matches(regex)) {
 				newIngredientQuantity.setStyle("");
 				allPass = true;
-				
-				//set warning label
+
+				// set warning label
 				ingredientWarnLabel.setText("");
-				
+
 			} else {
-				
-				//set warning label
+
+				// set warning label
 				ingredientWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 				ingredientWarnLabel.setText("Ingredient Quantity Must be Pure Number!");
-				
+
 				newIngredientQuantity.setStyle("-fx-text-inner-color: #EE2C2C;");
 				allPass = false;
 			}
@@ -272,12 +258,11 @@ public class RecipeModifyController {
 
 		Button delete = new Button("-");
 		HBox.setMargin(delete, new Insets(0, 5, 0, 104));
-		
-		
+
 		HBox newIngredientBox = new HBox();
 		ingredientArea.getChildren().add(newIngredientBox);
-		newIngredientBox.getChildren().addAll(delete, newIngredientName, newIngredientQuantity,
-				newIngredientUnit, newIngredientDescription);
+		newIngredientBox.getChildren().addAll(delete, newIngredientName, newIngredientQuantity, newIngredientUnit,
+				newIngredientDescription);
 		ingredientContent.add(newIngredientBox);
 
 		delete.setOnAction(e -> {
@@ -320,12 +305,12 @@ public class RecipeModifyController {
 
 	/**
 	 * handle every operation when the save button is clicked
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * 
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
 	@FXML
 	public void handleSave() throws FileNotFoundException, IOException {
-
 		checkFormat();
 		if (!allPass) {
 			return;
@@ -359,7 +344,7 @@ public class RecipeModifyController {
 			double quantity = Double.valueOf(((TextField) (ingredientContent.get(i).getChildren().get(2))).getText());
 			String unit = ((TextField) (ingredientContent.get(i).getChildren().get(3))).getText();
 			String description = ((TextField) (ingredientContent.get(i).getChildren().get(4))).getText();
-			
+
 			ingredientList.add(new Ingredient(ingredientName, quantity, unit, description));
 		}
 
@@ -369,6 +354,28 @@ public class RecipeModifyController {
 	 * Initialize the modify view
 	 */
 	public void setModifyView() {
+		recipeName.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				checkRecipeName();
+			}
+		});
+		// ingredientName1.textProperty().addListener(new
+		// ChangeListener<String>() {
+		// @Override
+		// public void changed(ObservableValue<? extends String> observable,
+		// String oldValue, String newValue) {
+		// checkIngredientName();
+		// }
+		// });
+		// ingredientQuantity1.textProperty().addListener(new
+		// ChangeListener<String>() {
+		// @Override
+		// public void changed(ObservableValue<? extends String> observable,
+		// String oldValue, String newValue) {
+		// checkIngredientQuantity();
+		// }
+		// });
 
 		// display the content of the recipe preparation step
 		for (int i = 0; i < recipe.getPrepStep().size(); i++) {
@@ -397,44 +404,41 @@ public class RecipeModifyController {
 
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-	
-	
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
-	
 	/**
 	 * This method is used to handle the click event on "change image" button
+	 * 
 	 * @throws IOException
 	 */
-	public void changePicture() throws IOException {	
-		
+	public void changePicture() throws IOException {
+
 		chooser = new FileChooser();
 		chooser.setTitle("Select Picture");
 		chosenPicture = chooser.showOpenDialog(null);
 		path = chosenPicture.getPath();
 		imageView.fitWidthProperty().bind(imagePane.widthProperty());
 		imageView.fitHeightProperty().bind(imagePane.heightProperty());
-		imageView.setImage(new Image(new FileInputStream(chosenPicture),imageView.getFitWidth(),imageView.getFitHeight(),true,true));
+		imageView.setImage(new Image(new FileInputStream(chosenPicture), imageView.getFitWidth(),
+				imageView.getFitHeight(), true, true));
 		imageView.setVisible(true);
-	
+
 		picture = new Picture(path);
-//		if(!picture.checkName()) {
-//			Alert alert = new Alert(Alert.AlertType.WARNING);
-//			alert.setTitle("Warning");
-//			alert.setHeaderText("The name of the image already exists!");
-//			alert.setContentText("Please change the name and try again!");
-//			alert.showAndWait();
-//			
-//		} else {
-//			picture.writePicture();
-//		    imageView.setImage(new Image(new FileInputStream(chosenPicture),imageView.getFitWidth(),imageView.getFitHeight(),true,true));
-//		    picture.deletePicture();
-//		}
+		// if(!picture.checkName()) {
+		// Alert alert = new Alert(Alert.AlertType.WARNING);
+		// alert.setTitle("Warning");
+		// alert.setHeaderText("The name of the image already exists!");
+		// alert.setContentText("Please change the name and try again!");
+		// alert.showAndWait();
+		//
+		// } else {
+		// picture.writePicture();
+		// imageView.setImage(new Image(new
+		// FileInputStream(chosenPicture),imageView.getFitWidth(),imageView.getFitHeight(),true,true));
+		// picture.deletePicture();
+		// }
 	}
-	
+
 	public Recipe getRecipe() {
 		return recipe;
 	}
@@ -448,37 +452,41 @@ public class RecipeModifyController {
 	 */
 	public void deletePicture() {
 		DeleteAlert deleteAlert = new DeleteAlert();
-		deleteAlert.popUp("Deleting Picture", "Are you sure to delete the picture?", recipe.getPictures().lastElement(), imageView);
+		deleteAlert.popUp("Deleting Picture", "Are you sure to delete the picture?", recipe.getPictures().lastElement(),
+				imageView);
 	}
-	
+
 	public void changeServings() {
 		System.out.println("change serving");
 	}
-	
+
 	/**
-	 * response to the click event on save button by generating an alert box to let user confirm
+	 * response to the click event on save button by generating an alert box to
+	 * let user confirm
+	 * 
 	 * @throws IOException
 	 */
 	public void pressSave() throws IOException {
 		SaveAlert saveAlert = new SaveAlert(this);
 		saveAlert.popUp("Saving Confirmation", "Are you sure to continue?");
 	}
-	
+
 	public void pressCancel() {
 		CancelAlert cancelAlert = new CancelAlert();
-		cancelAlert.popUp("Close Recipe Modify View", "All the changes will be lost, are you sure to continue?", primaryStage);
+		cancelAlert.popUp("Close Recipe Modify View", "All the changes will be lost, are you sure to continue?",
+				primaryStage);
 	}
-	
+
 	public void savePicture() throws FileNotFoundException, IOException {
-		if(!picture.checkName()) {
+		if (!picture.checkName()) {
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setHeaderText("The name of the image already exists!");
 			alert.setContentText("Please change the name and try again!");
 			alert.showAndWait();
-			
+
 		} else {
-			if(recipe.getPictures().isEmpty()) {
+			if (recipe.getPictures().isEmpty()) {
 				recipe.addPicture(path);
 			} else {
 				recipe.getPictures().get(0).deletePicture();
@@ -487,7 +495,7 @@ public class RecipeModifyController {
 			}
 		}
 	}
-	
+
 	public void addRecipeToDB() {
 		System.out.println("Hello");
 	}

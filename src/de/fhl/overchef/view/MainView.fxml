@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.MainViewController">
    <children>
-      <TextField fx:id="searchField" layoutX="237.0" layoutY="39.0" onKeyTyped="#showSearchResult" prefHeight="48.0" prefWidth="335.0" promptText="please enter keyword..." AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="39.0">
+      <TextField fx:id="searchField" layoutX="237.0" layoutY="39.0" prefHeight="48.0" prefWidth="335.0" promptText="please enter keyword..." AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="39.0">
          <font>
             <Font size="18.0" />
          </font>

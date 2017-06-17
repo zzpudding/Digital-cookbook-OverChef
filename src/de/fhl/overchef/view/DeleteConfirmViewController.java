@@ -3,7 +3,6 @@ package de.fhl.overchef.view;
 import de.fhl.overchef.controller.RecipeController;
 import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
