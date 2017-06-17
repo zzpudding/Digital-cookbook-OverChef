@@ -8,6 +8,7 @@ import de.fhl.overchef.controller.RecipeController;
 import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -35,11 +36,11 @@ public class RecipeViewController {
 	@FXML
 	private TextField serveNumberText;
 	@FXML
-	private TextField totalTimeText;
+	private Label totalTimeText;
 	@FXML
-	private TextField preparationTimeText;
+	private Label preparationTimeText;
 	@FXML
-	private TextField cookTimeText;
+	private Label cookTimeText;
 	@FXML
 	private Button delete;
 	@FXML
@@ -82,6 +83,7 @@ public class RecipeViewController {
 		recipe.changeQuantity(changeNumber);
 		ingredientText.setText(recipe.getIngredients());
 	}
+	
 /**
  * realize the action for the button modify
  * @throws Exception 
