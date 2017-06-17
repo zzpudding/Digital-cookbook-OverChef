@@ -4,7 +4,6 @@ import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,13 +20,13 @@ public class RecipeViewController {
 	@FXML
 	Stage stage;
 	@FXML
-	private TextField recipeNameText;
+	private Label recipeNameText;
 	@FXML
-	private TextArea descriptionText;
+	private Label descriptionText;
 	@FXML
-	private TextArea ingredientText;
+	private Label ingredientText;
 	@FXML
-	private TextArea preparationStepText;
+	private Label preparationStepText;
 	@FXML
 	private TextField serveNumberText;
 	@FXML
@@ -64,7 +63,7 @@ public class RecipeViewController {
 		ingredientText.setText(recipe.getIngredients());
 		preparationStepText.setText(recipe.getPreparationStep());
 		serveNumberText.setText(String.valueOf(recipe.getServeNumber()));
-		totalTimeText.setText(String.valueOf(recipe.getPreparationTime()+recipe.getPreparationTime()));
+		totalTimeText.setText(String.valueOf(recipe.getPreparationTime() + recipe.getPreparationTime()));
 		preparationTimeText.setText(String.valueOf(recipe.getPreparationTime()));
 		cookTimeText.setText(String.valueOf(recipe.getPreparationTime()));
 	}
@@ -74,31 +73,39 @@ public class RecipeViewController {
 	 */
 	@FXML
 	private void changeServeNumber() {
-		int changeNumber = Integer.valueOf(serveNumberText.getText());
-		if((serveNumberText.getText()!=null)&&(changeNumber!=0)){
-		recipe.changeQuantity(changeNumber);
-		ingredientText.setText(recipe.getIngredients());
+		try {
+			int changeNumber = Integer.valueOf(serveNumberText.getText()).intValue();
+			if ((serveNumberText.getText() != "") && (changeNumber != 0)) {
+				recipe.changeQuantity(changeNumber);
+				ingredientText.setText(recipe.getIngredients());
+			}
+		} catch (Exception e) {
+		}
 	}
-	}
-/**
- * realize the action for the button modify
- * @throws Exception 
- */
+
+	/**
+	 * realize the action for the button modify
+	 * 
+	 * @throws Exception
+	 */
 	@FXML
 	private void modify() throws Exception {
 		new RecipeModifyView(recipe).start(new Stage());
 	}
-/**
- * realize the action for the button cancel 
- */
-	@FXML 
+
+	/**
+	 * realize the action for the button cancel
+	 */
+	@FXML
 	public void back() {
 		stage.close();
 	}
-/**
- * realize the action for the button delete
- * @throws Exception
- */
+
+	/**
+	 * realize the action for the button delete
+	 * 
+	 * @throws Exception
+	 */
 	@FXML
 	public void delete() throws Exception {
 		new RecipeView(recipe).confirmDelete(recipe);

@@ -31,7 +31,7 @@
                         <VBox>
                            <children>
                               <Label fx:id="recipeNameWarnLabel" />
-                              <TextField fx:id="recipeName" prefHeight="25.0" prefWidth="250.0" promptText="name" />
+                              <TextField fx:id="recipeName" onKeyTyped="#checkRecipeName" prefHeight="25.0" prefWidth="250.0" promptText="name" />
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -92,12 +92,12 @@
                                     <Insets left="104.0" />
                                  </HBox.margin>
                               </Button>
-                              <TextField fx:id="ingredientName1" prefHeight="25.0" promptText="name">
+                              <TextField fx:id="ingredientName1" onKeyTyped="#checkIngredientName" prefHeight="25.0" promptText="name">
                                  <HBox.margin>
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </TextField>
-                              <TextField fx:id="ingredientQuantity1" prefHeight="25.0" promptText="quantity" />
+                              <TextField fx:id="ingredientQuantity1" onKeyTyped="#checkIngredientQuantity" prefHeight="25.0" promptText="quantity" />
                               <TextField fx:id="ingredientUnit1" prefHeight="25.0" promptText="unit" />
                               <TextField fx:id="ingredientDescription1" prefHeight="25.0" promptText="description">
                                  <HBox.margin>
@@ -198,7 +198,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
+                        <TextField fx:id="serveNumber" minHeight="-Infinity" minWidth="-Infinity" onAction="#changeServeNumber" onInputMethodTextChanged="#changeServeNumber" onKeyTyped="#changeServeNumber" prefHeight="18.0" prefWidth="36.0">
                            <HBox.margin>
                               <Insets left="55.0" right="20.0" />
                            </HBox.margin>
@@ -221,7 +221,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
+                        <TextField fx:id="totalTime" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="35.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -241,7 +241,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
+                        <TextField fx:id="preparationTime" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="36.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -261,7 +261,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
+                        <TextField fx:id="cookTime" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="34.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
@@ -21,14 +22,27 @@ public class Recipe {
 	private IntegerProperty serveNum;
 	private IntegerProperty prepTime;
 	private IntegerProperty cookTime;
-	private StringProperty description;
+	private String description;
 	private List<String> preparationStep = new ArrayList<String>();
 	private List<String> prepStep = new ArrayList<String>();
-	private List<Ingredient> ingredientList =  new ArrayList<Ingredient>();
-	private List<String> ingredientNameList = new LinkedList<String> ();
-	//private Map<Ingredient, Relationship> ingredients = new HashMap<Ingredient, Relationship>();
+	private List<Ingredient> ingredientList = new ArrayList<Ingredient>();
+	private List<String> ingredientNameList = new LinkedList<String>();
+	// private Map<Ingredient, Relationship> ingredients = new
+	// HashMap<Ingredient, Relationship>();
 
-	private List<Picture> pictures = new ArrayList<Picture>();
+	private Vector<Picture> pictures = new Vector<Picture>();
+
+	public List<Ingredient> getIngredientList() {
+		return ingredientList;
+	}
+
+	public void setIngredientList(List<Ingredient> ingredientList) {
+		this.ingredientList = ingredientList;
+	}
+
+	// public void setDescription(StringProperty description) {
+	// this.description = description;
+	// }
 
 	public Recipe(String recipeName, int serveNum, int prepTime, int cookTime) {
 		this.recipeName = new SimpleStringProperty(recipeName);
@@ -37,13 +51,21 @@ public class Recipe {
 		this.cookTime = new SimpleIntegerProperty(cookTime);
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public void addIngredient(Ingredient i) {
 		this.ingredientList.add(i);
 		this.ingredientNameList.add(i.getIngredientName());
-		
+
 	}
-	
-	public void addIngredientNametoList(String iname){
+
+	public void addIngredientNametoList(String iname) {
 		this.ingredientNameList.add(iname);
 	}
 
@@ -69,16 +91,15 @@ public class Recipe {
 	public StringProperty recipeNameProperty() {
 		return recipeName;
 	}
-	
+
 	public String getIngredientNameListProperty() {
 		StringBuffer ing = new StringBuffer();
-		for(int i=0;i<this.ingredientNameList.size();i++){
-			ing.append(this.ingredientNameList.get(i)+", ");
+		for (int i = 0; i < this.ingredientNameList.size(); i++) {
+			ing.append(this.ingredientNameList.get(i) + ", ");
 		}
-		
+
 		return ing.toString();
-		
-		
+
 	}
 
 	public String getRecipeName() {
@@ -92,33 +113,33 @@ public class Recipe {
 	public IntegerProperty getServeNum() {
 		return serveNum;
 	}
-	
-	public int getServeNumber(){
+
+	public int getServeNumber() {
 		return serveNum.get();
 	}
 
 	public void setServeNum(int serveNum) {
-		 this.serveNum.set(serveNum);
+		this.serveNum.set(serveNum);
 	}
 
 	public IntegerProperty getPrepTime() {
 		return prepTime;
 	}
-	
-	public int getPreparationTime(){
+
+	public int getPreparationTime() {
 		return prepTime.get();
 	}
 
 	public void setPrepTime(int prepTime) {
-		 this.prepTime.set(prepTime);
+		this.prepTime.set(prepTime);
 	}
 
 	public String getPreparationStep() {
-		StringBuffer toStringPreparationStep=new StringBuffer();
-		for(int i=1;i<=preparationStep.size();i++){
-			String item=preparationStep.get(i);
-			toStringPreparationStep.append("i: "+item);
-			toStringPreparationStep.append("r/n");
+		StringBuffer toStringPreparationStep = new StringBuffer();
+		for (int i = 1; i <= preparationStep.size(); i++) {
+			String item = preparationStep.get(i);
+			toStringPreparationStep.append("i: " + item);
+			toStringPreparationStep.append("\r\n");
 		}
 		return toStringPreparationStep.toString();
 	}
@@ -126,12 +147,13 @@ public class Recipe {
 	public void setPreparationStep(List<String> prepStep) {
 		this.preparationStep = prepStep;
 	}
-	public String getDescription(){
-		return description.get();
-	}
-	public void setDescription(String description){
-		this.description.set(description);
-	}
+
+	// public String getDescription(){
+	// return description.get();
+	// }
+	// public void setDescription(String description){
+	// this.description.set(description);
+	// }
 	public IntegerProperty getCookTime() {
 		return cookTime;
 	}
@@ -147,6 +169,7 @@ public class Recipe {
 	public void setPrepStep(List<String> prepStep) {
 		this.prepStep = prepStep;
 	}
+
 	public void changeQuantity(int serveNum) {
 		int currentNum = getServeNumber();
 		for (Ingredient i : ingredientList) {
@@ -155,28 +178,29 @@ public class Recipe {
 		this.setServeNum(serveNum);
 	}
 
-	public List<Picture> getPictures() {
+	public Vector<Picture> getPictures() {
 		return pictures;
 	}
 
-	public void setPictures(List<Picture> pictures) {
+	public void setPictures(Vector<Picture> pictures) {
 		this.pictures = pictures;
 	}
-	public void setIngredients(List<Ingredient> ingredientList){
-		this.ingredientList=ingredientList;
+
+	public void setIngredients(List<Ingredient> ingredientList) {
+		this.ingredientList = ingredientList;
 	}
-	@SuppressWarnings("null")
+
 	public String getIngredients() {
-		StringBuffer toStringIngredients=new StringBuffer();
-		for(Ingredient item:ingredientList ){
-			StringBuffer itemReal = null;
+		StringBuffer toStringIngredients = new StringBuffer();
+		for (Ingredient item : ingredientList) {
+			StringBuffer itemReal = new StringBuffer();
 			itemReal.append(item.getIngredientName());
-			itemReal.append(" "+item.getQuantity());
-			itemReal.append(" "+item.getUnit());
+			itemReal.append("   " + item.getQuantity());
+			itemReal.append("   " + item.getUnit());
 			toStringIngredients.append(itemReal);
-			toStringIngredients.append("r/n");
+			toStringIngredients.append("\r\n");
 		}
-    	return toStringIngredients.toString();
+		return toStringIngredients.toString();
 	}
 
 }

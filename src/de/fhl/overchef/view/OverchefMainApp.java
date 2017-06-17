@@ -90,7 +90,7 @@ public class OverchefMainApp extends Application {
 		
 	}
 	private static Recipe createHongShaoRou() {
-		Recipe recipe = new Recipe("Hong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Hong Shao Rou", 2, 17, 33);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -98,7 +98,7 @@ public class OverchefMainApp extends Application {
 		return recipe;
 	}
 	private static Recipe createHongShaoRou2() {
-		Recipe recipe = new Recipe("Iong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Fen Zheng Rou", 2, 14, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -106,7 +106,7 @@ public class OverchefMainApp extends Application {
 		return recipe;
 	}
 	private static Recipe createHongShaoRou3() {
-		Recipe recipe = new Recipe("Mong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Shui zhu Rou", 4, 24, 13);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -114,7 +114,7 @@ public class OverchefMainApp extends Application {
 		return recipe;
 	}
 	private static Recipe createHongShaoRou4() {
-		Recipe recipe = new Recipe("Fong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Cu Liu Rou", 2, 15, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("salt", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -122,14 +122,14 @@ public class OverchefMainApp extends Application {
 		return recipe;
 	}
 	private static Recipe createHongShaoRou5() {
-		Recipe recipe = new Recipe("Vong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Hui Guo Rou", 4, 30, 10);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		return recipe;
 	}
 	private static Recipe createHongShaoRou6() {
-		Recipe recipe = new Recipe("Wong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Kao Zhu Rou", 2, 33, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -137,7 +137,7 @@ public class OverchefMainApp extends Application {
 		return recipe;
 	}
 	private static Recipe createHongShaoRou7() {
-		Recipe recipe = new Recipe("Qong Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Hong Shao Niu Rou", 4, 21, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -145,64 +145,64 @@ public class OverchefMainApp extends Application {
 		return recipe;
 	}
 	private static Recipe createHongShaoRou8() {
-		Recipe recipe = new Recipe("Hong Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Ying Tao Rou", 4, 18, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou9() {
-		Recipe recipe = new Recipe("Hong Shao", 20, 20, 30);
+		Recipe recipe = new Recipe("Xiao Chao Shao", 2, 20, 25);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou10() {
-		Recipe recipe = new Recipe("HMng Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Liang Ban Mu Er", 4, 13, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou11() {
-		Recipe recipe = new Recipe("HONG Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Noodels", 2, 5, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou12() {
-		Recipe recipe = new Recipe("Hog Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Hot Dog", 1, 4, 5);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou13() {
-		Recipe recipe = new Recipe("HongME Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Bao Chao Zhu Gan", 2, 14, 16);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou14() {
-		Recipe recipe = new Recipe("HongSD Shao Rou", 20, 20, 30);
+		Recipe recipe = new Recipe("Qing Zheng Lu Yu", 2, 30, 13);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
+		recipe.addIngredient(new Ingredient("Lu Yu", 1.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou15() {
-		Recipe recipe = new Recipe("Hong ShaoOI Rou", 20, 20, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
+		Recipe recipe = new Recipe("Huang Men Ji", 2, 20, 15);
+		recipe.addIngredient(new Ingredient("sugar", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
+		recipe.addIngredient(new Ingredient("chicken", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}
 	private static Recipe createGongBaoJiding() {
-		Recipe recipe = new Recipe("Gong Bao Jiding", 20,20,30);
+		Recipe recipe = new Recipe("Gong Bao Jiding", 2, 20, 30);
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("sugar", 2.0, "tablespoon"," "));

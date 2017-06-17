@@ -10,8 +10,6 @@ import java.util.List;
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Picture;
 import de.fhl.overchef.model.Recipe;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -32,6 +30,7 @@ public class RecipeModifyController {
 	private Button deleteButton;
 	@FXML
 	private Button cancelButton;
+
 	private Stage primaryStage;
 
 	private FileChooser chooser;
@@ -69,9 +68,17 @@ public class RecipeModifyController {
 
 	@FXML
 	private TextArea description;
-
 	@FXML
+
 	private Button saveButton;
+	@FXML
+	private TextField serveNumber;
+	@FXML
+	private TextField totalTime;
+	@FXML
+	private TextField preparationTime;
+	@FXML
+	private TextField cookTime;
 	@FXML
 	private Button addIngredient;
 	@FXML
@@ -107,9 +114,11 @@ public class RecipeModifyController {
 	 * //check if the whole format of this view meet the requirement.
 	 */
 	public void checkFormat() {
+
 		checkRecipeName();
 		checkIngredientName();
 		checkIngredientQuantity();
+
 	}
 
 	/**
@@ -127,14 +136,14 @@ public class RecipeModifyController {
 
 		} else {
 			allPass = false;
+
 			recipeName.setStyle("-fx-text-inner-color: #EE2C2C;");
+
 			// set warning label
 			recipeNameWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 			recipeNameWarnLabel.setText("Recipe Name Must Be Pure Letter And CANNOT Be Null!");
-		
 		}
 	}
-
 
 	/**
 	 * check if the ingredient name are pure-letter words
@@ -179,6 +188,7 @@ public class RecipeModifyController {
 			// set warning label
 			ingredientWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 			ingredientWarnLabel.setText("Ingredient Quantity Must be Pure Number!");
+
 			ingredientQuantity1.setStyle("-fx-text-inner-color: #EE2C2C;");
 			allPass = false;
 		}
@@ -311,6 +321,7 @@ public class RecipeModifyController {
 	 */
 	@FXML
 	public void handleSave() throws FileNotFoundException, IOException {
+
 		checkFormat();
 		if (!allPass) {
 			return;
@@ -354,28 +365,6 @@ public class RecipeModifyController {
 	 * Initialize the modify view
 	 */
 	public void setModifyView() {
-		recipeName.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				checkRecipeName();
-			}
-		});
-		// ingredientName1.textProperty().addListener(new
-		// ChangeListener<String>() {
-		// @Override
-		// public void changed(ObservableValue<? extends String> observable,
-		// String oldValue, String newValue) {
-		// checkIngredientName();
-		// }
-		// });
-		// ingredientQuantity1.textProperty().addListener(new
-		// ChangeListener<String>() {
-		// @Override
-		// public void changed(ObservableValue<? extends String> observable,
-		// String oldValue, String newValue) {
-		// checkIngredientQuantity();
-		// }
-		// });
 
 		// display the content of the recipe preparation step
 		for (int i = 0; i < recipe.getPrepStep().size(); i++) {
@@ -401,6 +390,10 @@ public class RecipeModifyController {
 			((TextField) (ingredientContent.get(i).getChildren().get(4)))
 					.setText(recipe.getIngredientList().get(i).getDescription());
 		}
+		serveNumber.setText(String.valueOf(recipe.getServeNumber()));
+		totalTime.setText(String.valueOf(recipe.getPreparationTime() + recipe.getPreparationTime()));
+		preparationTime.setText(String.valueOf(recipe.getPreparationTime()));
+		cookTime.setText(String.valueOf(recipe.getPreparationTime()));
 
 	}
 
@@ -493,6 +486,29 @@ public class RecipeModifyController {
 				recipe.getPictures().remove(0);
 				recipe.addPicture(path);
 			}
+		}
+	}
+
+  @FXML
+	private void changeServeNumber() {
+		try {
+			int changeNumber = Integer.valueOf(serveNumber.getText()).intValue();
+			if ((serveNumber.getText() != "") && (changeNumber != 0)) {
+				recipe.changeQuantity(changeNumber);
+				for (int i = 0; i < recipe.getIngredientList().size(); i++) {
+					addIngredient();
+					((TextField) (ingredientContent.get(i).getChildren().get(1)))
+							.setText(recipe.getIngredientList().get(i).getIngredientName());
+					((TextField) (ingredientContent.get(i).getChildren().get(2)))
+							.setText(Double.toString(recipe.getIngredientList().get(i).getQuantity()));
+					((TextField) (ingredientContent.get(i).getChildren().get(3)))
+							.setText(recipe.getIngredientList().get(i).getUnit());
+					((TextField) (ingredientContent.get(i).getChildren().get(4)))
+							.setText(recipe.getIngredientList().get(i).getDescription());
+
+				}
+			}
+		} catch (Exception e) {
 		}
 	}
 

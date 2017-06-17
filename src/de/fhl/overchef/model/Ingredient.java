@@ -1,5 +1,7 @@
 package de.fhl.overchef.model;
 
+import java.text.DecimalFormat;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -30,8 +32,10 @@ public class Ingredient {
 	}*/
 
 	public double getQuantity() {
-		return quantity;
+		 DecimalFormat df = new DecimalFormat( "0.00");
+		return Double.parseDouble(df.format(quantity));  	  
 	}
+
 
 	public String getDescription() {
 		return description;
