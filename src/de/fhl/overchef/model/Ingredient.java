@@ -23,10 +23,11 @@ public class Ingredient {
 	public void setIngredientName(String ingredientName) {
 		this.ingredientName.set(ingredientName);
 	}
-
-	public StringProperty ingredientNameProperty() {
+	
+	
+	/*public StringProperty ingredientNameProperty() {
 		return ingredientName;
-	}
+	}*/
 
 	public double getQuantity() {
 		return quantity;

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeModifyController">
+  <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="286.0">
+         <children>
+            <VBox prefHeight="398.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox prefHeight="0.0" prefWidth="412.0">
+                     <children>
+                        <VBox fillWidth="false" prefHeight="45.0" prefWidth="124.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Name*">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Region />
+                        <TextField fx:id="recipeName" onKeyTyped="#checkRecipeName" prefHeight="25.0" prefWidth="228.0" promptText="name" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="10.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox fillWidth="false" prefHeight="100.0" prefWidth="130.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Description">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Region />
+                        <TextArea fx:id="description" prefHeight="80.0" prefWidth="250.0" promptText="description" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="10.0" top="20.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="73.0" prefWidth="225.0">
+                     <children>
+                        <Region />
+                        <VBox fx:id="ingredientButtonArea" fillWidth="false" prefHeight="49.0" prefWidth="124.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Ingredient">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="addIngredient" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addIngredient" text="+">
+                                 <VBox.margin>
+                                    <Insets left="50.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="IngredientNameArea" prefHeight="73.0" prefWidth="48.0">
+                           <children>
+                              <TextField fx:id="ingredientName1" prefHeight="25.0" prefWidth="0.0" promptText="name">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="IngredientQuantityArea" prefHeight="73.0" prefWidth="53.0">
+                           <children>
+                              <TextField fx:id="ingredientQuantity1" prefHeight="25.0" prefWidth="0.0" promptText="quantity">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="IngredientUnitArea" prefHeight="73.0" prefWidth="51.0">
+                           <children>
+                              <TextField fx:id="ingredientUnit1" prefHeight="25.0" prefWidth="0.0" promptText="unit">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="IngredientDescriptionArea" prefHeight="73.0" prefWidth="111.0">
+                           <children>
+                              <TextField fx:id="ingredientDescription1" prefHeight="25.0" prefWidth="0.0" promptText="description">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Region />
+                  <HBox prefHeight="194.0" prefWidth="373.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="stepButtonArea" prefHeight="204.0" prefWidth="153.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Preparation Step">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="addStep" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addStep" text="+">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets left="50.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <Region />
+                        <VBox prefHeight="204.0" prefWidth="284.0">
+                           <children>
+                              <VBox fx:id="stepContentArea" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <TextArea fx:id="step1" prefHeight="30.0" prefWidth="244.0">
+                                       <VBox.margin>
+                                          <Insets right="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="399.0">
+         <children>
+            <VBox layoutX="33.0" layoutY="88.0" prefHeight="398.0" prefWidth="219.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane fx:id="imagePane" prefHeight="280.0" prefWidth="219.0">
+                     <children>
+                        <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                           <cursor>
+                              <Cursor fx:constant="SE_RESIZE" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Region VBox.vgrow="ALWAYS" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="changeImage" mnemonicParsing="false" onAction="#changePicture" text="Change Image">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deletePicture" text="X">
+                           <HBox.margin>
+                              <Insets left="50.0" right="25.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <Region VBox.vgrow="ALWAYS" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" text="  Servings">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="servingText" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#changeServings" prefHeight="18.0" prefWidth="30.0">
+                           <HBox.margin>
+                              <Insets left="55.0" right="19.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" text="Total Time(min)">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="30.0">
+                           <HBox.margin>
+                              <Insets left="50.0" right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" text="Prep Time(min)">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="30.0">
+                           <HBox.margin>
+                              <Insets left="50.0" right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" text="Cook Time(min)">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="30.0">
+                           <HBox.margin>
+                              <Insets left="50.0" right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="cancelButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Cancel">
+                           <HBox.margin>
+                              <Insets left="20.0" right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="saveButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressSave" prefHeight="25.0" prefWidth="55.0" text="Save">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children></HBox>
+                  <Region VBox.vgrow="ALWAYS" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

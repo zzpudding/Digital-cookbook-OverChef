@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
@@ -10,11 +11,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.MainViewController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.MainViewController">
    <children>
-      <TextField layoutX="380.0" layoutY="59.0" prefHeight="54.0" prefWidth="690.0" promptText="please enter keyword..." AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="34.0">
+      <TextField fx:id="searchField" layoutX="237.0" layoutY="39.0" onKeyTyped="#showSearchResult" prefHeight="48.0" prefWidth="335.0" promptText="please enter keyword..." AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="39.0">
          <font>
-            <Font size="22.0" />
+            <Font size="18.0" />
          </font>
       </TextField>
       <Text boundsType="LOGICAL_VERTICAL_CENTER" layoutX="130.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverChef" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
@@ -30,17 +31,17 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Button layoutX="963.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Search" textAlignment="CENTER" textFill="#2c2929" wrapText="true">
+      <Button layoutX="600.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showSearchResult" onMouseClicked="#showSearchResult" prefHeight="48.0" prefWidth="100.0" text="Search" textAlignment="CENTER" textFill="#2c2929" wrapText="true" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="39.0">
          <font>
-            <Font name="Avenir Roman" size="22.0" />
+            <Font name="Avenir Roman" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="1076.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Add" textFill="#2c2929">
+      <Button layoutX="694.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewRecipe" prefHeight="48.0" prefWidth="100.0" text="Add" textAlignment="CENTER" textFill="#2c2929" wrapText="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="39.0">
          <font>
-            <Font name="Avenir Roman" size="22.0" />
+            <Font name="Avenir Roman" size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="recipeTable" layoutX="290.0" layoutY="239.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="recipeTable" layoutX="290.0" layoutY="239.0" onMouseClicked="#viewRecipeDetails" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="110.0">
         <columns>
           <TableColumn fx:id="recipeNameCol" prefWidth="384.4145965576172" text="Recipe" />
           <TableColumn fx:id="ingredientNameCol" prefWidth="593.5852661132812" text="Ingredient" />

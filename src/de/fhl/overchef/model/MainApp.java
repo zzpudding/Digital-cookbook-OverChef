@@ -6,6 +6,7 @@ import de.fhl.overchef.view.MainViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -18,6 +19,22 @@ public class MainApp {
     
     public MainApp() {
         // Add some sample data
+    }
+    
+    public void initRootLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     /**
@@ -52,6 +69,16 @@ public class MainApp {
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
+	}
+	
+	public static void main(String[] args) {
+		Recipe recipe = new Recipe("Hong Shao Rou", 20, 20, 30);
+		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
+		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
+		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
+		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
+
+		
 	}
 
 }

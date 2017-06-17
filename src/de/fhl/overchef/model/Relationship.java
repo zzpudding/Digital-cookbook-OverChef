@@ -1,34 +1,34 @@
 package de.fhl.overchef.model;
 
 public class Relationship {
-	private int recipeID = 0;
-	private int ingredientID = 0;
+	private String recipeName;
 	private double quantiy = 0;
 	private String unit = null;
 	private String ingredientDesp = "";
+	private String ingredientName = "";
 
-	public Relationship(int recipeID, int ingredientID, int quantity, String unit, String ingredientDesp) {
-		this.recipeID = recipeID;
-		this.ingredientID = ingredientID;
+	public Relationship(String ingredientName, String recipeName, int quantity, String unit, String ingredientDesp) {
+		this.ingredientName = ingredientName;
+		this.recipeName = recipeName;
 		this.quantiy = quantity;
 		this.unit = unit;
 		this.ingredientDesp = ingredientDesp;
 	}
 
-	public int getRecipeID() {
-		return recipeID;
+	public String getIngredientName() {
+		return ingredientName;
 	}
 
-	public void setRecipeID(int recipeID) {
-		this.recipeID = recipeID;
+	public void setIngredientName(String ingredientName) {
+		this.ingredientName = ingredientName;
 	}
 
-	public int getIngredientID() {
-		return ingredientID;
+	public String getRecipeName() {
+		return recipeName;
 	}
 
-	public void setIngredientID(int ingredientID) {
-		this.ingredientID = ingredientID;
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
 	}
 
 	public double getQuantiy() {
