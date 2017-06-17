@@ -103,7 +103,7 @@
                   <HBox layoutX="85.0" layoutY="344.0">
                      <children>
                         <Label text="-Server Number" />
-                        <TextField fx:id="serveNumberText" onAction="#changeServeNumber" prefHeight="25.0" prefWidth="39.0">
+                        <TextField fx:id="serveNumberText" onAction="#changeServeNumber" onInputMethodTextChanged="#changeServeNumber" onKeyPressed="#changeServeNumber" onKeyReleased="#changeServeNumber" onKeyTyped="#changeServeNumber" prefHeight="25.0" prefWidth="39.0">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>

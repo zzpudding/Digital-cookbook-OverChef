@@ -20,7 +20,7 @@ public class OverchefMainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private Relationship r;
-    private ObservableList<Recipe> RecipeData = FXCollections.observableArrayList();
+    private ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
 	private Map<Ingredient, Relationship> ingredients = new HashMap<Ingredient, Relationship>();
 
     
@@ -116,7 +116,7 @@ public class OverchefMainApp extends Application {
 	private static Recipe createHongShaoRou4() {
 		Recipe recipe = new Recipe("Fong Shao Rou", 20, 20, 30);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
+		recipe.addIngredient(new Ingredient("salt", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
@@ -126,7 +126,6 @@ public class OverchefMainApp extends Application {
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}
 	private static Recipe createHongShaoRou6() {
@@ -211,30 +210,30 @@ public class OverchefMainApp extends Application {
 	}
 
 	public void setRecipeData(ObservableList<Recipe> recipeData) {
-		RecipeData = recipeData;
+		this.recipeData = recipeData;
 	}
 
 	public OverchefMainApp() {
-        RecipeData.add(createHongShaoRou());
-        RecipeData.add(createHongShaoRou2());
-        RecipeData.add(createHongShaoRou3());
-        RecipeData.add(createHongShaoRou4());
-        RecipeData.add(createHongShaoRou5());
-        RecipeData.add(createHongShaoRou6());
-        RecipeData.add(createHongShaoRou7());
-        RecipeData.add(createHongShaoRou8());
-        RecipeData.add(createHongShaoRou9());
-        RecipeData.add(createHongShaoRou10());
-        RecipeData.add(createHongShaoRou11());
-        RecipeData.add(createHongShaoRou12());
-        RecipeData.add(createHongShaoRou13());
-        RecipeData.add(createHongShaoRou14());
-        RecipeData.add(createHongShaoRou15());
-        RecipeData.add(createGongBaoJiding());
+        recipeData.add(createHongShaoRou());
+        recipeData.add(createHongShaoRou2());
+        recipeData.add(createHongShaoRou3());
+        recipeData.add(createHongShaoRou4());
+        recipeData.add(createHongShaoRou5());
+        recipeData.add(createHongShaoRou6());
+        recipeData.add(createHongShaoRou7());
+        recipeData.add(createHongShaoRou8());
+        recipeData.add(createHongShaoRou9());
+        recipeData.add(createHongShaoRou10());
+        recipeData.add(createHongShaoRou11());
+        recipeData.add(createHongShaoRou12());
+        recipeData.add(createHongShaoRou13());
+        recipeData.add(createHongShaoRou14());
+        recipeData.add(createHongShaoRou15());
+        recipeData.add(createGongBaoJiding());
     }
 	
 	public ObservableList<Recipe> getRecipeData() {
-        return RecipeData;
+        return recipeData;
     }
 	
 

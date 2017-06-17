@@ -2,16 +2,13 @@ package de.fhl.overchef.view;
 
 import de.fhl.overchef.model.Recipe;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class RecipeModifyView extends Application {
 	private Recipe recipe;
@@ -23,13 +20,32 @@ public class RecipeModifyView extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-
-		Parent root = FXMLLoader.load(getClass().getResource("Test.fxml"));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(this.getClass().getResource("RecipeModifyView.fxml"));
 		primaryStage.setTitle("Recipe Modify View");
-		primaryStage.setScene(new Scene(root,800,600));
+		primaryStage.setScene(new Scene(loader.load(),800,600));
 		primaryStage.initStyle(StageStyle.UNIFIED);
-		primaryStage.show();
+		
+		RecipeModifyController controller = loader.getController();
+		controller.setRecipe(recipe);
+		if(!recipe.getRecipeName().equals("")){
+			controller.setModifyView();
+
+		}
+		controller.setPrimaryStage(primaryStage);
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+
+			@Override
+			public void handle(WindowEvent event) {
+				// TODO Auto-generated method stub
+				CloseAlert closeAlert = new CloseAlert();
+				closeAlert.popUp("Close Recipe Modify View", "All the changes will be lost, are you sure to continue?", primaryStage, event);
+			}
+			
+		});
+		
 		primaryStage.initModality(Modality.APPLICATION_MODAL);	
+		primaryStage.showAndWait();
 	}
 	
 	

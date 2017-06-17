@@ -1,10 +1,5 @@
 package de.fhl.overchef.view;
 
-import java.io.IOException;
-
-import javax.xml.ws.Action;
-
-import de.fhl.overchef.controller.RecipeController;
 import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -65,9 +60,9 @@ public class RecipeViewController {
 	public void initializeRecipeView(Recipe recipe) {
 		this.recipe = recipe;
 		recipeNameText.setText(recipe.getRecipeName());
-		//descriptionText.setText(recipe.getDescription());
-		//ingredientText.setText(recipe.getIngredients());
-		//preparationStepText.setText(recipe.getPreparationStep());
+		descriptionText.setText(recipe.getDescription());
+		ingredientText.setText(recipe.getIngredients());
+		preparationStepText.setText(recipe.getPreparationStep());
 		serveNumberText.setText(String.valueOf(recipe.getServeNumber()));
 		totalTimeText.setText(String.valueOf(recipe.getPreparationTime()+recipe.getPreparationTime()));
 		preparationTimeText.setText(String.valueOf(recipe.getPreparationTime()));
@@ -80,10 +75,11 @@ public class RecipeViewController {
 	@FXML
 	private void changeServeNumber() {
 		int changeNumber = Integer.valueOf(serveNumberText.getText());
+		if((serveNumberText.getText()!=null)&&(changeNumber!=0)){
 		recipe.changeQuantity(changeNumber);
 		ingredientText.setText(recipe.getIngredients());
 	}
-	
+	}
 /**
  * realize the action for the button modify
  * @throws Exception 

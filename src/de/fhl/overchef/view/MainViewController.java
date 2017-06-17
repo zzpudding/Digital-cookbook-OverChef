@@ -5,6 +5,8 @@ import de.fhl.overchef.view.OverchefMainApp;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -31,16 +33,16 @@ public class MainViewController {
 	@FXML
 	private TableView<Recipe> recipeTable;
 	@FXML
-	private TableColumn<Recipe, String> recipeNameCol = new TableColumn<Recipe, String>("RecipeName");
+	private TableColumn<Recipe, String> recipeNameCol = new TableColumn<Recipe, String>();
 	@FXML
-	private TableColumn<Recipe, String> ingredientNameCol = new TableColumn<Recipe, String>("Ingredients");
+	private TableColumn<Recipe, String> ingredientNameCol = new TableColumn<Recipe, String>();
 
 	private OverchefMainApp OverchefMainApp;
-	private ObservableList<Recipe> RecipeData = FXCollections.observableArrayList();
+	private ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
 	
 	/**
-	 * Search strings with given keyword in recipe list. Will also do boundary
-	 * check and replace characters which could cause exception.
+	 * Compare a certain recipe's name with keywords and return their relevance. 
+	 * Will also do boundary check and replace characters which could cause exception.
 	 * 
 	 * @param keyword
 	 *            user's input
@@ -50,14 +52,13 @@ public class MainViewController {
 		String keyword = searchField.getText();
 		int relevance = 0;
 		for (char c : new char[] { '*', '(', ')', '[', ']', '{', '}', '.' }) {
-			keyword = keyword.replaceAll("\\" + c, "\\" + c);
+			keyword = keyword.replaceAll("\\" + c, "\\\\" + c);
 		}
-		RecipeData = OverchefMainApp.getRecipeData();
-		Recipe r = RecipeData.get(i);
+		Recipe r = recipeData.get(i);
 		String recipeName = r.getRecipeName();
 		if (recipeName != null && !recipeName.equals("")) {
 			if (recipeName.equalsIgnoreCase(keyword)) {
-				relevance += 10;
+				relevance += 20;
 			} else {
 				String[] subKeywords = keyword.split("\\p{Blank}|-|,|;");
 				for (String subKeyword : subKeywords) {
@@ -72,8 +73,8 @@ public class MainViewController {
 	}
 
 	/**
-	 * Search strings with given keyword in ingredient list. Will also do boundary
-	 * check and replace characters which could cause exception.
+	 * Compare a certain recipe's ingredients' name with keywords and return their relevance. 
+	 * Will also do boundary check and replace characters which could cause exception.
 	 * 
 	 * @param keyword
 	 *            user's input
@@ -83,15 +84,14 @@ public class MainViewController {
 		String keyword = searchField.getText();
 		int relevance = 0;
 		for (char c : new char[] { '*', '(', ')', '[', ']', '{', '}', '.' }) {
-			keyword = keyword.replaceAll("\\" + c, "\\" + c);
+			keyword = keyword.replaceAll("\\" + c, "\\\\" + c);
 		}
-		RecipeData = OverchefMainApp.getRecipeData();
-		String allIngredients = RecipeData.get(i).getIngredientNameListProperty();
+		String allIngredients = recipeData.get(i).getIngredientNameListProperty();
 		String[] ingredients = allIngredients.split(",");
 		for (String ingredient : ingredients) {
 			if (ingredient != null && !ingredient.equals("")) {
 				if (ingredient.equalsIgnoreCase(keyword)) {
-					relevance += 10;
+					relevance += 5;
 				} else {
 					String[] subKeywords = keyword.split("\\p{Blank}|-|,|;");
 					for (String subKeyword : subKeywords) {
@@ -107,37 +107,38 @@ public class MainViewController {
 	}
 
 	/**
-	 * Search result by keyword would be sorted
-	 * according to the relevance.
+	 * Searched result by keyword would be sorted according to the relevance.
 	 * 
 	 * @param recipeData
-	 *            giving recipes
+	 *            all recipes
 	 * @param keyword
 	 *            user's input
-	 * @return the search result containing relevant recipes
+	 * @return the search result containing relevant recipes in order
 	 */
 	public ObservableList<Recipe> searchResult() {
-		ObservableList<Recipe> recipeData = OverchefMainApp.getRecipeData();
-		Map<Recipe, Integer> tempMap = new HashMap<>();
-		for (int i = 0; i < recipeData.size(); i++) {
-			Recipe r = recipeData.get(i);
-			int relevance = relevanceByRecipe(i) + relevanceByIngredient(i);
-			if (relevance > 0) {
-				tempMap.put(r, relevance);
-			}
+		if (searchField.getText().isEmpty()){
+				return recipeData;
+		}else{
+				
+			ObservableList<Recipe> recipeData = OverchefMainApp.getRecipeData();
+				Map<Recipe, Integer> tempMap = new HashMap<>();
+				for (int i = 0; i < recipeData.size(); i++) {
+					Recipe r = recipeData.get(i);
+					int relevance = 0;
+					relevance = relevanceByRecipe(i) + relevanceByIngredient(i);
+					if (relevance > 0) {
+						tempMap.put(r, relevance);
+					}
+				}
+				List<Entry<Recipe, Integer>> sortingList = new ArrayList<>(tempMap.entrySet());
+				sortingList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+				Set<Recipe> tempSet = new LinkedHashSet<>();
+				for (Map.Entry<Recipe, Integer> entry : sortingList) {
+					tempSet.add(entry.getKey());
+				}
+				ObservableList<Recipe> resultList = FXCollections.observableArrayList(tempSet);
+				return resultList;
 		}
-		List<Entry<Recipe, Integer>> sortingList = new ArrayList<>(tempMap.entrySet());
-		sortingList.sort((o1, o2) -> o2.getValue() - o1.getValue());
-		Set<Recipe> tempSet = new LinkedHashSet<>();
-		for (Map.Entry<Recipe, Integer> entry : sortingList) {
-			tempSet.add(entry.getKey());
-		}
-		ObservableList<Recipe> resultList = FXCollections.observableArrayList(tempSet);
-		return resultList;
-	}
-
-	public void setRecipeData(ObservableList<Recipe> recipeData) {
-		RecipeData = recipeData;
 	}
 
 	/**
@@ -146,25 +147,22 @@ public class MainViewController {
 	 */
 	@FXML
 	private void initialize() {
-		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
-		ingredientNameCol
-				.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
 	}
-
+	
+	
 	private void searchedTableView(ObservableList<Recipe> RecipeDatas) {
-		initialize();
 		recipeTable.setItems(RecipeDatas);
 		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
-		ingredientNameCol
-				.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
+		ingredientNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
 	}
-
+	
+	
 	public void showSearchResult() {
 		searchedTableView(searchResult());
 	}
 
 	public ObservableList<Recipe> getRecipeData() {
-		return RecipeData;
+		return recipeData;
 	}
 	
 	@FXML
@@ -187,6 +185,18 @@ public class MainViewController {
 		});
 	}
 
+	public ObservableList<Recipe> sortRecipeData(){
+		//sort the recipe alphabetically
+		if (recipeData.size() > 0) {
+			  Collections.sort(recipeData, new Comparator<Recipe>() {
+			      @Override
+			      public int compare(final Recipe object1, final Recipe object2) {
+			          return object1.getRecipeName().compareTo(object2.getRecipeName());
+			      }
+			  });
+			}
+		return recipeData;
+	}
 	/**
 	 * Is called by the main application to give a reference back to itself.
 	 * 
@@ -194,7 +204,9 @@ public class MainViewController {
 	 */
 	public void setMainApp(OverchefMainApp mainApp) {
 		this.OverchefMainApp = mainApp;
-		// Add observable list data to the table
-		recipeTable.setItems(mainApp.getRecipeData());
+		recipeData=mainApp.getRecipeData();
+		recipeTable.setItems(sortRecipeData());
+		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
+		ingredientNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
 	}
 }

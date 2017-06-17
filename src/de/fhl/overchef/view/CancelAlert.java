@@ -1,12 +1,9 @@
 package de.fhl.overchef.view;
-
-import de.fhl.overchef.model.Picture;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -17,24 +14,23 @@ import javafx.stage.Stage;
  * @author HU
  * @version 1.0
  */
-public class DeleteAlert {
+public class CancelAlert {
 	Button cancel;
 	Button confirm;
 	Stage alertWin;
 	/**
 	 * define the handle functions of the two buttons. Any subclass of this class can change the handle function by override this function
 	 */
-	public void buttonReaction(Picture p, ImageView iv) {
+	public void buttonReaction(Stage primaryStage) {
 		cancel.setOnAction(e -> alertWin.close());
-        confirm.setOnAction(e -> {p.deletePicture(); iv.setVisible(false);alertWin.close();});
-        
+        confirm.setOnAction(e -> {alertWin.close();primaryStage.close();});
 	}
 	/**
 	 * generate an alert window with handle functions of the buttons set automatically
 	 * @param title the title of the alert window
 	 * @param msg the message that this alert window wants to present
 	 */
-	public void popUp(String title, String msg,  Picture picture, ImageView iv) {
+	public void popUp(String title, String msg, Stage primaryStage) {
 		alertWin = new Stage();
         alertWin.initModality(Modality.APPLICATION_MODAL);
         alertWin.setTitle(title);
@@ -46,7 +42,7 @@ public class DeleteAlert {
         cancel.setPrefHeight(30);
         confirm.setPrefHeight(30);
 
-        buttonReaction(picture,iv);
+        buttonReaction(primaryStage);
         
         Label alertMsg = new Label(msg);
         VBox.setMargin(alertMsg, new Insets(0,0,30,0));

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
@@ -9,91 +10,142 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.637123745819398" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeModifyController">
+<SplitPane dividerPositions="0.637123745819398" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeModifyController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="286.0">
          <children>
             <VBox prefHeight="398.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox prefHeight="0.0" prefWidth="412.0">
+                  <HBox nodeOrientation="LEFT_TO_RIGHT">
                      <children>
-                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Name*">
-                           <HBox.margin>
-                              <Insets left="20.0" right="10.0" top="20.0" />
-                           </HBox.margin>
-                        </Label>
+                        <VBox fillWidth="false" prefHeight="45.0" prefWidth="130.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Name*">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
                         <Region />
-                        <TextField prefHeight="23.0" prefWidth="283.0" promptText="name" HBox.hgrow="ALWAYS">
+                        <VBox>
+                           <children>
+                              <Label fx:id="recipeNameWarnLabel" />
+                              <TextField fx:id="recipeName" onKeyTyped="#checkRecipeName" prefHeight="25.0" prefWidth="250.0" promptText="name" />
+                           </children>
                            <HBox.margin>
-                              <Insets right="10.0" top="20.0" />
+                              <Insets />
                            </HBox.margin>
-                        </TextField>
+                        </VBox>
                      </children>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox>
                      <children>
-                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Description">
-                           <HBox.margin>
-                              <Insets left="20.0" right="10.0" top="20.0" />
-                           </HBox.margin>
-                        </Label>
+                        <VBox fillWidth="false" prefHeight="100.0" prefWidth="130.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Description">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
                         <Region />
-                        <TextArea prefHeight="80.0" prefWidth="250.0" promptText="description" HBox.hgrow="ALWAYS">
+                        <TextArea fx:id="description" prefHeight="80.0" prefWidth="250.0" promptText="description" HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets right="10.0" top="20.0" />
+                              <Insets top="20.0" />
                            </HBox.margin>
                         </TextArea>
                      </children>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="49.0" prefWidth="373.0">
+                  <Region minHeight="10.0" />
+                  <VBox fx:id="ingredientArea" prefHeight="68.0" prefWidth="385.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" text="+ Ingredient">
-                           <HBox.margin>
-                              <Insets left="20.0" right="10.0" top="20.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Region />
-                        <TextField promptText="name" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets right="2.0" top="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField layoutX="41.0" layoutY="10.0" promptText="quantity" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets right="2.0" top="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField layoutX="33.0" layoutY="10.0" promptText="unit" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets right="2.0" top="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField layoutX="126.0" layoutY="10.0" promptText="description" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets right="10.0" top="20.0" />
-                           </HBox.margin>
-                        </TextField>
+                        <HBox prefWidth="378.0">
+                           <children>
+                              <Button fx:id="addIngredient" mnemonicParsing="false" onAction="#addIngredient" prefHeight="25.0" text="+Ingredient">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Region minWidth="25.0" />
+                              <Label fx:id="ingredientWarnLabel">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets top="8.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="ingredientBox1" prefWidth="378.0">
+                           <children>
+                              <Button fx:id="deleteIngredient1" mnemonicParsing="false" prefHeight="25.0" text="-">
+                                 <HBox.margin>
+                                    <Insets left="104.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <TextField fx:id="ingredientName1" onKeyTyped="#checkIngredientName" prefHeight="25.0" promptText="name">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="ingredientQuantity1" onKeyTyped="#checkIngredientQuantity" prefHeight="25.0" promptText="quantity" />
+                              <TextField fx:id="ingredientUnit1" prefHeight="25.0" promptText="unit" />
+                              <TextField fx:id="ingredientDescription1" prefHeight="25.0" promptText="description">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <Region />
-                  <HBox prefHeight="194.0" prefWidth="373.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Region minHeight="10.0" prefHeight="10.0" prefWidth="378.0" />
+                  <VBox fx:id="stepArea" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="100.0" text="Preparation Step">
-                           <HBox.margin>
-                              <Insets left="20.0" right="10.0" top="20.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Region />
-                        <TextArea prefHeight="78.0" prefWidth="236.0" promptText="preparation step" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets bottom="50.0" right="10.0" top="20.0" />
-                           </HBox.margin>
-                        </TextArea>
+                        <HBox>
+                           <children>
+                              <Button fx:id="addStep" mnemonicParsing="false" onAction="#addStep" text="+Preparation Step">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="stepBox1" minHeight="25.0" prefHeight="17.0" prefWidth="378.0">
+                           <children>
+                              <Button fx:id="deleteStep1" mnemonicParsing="false" prefHeight="25.0" text="-">
+                                 <HBox.margin>
+                                    <Insets left="104.0" right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <TextArea prefHeight="25.0" prefWidth="529.0">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextArea>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
             </VBox>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="399.0">
          <children>
             <VBox layoutX="33.0" layoutY="88.0" prefHeight="398.0" prefWidth="219.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -146,9 +198,9 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="servingText" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#changeServings" prefHeight="18.0" prefWidth="30.0">
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
                            <HBox.margin>
-                              <Insets left="55.0" right="19.0" />
+                              <Insets left="55.0" right="20.0" />
                            </HBox.margin>
                         </TextField>
                         <Region HBox.hgrow="ALWAYS" />
@@ -169,7 +221,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="30.0">
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -189,7 +241,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="30.0">
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -209,7 +261,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="30.0">
+                        <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="24.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -220,7 +272,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="cancelButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Cancel">
+                        <Button fx:id="cancelButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressCancel" prefHeight="25.0" prefWidth="55.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="20.0" right="10.0" />
                            </HBox.margin>

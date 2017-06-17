@@ -1,5 +1,8 @@
 package de.fhl.overchef.view;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,22 +19,35 @@ import javafx.stage.Stage;
  * @version 1.0
  */
 public class SaveAlert {
-	static Button cancel;
-	static Button confirm;
-	static Stage alertWin;
+	RecipeModifyController con;
+	Button cancel;
+	Button confirm;
+	Stage alertWin;
 	/**
 	 * define the handle functions of the two buttons. Any subclass of this class can change the handle function by override this function
 	 */
-	public static void buttonReaction() {
+	public SaveAlert(RecipeModifyController con) {
+		this.con = con;
+	}
+	
+	public void buttonReaction() {
 		cancel.setOnAction(e -> alertWin.close());
-        confirm.setOnAction(e -> {RecipeModifyController.addRecipeToDB();alertWin.close();});
+        confirm.setOnAction(e -> {try {
+			con.handleSave();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}alertWin.close();});
 	}
 	/**
 	 * generate an alert window with handle functions of the buttons set automatically
 	 * @param title the title of the alert window
 	 * @param msg the message that this alert window wants to present
 	 */
-	public static void popUp(String title, String msg) {
+	public void popUp(String title, String msg) {
 		alertWin = new Stage();
         alertWin.initModality(Modality.APPLICATION_MODAL);
         alertWin.setTitle(title);
