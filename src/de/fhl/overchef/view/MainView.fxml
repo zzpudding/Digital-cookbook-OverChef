@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.MainViewController">
    <children>
-      <TextField fx:id="searchField" layoutX="237.0" layoutY="39.0" prefHeight="48.0" prefWidth="346.0" promptText="please enter keyword..." AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="39.0">
+      <TextField fx:id="searchField" layoutX="237.0" layoutY="39.0" prefHeight="48.0" prefWidth="346.0" promptText="please enter recipe/ingredient..." AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="39.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font name="Avenir Roman" size="20.0" />
          </font>
       </Button>
-      <TableView fx:id="recipeTable" layoutX="290.0" layoutY="148.0" onMouseClicked="#viewRecipeDetails" prefHeight="184.0" prefWidth="608.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="148.0">
+      <TableView fx:id="recipeTable" layoutX="290.0" layoutY="148.0" onMouseClicked="#viewRecipeDetails" prefHeight="214.0" prefWidth="608.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="148.0">
         <columns>
           <TableColumn fx:id="recipeNameCol" prefWidth="251.0" text="Recipe" />
           <TableColumn fx:id="ingredientNameCol" prefWidth="593.5852661132812" text="Ingredient" />
