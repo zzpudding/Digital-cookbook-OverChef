@@ -152,7 +152,7 @@ public class OverchefMainApp extends Application {
 		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
 		return recipe;
 	}private static Recipe createHongShaoRou9() {
-		Recipe recipe = new Recipe("Xiao Chao Shao", 2, 20, 25);
+		Recipe recipe = new Recipe("Xiao Chao Rao", 2, 20, 25);
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
 		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
@@ -245,6 +245,10 @@ public class OverchefMainApp extends Application {
 		this.ingredients = ingredients;
 	}
 
+	
+	public void addStep(String s){
+		
+	}
 	
 	public void addIngredient(Ingredient i) {
 		r.setUnit(i.getUnit());
