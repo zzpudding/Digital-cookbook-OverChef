@@ -18,6 +18,14 @@ public class Ingredient {
 		this.description = description;
 	}
 
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getIngredientName() {
 		return ingredientName.get();
 	}
