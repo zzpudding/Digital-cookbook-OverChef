@@ -4,19 +4,19 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import de.fhl.overchef.db.DBOperation;
-import de.fhl.overchef.view.OverchefMainApp;
 
 public class Cookbook {
 	private static List<Recipe> recipes = new LinkedList<Recipe>();
 	private static List<Ingredient> ingredients = new LinkedList<Ingredient>();
+	private String res = "/src/de/fhl/overchef/model/Pictures/";
 	
-	public void addRecipe(Recipe r) {
+	public void addRecipe(Recipe r) throws SQLException {
 		this.recipes.add(r);
+		DBOperation.addRecipeToDB(r);
 	}
 
 	public void addIngredient(Ingredient i) {
@@ -37,8 +37,8 @@ public class Cookbook {
 		       	 r.setDescription(rs.getString("recipeDesc"));
 		       	 r.setRecipeID(rs.getInt("rid"));
 		       	 loadIngredientFromDB(DBOperation.selectIngredient(r),r);
-		       	// loadPictureFromDB(DBOperation.selectPicture(r),r);
-		       	 //loadPrepStepFromDB(DBOperation.selectPrepStep(r), r);
+		       	 loadPictureFromDB(DBOperation.selectPicture(r),r);
+		       	 loadPrepStepFromDB(DBOperation.selectPrepStep(r), r);
 		         resultList.add(r);
 		         
             }
@@ -60,24 +60,29 @@ public class Cookbook {
 
 	public  void loadPictureFromDB(ResultSet rs, Recipe r) throws SQLException, FileNotFoundException, IOException{
 		while(rs.next()){
-			r.addPicture(rs.getString("picPath"));
+			
+			String picPath = System.getProperty("user.dir") + res + rs.getString("picPath");
+			System.out.println(System.getProperty("user.dir"));
+			r.addPicture(picPath);
 			
 		}
 	}
 	
 	public void loadPrepStepFromDB(ResultSet rs, Recipe r) throws SQLException{
 		while(rs.next()){
-			r.addPreparationStep(rs.getString("description"));
+			r.addPreparationStep(rs.getString("step"));
 		}
 		
 	}
-	
+
 	public void setRecipeList(List<Recipe> list){
 		recipes.addAll(list);
 	}
+
 	public void deleteRecipe(Recipe r) {
 		recipes.remove(r);
 	}
+
 	public List<Recipe> getRecipeList(){
 		return recipes;
 	}

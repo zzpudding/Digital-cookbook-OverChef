@@ -2,15 +2,10 @@ package de.fhl.overchef.model;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
 
-import de.fhl.overchef.view.RecipeModifyController;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 /**
  * This Class is used to save and process image, such as loading, storing and deleting image.
@@ -20,8 +15,15 @@ import javafx.scene.image.Image;
 public class Picture {
 	int width;
 	int length;
-	String res = "//src//de//fhl//overchef//model//Pictures//";
+	String res = "/src/de/fhl/overchef/model/Pictures/";
 	String pictureName = "default name";
+	public String getPictureName() {
+		return pictureName;
+	}
+	public void setPictureName(String pictureName) {
+		this.pictureName = pictureName;
+	}
+
 	String root = "default";
 	Image image=null;
 	BufferedImage bufferImage = null;
@@ -53,6 +55,9 @@ public class Picture {
 		}
 		catch(Exception e){}
 	}
+	public Picture() {
+		
+	}
 	/**
 	 * Check if there is file with the same name in the file system
 	 * @return true: no file with the same name; false: file with the same name already exists
@@ -62,7 +67,7 @@ public class Picture {
 	public static boolean checkName(String path) throws FileNotFoundException, IOException {
 		//create a file linked to the file chosen by user, if user does't choose a file, parameter path will be default value.
 		File chosenFile = new File(path);
-		File[] fileList = new File(System.getProperty("user.dir") + "//src//de//fhl//overchef//model//Pictures//").listFiles();
+		File[] fileList = new File(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\").listFiles();
 		for(File f:fileList) {
 			System.out.println(f.getName());
 			if(f.getName().equals(chosenFile.getName())) {		
@@ -95,15 +100,7 @@ public class Picture {
 		if (file.exists() && !file.getName().equals("OverChefDefaultPicture.jpg")) {
 			this.file.delete();
 			// when the user delete the picture, root should be change to a default path, otherwise program will have an exception after save the recipe
-			if (!this.file.exists()) {
-				this.root = System.getProperty("user.dir") + res + "OverChefDefaultPicture.jpg";
-			}
-		}else {
-			Alert noFileAlert = new Alert(Alert.AlertType.INFORMATION);
-			noFileAlert.setTitle("Reminder");
-			noFileAlert.setHeaderText("No file to delete");
-			noFileAlert.showAndWait();
-			System.out.println("From Picture: Deleting a file: No file to delete");
+			this.root = System.getProperty("user.dir") + res + "OverChefDefaultPicture.jpg";
 		}
 	}
 	

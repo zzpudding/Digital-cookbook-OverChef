@@ -31,23 +31,34 @@ public class RecipeModifyController {
 	@FXML
 	private Button cancelButton;
 
-	private Stage primaryStage;
+	private Stage modifyStage;
+	private Stage recipeStage;
+
+	public Stage getRecipeStage() {
+		return recipeStage;
+	}
+
+	public void setRecipeStage(Stage recipeStage) {
+		this.recipeStage = recipeStage;
+	}
 
 	private FileChooser chooser;
-	private String path;
+	private String res = "/src/de/fhl/overchef/model/Pictures/";
+	private String path = "default";
 	private File chosenPicture;
 	private Picture picture;
+	private FileInputStream fileIn;
 	// private Recipe recipe;
 	// @FXML
 	// private Label alertMessage;
 	// private Stage alertWindow;
 
 	public Stage getPrimaryStage() {
-		return primaryStage;
+		return modifyStage;
 	}
 
-	public void setPrimaryStage(Stage primaryStage) {
-		this.primaryStage = primaryStage;
+	public void setPrimaryStage(Stage modifyStage) {
+		this.modifyStage = modifyStage;
 	}
 
 	@FXML
@@ -56,7 +67,7 @@ public class RecipeModifyController {
 	private Label recipeNameWarnLabel;
 
 	@FXML
-	private TextField recipeName;
+	private TextField recipeName;/*
 	@FXML
 	private TextField ingredientName1;
 	@FXML
@@ -64,7 +75,7 @@ public class RecipeModifyController {
 	@FXML
 	private TextField ingredientUnit1;
 	@FXML
-	private TextField ingredientDescription1;
+	private TextField ingredientDescription1;*/
 
 	@FXML
 	private TextArea description;
@@ -82,44 +93,44 @@ public class RecipeModifyController {
 	@FXML
 	private Button addIngredient;
 	@FXML
-	private Button addStep;
+	private Button addStep;/*
 	@FXML
 	private Button deleteIngredient1;
 	@FXML
-	private Button deleteStep1;
+	private Button deleteStep1;*/
 
 	@FXML
 	private VBox ingredientArea;
 	@FXML
 	private VBox stepArea;
-
+/*
 	@FXML
 	private HBox ingredientBox1;
 	@FXML
-	private HBox stepBox1;
+	private HBox stepBox1;*/
 
 	@FXML
 	private List<HBox> stepContent = new ArrayList<>();
 
 	@FXML
 	private List<HBox> ingredientContent = new ArrayList<>();
-
+/*
 	private static int count = 0;
-	private static int count1 = 0;
-	private static boolean allPass = false;
+	private static int count1 = 0;*/
+	private static boolean allPass = true;
 
 	private Recipe recipe;
 
 	/**
 	 * //check if the whole format of this view meet the requirement.
-	 */
+	 *//*
 	public void checkFormat() {
 
 		checkRecipeName();
 		checkIngredientName();
 		checkIngredientQuantity();
 
-	}
+	}*/
 
 	/**
 	 * // check if the recipe name are pure-letter words
@@ -147,7 +158,7 @@ public class RecipeModifyController {
 
 	/**
 	 * check if the ingredient name are pure-letter words
-	 */
+	 *//*
 	public void checkIngredientName() {
 		String msg = ingredientName1.getText();
 		String regex = "[\\s*\\p{Alpha}+\\s*]*";
@@ -167,15 +178,15 @@ public class RecipeModifyController {
 			ingredientName1.setStyle("-fx-text-inner-color: #EE2C2C;");
 			allPass = false;
 		}
-	}
+	}*/
 
 	/**
 	 * //check if the ingredient quantity is pure number
-	 */
+	 *//*
 	@FXML
 	public void checkIngredientQuantity() {
 		String msg = ingredientQuantity1.getText();
-		String regex = "\\d*";
+		String regex = "\\d*.*\\d*";
 		if (msg.matches(regex)) {
 			ingredientQuantity1.setStyle("");
 			allPass = true;
@@ -193,14 +204,14 @@ public class RecipeModifyController {
 			allPass = false;
 		}
 	}
-
+*/
 	/**
 	 * This method will add a ingredient row to UI after user click the
 	 * +ingredient button
 	 */
 	@FXML
 	public void addIngredient() {
-
+/*
 		if (count1 == 0) {
 
 			ingredientContent.add(ingredientBox1);
@@ -211,7 +222,7 @@ public class RecipeModifyController {
 				ingredientContent.remove(ingredientBox1);
 			});
 		}
-
+*/
 		TextField newIngredientName = new TextField();
 		TextField newIngredientQuantity = new TextField();
 		TextField newIngredientUnit = new TextField();
@@ -222,7 +233,7 @@ public class RecipeModifyController {
 		newIngredientUnit.setPromptText("unit");
 		newIngredientDescription.setPromptText("description");
 
-		// check ingreedient name format
+		// check ingredient name format
 		newIngredientName.setOnKeyTyped(e -> {
 			String msg = newIngredientName.getText();
 			String regex = "[\\s*\\p{Alpha}+\\s*]*";
@@ -247,7 +258,7 @@ public class RecipeModifyController {
 		// check ingredient quantity format
 		newIngredientQuantity.setOnKeyTyped(e -> {
 			String msg = newIngredientQuantity.getText();
-			String regex = "\\d*";
+			String regex = "\\d*[.]*\\d*";
 			if (msg.matches(regex)) {
 				newIngredientQuantity.setStyle("");
 				allPass = true;
@@ -286,7 +297,7 @@ public class RecipeModifyController {
 	 * +preparation step button
 	 */
 	@FXML
-	public void addStep() {
+	public void addStep() {/*
 		// add the first step in the list and add delete button to UI
 		if (count == 0) {
 			stepContent.add(stepBox1);
@@ -296,8 +307,10 @@ public class RecipeModifyController {
 				stepContent.remove(stepBox1);
 			});
 		}
+		*/
 		// create a new TextArea for the new step
 		TextArea newStep = new TextArea();
+		newStep.setWrapText(true);
 
 		Button delete = new Button("-");
 		HBox.setMargin(delete, new Insets(0, 5, 0, 104));
@@ -322,7 +335,7 @@ public class RecipeModifyController {
 	@FXML
 	public void handleSave() throws FileNotFoundException, IOException {
 
-		checkFormat();
+		//checkFormat();
 		if (!allPass) {
 			return;
 		}
@@ -340,9 +353,9 @@ public class RecipeModifyController {
 		// save preparation step to recipe
 		List<String> prepStep = new ArrayList<>();
 		for (int i = 0; i < stepContent.size(); i++) {
-			prepStep.add(((TextArea) (stepContent.get(i).getChildren().get(2))).getText());
+			prepStep.add(((TextArea) (stepContent.get(i).getChildren().get(1))).getText());
 		}
-		recipe.setPrepStep(prepStep);
+		recipe.setPreparationStep(prepStep);
 
 		recipe.setRecipeName(recipeName.getText());
 
@@ -351,25 +364,51 @@ public class RecipeModifyController {
 		// save ingredient information to recipe
 		List<Ingredient> ingredientList = new ArrayList<>();
 		for (int i = 0; i < ingredientContent.size(); i++) {
+			if(((TextField) (ingredientContent.get(i).getChildren().get(1))).getText().equals(""))
+				continue;
 			String ingredientName = ((TextField) (ingredientContent.get(i).getChildren().get(1))).getText();
-			double quantity = Double.valueOf(((TextField) (ingredientContent.get(i).getChildren().get(2))).getText());
+			double quantity;
+			try {
+				quantity = Double.valueOf(((TextField) (ingredientContent.get(i).getChildren().get(2))).getText());
+			} catch (Exception e) {
+				quantity = 0;
+			}
 			String unit = ((TextField) (ingredientContent.get(i).getChildren().get(3))).getText();
 			String description = ((TextField) (ingredientContent.get(i).getChildren().get(4))).getText();
 
 			ingredientList.add(new Ingredient(ingredientName, quantity, unit, description));
 		}
-
+		recipe.setIngredientList(ingredientList);
+		
+		try {
+			recipe.setServeNum(Integer.valueOf(serveNumber.getText()).intValue());
+		} catch (Exception e) {
+			recipe.setServeNum(1);
+		}
+		
+		try {
+			recipe.setPrepTime(Integer.valueOf(preparationTime.getText()).intValue());
+		} catch (Exception e) {
+			recipe.setPrepTime(0);
+		}
+		
+		try {
+			recipe.setCookTime(Integer.valueOf(cookTime.getText()).intValue());
+		} catch (Exception e) {
+			recipe.setCookTime(0);
+		}
 	}
 
 	/**
 	 * Initialize the modify view
+	 * @throws IOException 
 	 */
-	public void setModifyView() {
+	public void setModifyView() throws IOException {
 
 		// display the content of the recipe preparation step
-		for (int i = 0; i < recipe.getPrepStep().size(); i++) {
+		for (int i = 0; i < recipe.getPreparationStep().size(); i++) {
 			addStep();
-			((TextArea) (stepContent.get(i).getChildren().get(2))).setText(recipe.getPrepStep().get(i));
+			((TextArea) (stepContent.get(i).getChildren().get(1))).setText(recipe.getPreparationStep().get(i));
 		}
 
 		// display recipe name
@@ -391,11 +430,20 @@ public class RecipeModifyController {
 					.setText(recipe.getIngredientList().get(i).getDescription());
 		}
 		serveNumber.setText(String.valueOf(recipe.getServeNumber()));
-		totalTime.setText(String.valueOf(recipe.getPreparationTime() + recipe.getPreparationTime()));
+//		totalTime.setText(String.valueOf(recipe.getPreparationTime() + recipe.getPreparationTime()));
 		preparationTime.setText(String.valueOf(recipe.getPreparationTime()));
-		cookTime.setText(String.valueOf(recipe.getPreparationTime()));
+		cookTime.setText(String.valueOf(recipe.getCookTime()));
+		
+		if(!recipe.getPictures().isEmpty()) {
+			imageView.fitWidthProperty().bind(imagePane.widthProperty());
+			imageView.fitHeightProperty().bind(imagePane.heightProperty());
+			imageView.setImage(new Image(fileIn = new FileInputStream(recipe.getPictures().get(0).getRoot())));
+			imageView.setVisible(true);
+			fileIn.close();
+		}
 
 	}
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -405,31 +453,29 @@ public class RecipeModifyController {
 	 * @throws IOException
 	 */
 	public void changePicture() throws IOException {
+		try {
+			chooser = new FileChooser();
+			chooser.setTitle("Select Picture");
+			chosenPicture = chooser.showOpenDialog(null);
+			path = chosenPicture.getPath();
+			
+			imageView.fitWidthProperty().bind(imagePane.widthProperty());
+			imageView.fitHeightProperty().bind(imagePane.heightProperty());
+			imageView.setImage(new Image(fileIn = new FileInputStream(chosenPicture), imageView.getFitWidth(), imageView.getFitHeight(), true, true));
+			imageView.setVisible(true);
+			fileIn.close();
+			
+		} catch (NullPointerException e) {
+			System.out.println("RMC: User doesn't choose a file");
+			System.out.println("RMC: use default path: " + path);
+		}
+//		imageView.fitWidthProperty().bind(imagePane.widthProperty());
+//		imageView.fitHeightProperty().bind(imagePane.heightProperty());
+//		imageView.setImage(new Image(new FileInputStream(path), imageView.getFitWidth(), imageView.getFitHeight(), true, true));
+//		imageView.setVisible(true);
 
-		chooser = new FileChooser();
-		chooser.setTitle("Select Picture");
-		chosenPicture = chooser.showOpenDialog(null);
-		path = chosenPicture.getPath();
-		imageView.fitWidthProperty().bind(imagePane.widthProperty());
-		imageView.fitHeightProperty().bind(imagePane.heightProperty());
-		imageView.setImage(new Image(new FileInputStream(chosenPicture), imageView.getFitWidth(),
-				imageView.getFitHeight(), true, true));
-		imageView.setVisible(true);
-
-		picture = new Picture(path);
-		// if(!picture.checkName()) {
-		// Alert alert = new Alert(Alert.AlertType.WARNING);
-		// alert.setTitle("Warning");
-		// alert.setHeaderText("The name of the image already exists!");
-		// alert.setContentText("Please change the name and try again!");
-		// alert.showAndWait();
-		//
-		// } else {
-		// picture.writePicture();
-		// imageView.setImage(new Image(new
-		// FileInputStream(chosenPicture),imageView.getFitWidth(),imageView.getFitHeight(),true,true));
-		// picture.deletePicture();
-		// }
+//		picture = new Picture(path);
+		
 	}
 
 	public Recipe getRecipe() {
@@ -445,8 +491,15 @@ public class RecipeModifyController {
 	 */
 	public void deletePicture() {
 		DeleteAlert deleteAlert = new DeleteAlert();
-		deleteAlert.popUp("Deleting Picture", "Are you sure to delete the picture?", recipe.getPictures().lastElement(),
-				imageView);
+		try {
+		deleteAlert.popUp("Deleting Picture", "Are you sure to delete the picture?", recipe.getPictures().lastElement(), imageView);
+		}catch(Exception e) {
+			Alert noFileAlert = new Alert(Alert.AlertType.INFORMATION);
+			noFileAlert.setTitle("Reminder");
+			noFileAlert.setHeaderText("No file to delete");
+			noFileAlert.showAndWait();
+			System.out.println("Deleting a file: No file to delete");
+		}
 	}
 
 	public void changeServings() {
@@ -460,31 +513,33 @@ public class RecipeModifyController {
 	 * @throws IOException
 	 */
 	public void pressSave() throws IOException {
-		SaveAlert saveAlert = new SaveAlert(this);
+		SaveAlert saveAlert = new SaveAlert(this, recipe, modifyStage, recipeStage);
 		saveAlert.popUp("Saving Confirmation", "Are you sure to continue?");
 	}
 
 	public void pressCancel() {
 		CancelAlert cancelAlert = new CancelAlert();
 		cancelAlert.popUp("Close Recipe Modify View", "All the changes will be lost, are you sure to continue?",
-				primaryStage);
+				modifyStage);
 	}
 
 	public void savePicture() throws FileNotFoundException, IOException {
-		if (!picture.checkName()) {
-			Alert alert = new Alert(Alert.AlertType.WARNING);
-			alert.setTitle("Warning");
-			alert.setHeaderText("The name of the image already exists!");
-			alert.setContentText("Please change the name and try again!");
-			alert.showAndWait();
+		if (!path.equals("default")) {
+			if (!Picture.checkName(path)) {
+				Alert alert = new Alert(Alert.AlertType.WARNING);
+				alert.setTitle("Warning");
+				alert.setHeaderText("The name of the image already exists!");
+				alert.setContentText("Please change the name and try again!");
+				alert.showAndWait();
 
-		} else {
-			if (recipe.getPictures().isEmpty()) {
-				recipe.addPicture(path);
 			} else {
-				recipe.getPictures().get(0).deletePicture();
-				recipe.getPictures().remove(0);
-				recipe.addPicture(path);
+				if (recipe.getPictures().isEmpty()) {
+					recipe.addPicture(path);
+				} else {
+					recipe.getPictures().get(0).deletePicture();
+					recipe.getPictures().remove(0);
+					recipe.addPicture(path);
+				}
 			}
 		}
 	}
@@ -496,7 +551,7 @@ public class RecipeModifyController {
 			if ((serveNumber.getText() != "") && (changeNumber != 0)) {
 				recipe.changeQuantity(changeNumber);
 				for (int i = 0; i < recipe.getIngredientList().size(); i++) {
-					addIngredient();
+//					addIngredient();
 					((TextField) (ingredientContent.get(i).getChildren().get(1)))
 							.setText(recipe.getIngredientList().get(i).getIngredientName());
 					((TextField) (ingredientContent.get(i).getChildren().get(2)))

@@ -8,21 +8,29 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import de.fhl.overchef.db.DBConnector;
+import de.fhl.overchef.db.DBOperation;
+import de.fhl.overchef.model.Cookbook;
+import de.fhl.overchef.model.CreateRecipe;
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Recipe;
 import de.fhl.overchef.model.Relationship;
+import de.fhl.overchef.view.MainViewController;
 
 public class OverchefMainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private Relationship r;
-    private ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
+    private static ObservableList<Recipe> recipeData = FXCollections.observableArrayList();
 	private Map<Ingredient, Relationship> ingredients = new HashMap<Ingredient, Relationship>();
-
     
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -31,8 +39,6 @@ public class OverchefMainApp extends Application {
         initializeMainViewRootLayout();
         showMainView();
 	}
-	
-	
 	
 	/**
      * Initializes the root layout.
@@ -71,11 +77,7 @@ public class OverchefMainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    
-    
-
-    
+    }  
     
     /**
      * Returns the main stage.
@@ -87,149 +89,36 @@ public class OverchefMainApp extends Application {
  
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static void deleteRecipe(Recipe recipe){
+		recipeData.remove(recipe);
+	}
+	
+	public void setRecipeData(List<Recipe> recipelist) {
+		this.recipeData = FXCollections.observableArrayList(recipelist);
+	}
+
+	public OverchefMainApp() throws FileNotFoundException, IOException, InstantiationException, IllegalAccessException, SQLException {
+
 		
-	}
-	private static Recipe createHongShaoRou() {
-		Recipe recipe = new Recipe("Hong Shao Rou", 2, 17, 33);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou2() {
-		Recipe recipe = new Recipe("Fen Zheng Rou", 2, 14, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou3() {
-		Recipe recipe = new Recipe("Shui zhu Rou", 4, 24, 13);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou4() {
-		Recipe recipe = new Recipe("Cu Liu Rou", 2, 15, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("salt", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou5() {
-		Recipe recipe = new Recipe("Hui Guo Rou", 4, 30, 10);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou6() {
-		Recipe recipe = new Recipe("Kao Zhu Rou", 2, 33, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou7() {
-		Recipe recipe = new Recipe("Hong Shao Niu Rou", 4, 21, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createHongShaoRou8() {
-		Recipe recipe = new Recipe("Ying Tao Rou", 4, 18, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou9() {
-		Recipe recipe = new Recipe("Xiao Chao Rao", 2, 20, 25);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou10() {
-		Recipe recipe = new Recipe("Liang Ban Mu Er", 4, 13, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou11() {
-		Recipe recipe = new Recipe("Noodels", 2, 5, 30);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou12() {
-		Recipe recipe = new Recipe("Hot Dog", 1, 4, 5);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou13() {
-		Recipe recipe = new Recipe("Bao Chao Zhu Gan", 2, 14, 16);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou14() {
-		Recipe recipe = new Recipe("Qing Zheng Lu Yu", 2, 30, 13);
-		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("Lu Yu", 1.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}private static Recipe createHongShaoRou15() {
-		Recipe recipe = new Recipe("Huang Men Ji", 2, 20, 15);
-		recipe.addIngredient(new Ingredient("sugar", 1.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("soy sauce", 4.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("chicken", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		return recipe;
-	}
-	private static Recipe createGongBaoJiding() {
-		Recipe recipe = new Recipe("Gong Bao Jiding", 2, 20, 30);
-		recipe.addIngredient(new Ingredient("chicken breast", 0.5, "kg"," "));
-		recipe.addIngredient(new Ingredient("Shaoxin rice wine", 3.0, "tablespoon"," "));
-		recipe.addIngredient(new Ingredient("sugar", 2.0, "tablespoon"," "));
-		return recipe;
-	}
-
-	public void setRecipeData(ObservableList<Recipe> recipeData) {
-		this.recipeData = recipeData;
-	}
-
-	public OverchefMainApp() {
-        recipeData.add(createHongShaoRou());
-        recipeData.add(createHongShaoRou2());
-        recipeData.add(createHongShaoRou3());
-        recipeData.add(createHongShaoRou4());
-        recipeData.add(createHongShaoRou5());
-        recipeData.add(createHongShaoRou6());
-        recipeData.add(createHongShaoRou7());
-        recipeData.add(createHongShaoRou8());
-        recipeData.add(createHongShaoRou9());
-        recipeData.add(createHongShaoRou10());
-        recipeData.add(createHongShaoRou11());
-        recipeData.add(createHongShaoRou12());
-        recipeData.add(createHongShaoRou13());
-        recipeData.add(createHongShaoRou14());
-        recipeData.add(createHongShaoRou15());
-        recipeData.add(createGongBaoJiding());
+		Cookbook ck = new Cookbook();
+		try {
+			DBConnector.connect();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+//		ck.addRecipe(CreateRecipe.createRecipe_01());
+//		ck.addRecipe(CreateRecipe.createRecipe_02());
+//		ck.addRecipe(CreateRecipe.createRecipe_03());
+//		ck.addRecipe(CreateRecipe.createRecipe_04());
+//		ck.addRecipe(CreateRecipe.createRecipe_05());
+//		ck.addRecipe(CreateRecipe.createRecipe_06());
+//		ck.addRecipe(CreateRecipe.createRecipe_07());
+//		ck.addRecipe(CreateRecipe.createRecipe_08());
+		ck.setRecipeList(ck.loadRecipesFromDB(DBOperation.selectAllRecipe()));
+		setRecipeData(ck.getRecipeList());
     }
 	
 	public ObservableList<Recipe> getRecipeData() {
@@ -245,11 +134,6 @@ public class OverchefMainApp extends Application {
 		this.ingredients = ingredients;
 	}
 
-	
-	public void addStep(String s){
-		
-	}
-	
 	public void addIngredient(Ingredient i) {
 		r.setUnit(i.getUnit());
 		r.setIngredientDesp(i.getDescription());

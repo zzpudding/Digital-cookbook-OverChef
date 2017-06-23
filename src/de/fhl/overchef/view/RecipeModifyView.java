@@ -12,10 +12,15 @@ import javafx.stage.WindowEvent;
 
 public class RecipeModifyView extends Application {
 	private Recipe recipe;
+	private Stage recipeStage;
 	
 	public RecipeModifyView(Recipe recipe){
+		this.recipe = recipe;		
+	}
+	
+	public RecipeModifyView(Recipe recipe, Stage recipeStage){
 		this.recipe = recipe;
-		
+		this.recipeStage = recipeStage;
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -28,6 +33,7 @@ public class RecipeModifyView extends Application {
 		
 		RecipeModifyController controller = loader.getController();
 		controller.setRecipe(recipe);
+		controller.setRecipeStage(recipeStage);
 		if(!recipe.getRecipeName().equals("")){
 			controller.setModifyView();
 

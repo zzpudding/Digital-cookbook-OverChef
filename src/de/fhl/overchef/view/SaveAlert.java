@@ -3,6 +3,7 @@ package de.fhl.overchef.view;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import de.fhl.overchef.model.Recipe;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,24 +24,43 @@ public class SaveAlert {
 	Button cancel;
 	Button confirm;
 	Stage alertWin;
+	Stage recipeStage;
+	Stage modifyStage;
+	Recipe recipe;
 	/**
 	 * define the handle functions of the two buttons. Any subclass of this class can change the handle function by override this function
 	 */
-	public SaveAlert(RecipeModifyController con) {
+	public SaveAlert(RecipeModifyController con, Recipe recipe, Stage modifyStage, Stage recipeStage) {
 		this.con = con;
+		this.recipe = recipe;
+		this.modifyStage = modifyStage;
+		this.recipeStage = recipeStage;
 	}
 	
 	public void buttonReaction() {
 		cancel.setOnAction(e -> alertWin.close());
-        confirm.setOnAction(e -> {try {
-			con.handleSave();
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}alertWin.close();});
+        confirm.setOnAction(e -> {
+			try {
+				con.handleSave();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			alertWin.close();
+			modifyStage.close();
+			if(recipeStage != null){
+				recipeStage.close();
+			}
+			try {
+				new RecipeView(recipe).start(new Stage());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 	}
 	/**
 	 * generate an alert window with handle functions of the buttons set automatically

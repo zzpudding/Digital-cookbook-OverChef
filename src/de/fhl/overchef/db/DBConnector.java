@@ -17,7 +17,7 @@ public class DBConnector {
 		connection.close();
 	}
 
-	public static ResultSet executeSQL(String sql) {
+	public static ResultSet executeSelectSQL(String sql) {
 		try {
 			return connection.createStatement().executeQuery(sql);
 		} catch (SQLException e) {
@@ -25,7 +25,14 @@ public class DBConnector {
 			return null;
 		}
 	}
-	
+	public static void executeNonSelectSQL(String sql) {
+		try {
+			connection.createStatement().execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Connection getCon() {
 		return connection;
 	}

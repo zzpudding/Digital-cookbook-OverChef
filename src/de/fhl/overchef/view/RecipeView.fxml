@@ -7,67 +7,117 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeViewController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeViewController">
    <children>
-      <SplitPane dividerPositions="0.6122448979591837" layoutX="294.0" layoutY="72.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.6271186440677966" layoutX="294.0" layoutY="72.0" prefHeight="400.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane prefHeight="598.0" prefWidth="668.0">
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="900.0">
                <children>
-                  <HBox layoutX="142.0" layoutY="159.0">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </HBox>
-                  <Label layoutX="26.0" layoutY="9.0" text="Name：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="26.0" layoutY="46.0" text="Description：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="20.0" layoutY="312.0" text="Preparation Step：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="26.0" layoutY="121.0" text="Ingredient：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="recipeNameText" layoutX="127.0" layoutY="14.0" prefHeight="17.0" prefWidth="232.0" text="Label">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="preparationStepText" layoutX="162.0" layoutY="339.0" text="Label">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="descriptionText" layoutX="127.0" layoutY="73.0" text="Label">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="ingredientText" layoutX="127.0" layoutY="149.0" text="Label">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox layoutX="26.0" layoutY="14.0" />
+                  <GridPane layoutX="14.0" prefHeight="748.0" prefWidth="854.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="168.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="751.0" minWidth="10.0" prefWidth="684.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="502.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="459.0" minHeight="10.0" prefHeight="308.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="248.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="recipeNameText" text="recipeName" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Name：" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Description：" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="descriptionText" text="desp" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Ingredient：" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="ingredientText" text="ingredients" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label prefHeight="27.0" prefWidth="152.0" text="Preparation Step：" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="preparationStepText" text="prepStep" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" top="8.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
-          <AnchorPane prefHeight="598.0" prefWidth="370.0">
+          <AnchorPane prefHeight="798.0" prefWidth="435.0">
                <children>
-                  <Button fx:id="delete" layoutX="108.0" layoutY="540.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-                  <Button fx:id="modify" layoutX="206.0" layoutY="540.0" mnemonicParsing="false" onAction="#modify" text="Modify" />
-                  <ImageView fitHeight="278.0" fitWidth="401.0" layoutX="-5.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label layoutX="158.0" layoutY="291.0" text="Recipe Picture" />
-                  <Button fx:id="back" layoutX="301.0" layoutY="540.0" mnemonicParsing="false" onAction="#back" text="Back" />
-                  <HBox layoutX="88.0" layoutY="382.0">
+                  <Button fx:id="delete" layoutX="108.0" layoutY="540.0" mnemonicParsing="false" onAction="#delete" text="Delete" AnchorPane.rightAnchor="254.0">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="modify" layoutX="206.0" layoutY="540.0" mnemonicParsing="false" onAction="#modify" text="Modify" AnchorPane.rightAnchor="153.0">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Pane fx:id="imagePane" layoutX="7.0" prefHeight="281.0" prefWidth="402.0">
+                     <children>
+                        <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="158.0" layoutY="291.0" text="Recipe Picture" AnchorPane.rightAnchor="182.0" />
+                  <Button fx:id="back" layoutX="301.0" layoutY="540.0" mnemonicParsing="false" onAction="#back" text="Back" AnchorPane.rightAnchor="70.0">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <HBox layoutX="88.0" layoutY="382.0" AnchorPane.rightAnchor="103.0">
                      <children>
                         <Label text="-Total Time" />
                         <Label fx:id="totalTimeText" text="Label">
@@ -82,7 +132,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="88.0" layoutY="412.0">
+                  <HBox layoutX="88.0" layoutY="412.0" AnchorPane.rightAnchor="103.0">
                      <children>
                         <Label text="-Preparation Time">
                            <padding>
@@ -101,7 +151,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="105.0" layoutY="444.0">
+                  <HBox layoutX="105.0" layoutY="444.0" AnchorPane.rightAnchor="103.0">
                      <children>
                         <Label text="-Cook Time" />
                         <Label fx:id="cookTimeText" text="Label">
@@ -116,7 +166,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="85.0" layoutY="344.0">
+                  <HBox layoutX="88.0" layoutY="344.0" AnchorPane.rightAnchor="188.0">
                      <children>
                         <Label text="-Server Number" />
                         <TextField fx:id="serveNumberText" onAction="#changeServeNumber" onInputMethodTextChanged="#changeServeNumber" onKeyPressed="#changeServeNumber" onKeyReleased="#changeServeNumber" onKeyTyped="#changeServeNumber" prefHeight="25.0" prefWidth="39.0">
@@ -126,6 +176,7 @@
                         </TextField>
                      </children>
                   </HBox>
+                  <Label fx:id="warnLabel" layoutX="100.0" layoutY="327.0" prefHeight="17.0" prefWidth="260.0" textFill="#eb1009" />
                </children></AnchorPane>
         </items>
       </SplitPane>

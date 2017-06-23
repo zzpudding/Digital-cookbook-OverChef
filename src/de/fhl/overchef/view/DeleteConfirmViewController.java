@@ -1,6 +1,7 @@
 package de.fhl.overchef.view;
 
-import de.fhl.overchef.controller.RecipeController;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,10 +22,12 @@ public class DeleteConfirmViewController {
 	}
 
 	@FXML
-	private void confirm() {
-		stage.hide();
-		primaryStage.hide();
-		new RecipeController(null, null).deleteRecipe(recipe);
+	private void confirm() throws FileNotFoundException, IOException {
+		stage.close();
+		//primaryStage.close();
+		OverchefMainApp.deleteRecipe(recipe);
+		//RecipeView.closePrimaryStage();
+		primaryStage.close();
 	}
 
 	public void setStage(Stage confirmStage) {

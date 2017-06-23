@@ -16,13 +16,16 @@ import javafx.stage.Stage;
  */
 public class RecipeView extends Application {
 	private Recipe recipe;
-	Stage primaryStage;
+	private Stage primaryStage;
 	/**
 	 * get the recipe from the main view
 	 * @param recipe
 	 */
 	 public RecipeView(Recipe recipe){
 	 this.recipe=recipe;
+	 }
+	 public RecipeView(){
+		 
 	 }
 /**
  * start the recipe view and initiate recipe for this view
@@ -43,7 +46,7 @@ public class RecipeView extends Application {
  * realize pop-up box
  * @param recipe
  */
-	public void confirmDelete(Recipe recipe) {
+	public void confirmDelete(Recipe recipe,Stage stage) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -57,7 +60,7 @@ public class RecipeView extends Application {
 			confirmStage.setScene(scene);
 			//confirmStage.initStyle(StageStyle.UNIFIED);
 			DeleteConfirmViewController controller = loader.getController();
-			controller.setPrimaryStage(primaryStage);
+			controller.setPrimaryStage(stage);
 			controller.setStage(confirmStage);
 			controller.setRecipe(recipe);
 			confirmStage.showAndWait();
@@ -65,7 +68,9 @@ public class RecipeView extends Application {
 			e.printStackTrace();
 		}
 	}
-
+	public  void closePrimaryStage(){
+		primaryStage.close();
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}

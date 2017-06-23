@@ -85,27 +85,6 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox fx:id="ingredientBox1" prefWidth="378.0">
-                           <children>
-                              <Button fx:id="deleteIngredient1" mnemonicParsing="false" prefHeight="25.0" text="-">
-                                 <HBox.margin>
-                                    <Insets left="104.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <TextField fx:id="ingredientName1" onKeyTyped="#checkIngredientName" prefHeight="25.0" promptText="name">
-                                 <HBox.margin>
-                                    <Insets left="5.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <TextField fx:id="ingredientQuantity1" onKeyTyped="#checkIngredientQuantity" prefHeight="25.0" promptText="quantity" />
-                              <TextField fx:id="ingredientUnit1" prefHeight="25.0" promptText="unit" />
-                              <TextField fx:id="ingredientDescription1" prefHeight="25.0" promptText="description">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
                      </children>
                      <VBox.margin>
                         <Insets right="10.0" />
@@ -121,20 +100,6 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Button>
-                           </children>
-                        </HBox>
-                        <HBox fx:id="stepBox1" minHeight="25.0" prefHeight="17.0" prefWidth="378.0">
-                           <children>
-                              <Button fx:id="deleteStep1" mnemonicParsing="false" prefHeight="25.0" text="-">
-                                 <HBox.margin>
-                                    <Insets left="104.0" right="5.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <TextArea prefHeight="25.0" prefWidth="529.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextArea>
                            </children>
                         </HBox>
                      </children>
@@ -212,26 +177,6 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" text="Total Time(min)">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="totalTime" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="35.0">
-                           <HBox.margin>
-                              <Insets left="50.0" right="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Region HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Region HBox.hgrow="ALWAYS" />
                         <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" text="Prep Time(min)">
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -241,7 +186,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="preparationTime" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="36.0">
+                        <TextField fx:id="preparationTime" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="36.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -261,7 +206,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="cookTime" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="34.0">
+                        <TextField fx:id="cookTime" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="34.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>

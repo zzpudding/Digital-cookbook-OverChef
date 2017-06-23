@@ -1,5 +1,4 @@
 package de.fhl.overchef.view;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,7 +11,7 @@ import javafx.stage.Stage;
 
 /**
  * This class is used to generated an alert window which contains alert message and cancel and confirm button.
- * 
+ * @author HU
  * @version 1.0
  */
 public class CancelAlert {

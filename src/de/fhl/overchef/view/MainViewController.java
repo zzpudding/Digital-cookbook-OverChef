@@ -1,9 +1,10 @@
 package de.fhl.overchef.view;
 
+import de.fhl.overchef.db.DBConnector;
 import de.fhl.overchef.model.Recipe;
-import de.fhl.overchef.view.OverchefMainApp;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -29,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MainViewController {
 	@FXML
@@ -330,5 +332,15 @@ public class MainViewController {
 		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
 		ingredientNameCol
 				.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
-	}
+		
+		OverchefMainApp.getPrimaryStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
+			public void handle(WindowEvent event) {
+				try {
+					DBConnector.disconnect();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	} 
 }

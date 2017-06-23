@@ -18,14 +18,6 @@ public class Ingredient {
 		this.description = description;
 	}
 
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getIngredientName() {
 		return ingredientName.get();
 	}
@@ -33,8 +25,16 @@ public class Ingredient {
 	public void setIngredientName(String ingredientName) {
 		this.ingredientName.set(ingredientName);
 	}
-	
-	
+	public void setUnit(String unit){
+		this.unit = unit;
+	}
+		public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+		
+	public void setDescription(String description){
+		this.description=description;
+	}
 	/*public StringProperty ingredientNameProperty() {
 		return ingredientName;
 	}*/
@@ -53,8 +53,6 @@ public class Ingredient {
 		return unit;
 	}
 
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
-	}
+
 
 }

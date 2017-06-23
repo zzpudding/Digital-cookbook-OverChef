@@ -1,10 +1,17 @@
 package de.fhl.overchef.view;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +31,8 @@ public class RecipeViewController {
 	@FXML
 	private Label descriptionText;
 	@FXML
+	private Label warnLabel;
+	@FXML
 	private Label ingredientText;
 	@FXML
 	private Label preparationStepText;
@@ -41,6 +50,11 @@ public class RecipeViewController {
 	private Button modify;
 	@FXML
 	private Button back;
+	@FXML
+	private Pane imagePane;
+	@FXML
+	private ImageView imageView;
+	private FileInputStream fileIn;
 
 	/**
 	 * provide the living stage to the controller
@@ -55,17 +69,26 @@ public class RecipeViewController {
 	 * initiate the content for the recipe view
 	 * 
 	 * @param recipe
+	 * @throws IOException 
 	 */
-	public void initializeRecipeView(Recipe recipe) {
+	public void initializeRecipeView(Recipe recipe) throws IOException {
 		this.recipe = recipe;
 		recipeNameText.setText(recipe.getRecipeName());
 		descriptionText.setText(recipe.getDescription());
-		ingredientText.setText(recipe.getIngredients());
-		preparationStepText.setText(recipe.getPreparationStep());
+		ingredientText.setText(recipe.toGetIngredients());
+		preparationStepText.setText(recipe.toGetPreparationStep());
 		serveNumberText.setText(String.valueOf(recipe.getServeNumber()));
-		totalTimeText.setText(String.valueOf(recipe.getPreparationTime() + recipe.getPreparationTime()));
+		totalTimeText.setText(String.valueOf(recipe.getPreparationTime() + recipe.getCookTime()));
 		preparationTimeText.setText(String.valueOf(recipe.getPreparationTime()));
-		cookTimeText.setText(String.valueOf(recipe.getPreparationTime()));
+		cookTimeText.setText(String.valueOf(recipe.getCookTime()));
+
+		if (!recipe.getPictures().isEmpty()) {
+			imageView.fitWidthProperty().bind(imagePane.widthProperty());
+			imageView.fitHeightProperty().bind(imagePane.heightProperty());
+			imageView.setImage(new Image(fileIn = new FileInputStream(recipe.getPictures().get(0).getRoot())));
+			imageView.setVisible(true);
+			fileIn.close();
+		}
 	}
 
 	/**
@@ -75,9 +98,16 @@ public class RecipeViewController {
 	private void changeServeNumber() {
 		try {
 			int changeNumber = Integer.valueOf(serveNumberText.getText()).intValue();
+			String indexString = "[1-9]*[a-zA-z][a-zA-z]*[1-9]*";
+			if (serveNumberText.getText().matches(indexString)) {
+				warnLabel.setText("serve number must be number");
+			}
+			else
 			if ((serveNumberText.getText() != "") && (changeNumber != 0)) {
+
 				recipe.changeQuantity(changeNumber);
-				ingredientText.setText(recipe.getIngredients());
+				ingredientText.setText(recipe.toGetIngredients());
+
 			}
 		} catch (Exception e) {
 		}
@@ -90,7 +120,7 @@ public class RecipeViewController {
 	 */
 	@FXML
 	private void modify() throws Exception {
-		new RecipeModifyView(recipe).start(new Stage());
+		new RecipeModifyView(recipe, stage).start(new Stage());
 	}
 
 	/**
@@ -108,7 +138,7 @@ public class RecipeViewController {
 	 */
 	@FXML
 	public void delete() throws Exception {
-		new RecipeView(recipe).confirmDelete(recipe);
+		new RecipeView().confirmDelete(recipe, stage);
 	}
 
 }

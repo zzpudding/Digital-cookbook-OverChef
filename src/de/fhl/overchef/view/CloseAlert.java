@@ -12,7 +12,7 @@ import javafx.stage.WindowEvent;
 
 /**
  * This class is used to generated an alert window which contains alert message and cancel and confirm button.
- * 
+ * @author HU
  * @version 1.0
  */
 public class CloseAlert {
