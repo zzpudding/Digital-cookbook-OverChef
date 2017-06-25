@@ -1,0 +1,51 @@
+Overchef app test
+By yujiaZHANG
+
+Introduction:
+Thank you very much for your participation. Your assistance will help us develop software that is more friendly to use.
+OverChef is a digital cooking software, providing functionalities such as quickly off-line searching, updating recipes based on users’ preference. You may search for a certain recipe with recipe’s name or ingredient’s name. You can also modify or even delete any recipe. Now we have some simple tasks for you to try with OverChef. Please do the following instructions.
+
+Task 0 : open the app “OverChef”
+Task 1: Search for a recipe contains ingredient named “salat”
+Task 2: Open it and tell which part do you see firstly.
+Task 3: After reading this recipe, you do not like it. Now delete it and back to the window you can search.
+Task 4: Search for a recipe named “Spicy Chicken”
+Task 5: Change recipe’s name from “Spicy Chicken” to “Super Spicy Chicken”
+Task 6: Add a description about “Super Spicy Chicken”
+Task 7: Replace one ingredient in “Super Spicy Chicken” with one of your favourite ingredients
+Task 8: Read the step and change it as you like
+Task 9: Replace current picture as you like, and save the recipe
+Task 10: Now go back to the view where you can search. Image you have 5 friends who want to have “Super Spicy Chicken” for dinner at you apartment, you need to get the right quantity of ingredients that enough for 5 people.
+Task 11: During the dinner at your apartment, one of your friend shares with you a secret recipe learned from his grandma, now you want to save it into “OverChef”. Find a way to create your own recipe. Also, remember you will have party later, so just typing in the necessary part you think into the recipe and save it. The details of this recipe is on the back of this paper.
+Task 12: You have done all the task. Now you can play with “OverChef” app id you like and we will be grateful for your feedback! Thank you so much for your cooperation!
+
+
+
+
+
+Recipe name: Hong Shao Rou
+Description:
+Shanghai-Style Braised Pork Belly (Hong Shao Rou), or “red cooked pork,” is a very famous dish in China. Everyone knows it, and there are many versions and twists based on the original. Some of the more well-known variations include the addition of squid (sounds odd, but boy, is it tasty), hard boiled eggs, and tofu knots.
+
+Ingredient:	3 /4 lb. of lean pork belly (cut into 3/4-inch thick pieces)
+		2 tablespoons oil
+		1 tablespoon sugar (rock sugar is preferred if you have it)
+		½ tablespoon dark soy sauce
+		1 tablespoon light soy sauce
+		3 tablespoons shaoxing wine
+		2 cups water
+
+Serving Number: 2
+
+Step:
+”Bring a pot of water to a boil and blanch the pork for a couple minutes.		
+”Take the pork out of the pot and set aside."		
+"Over low heat, add oil and sugar to your wok."		
+"Melt the sugar slightly and add the pork."		
+"Raise the heat to medium and cook until the pork is lightly browned."			
+"Turn the heat back down to low and add cooking wine, light soy sauce, dark soy sauce, and chicken stock."		
+"Cover and simmer for about 60 minutes to 90 minutes until pork is fork tender."	
+"Every 5-10 minutes, stir to prevent burning and add water if it gets too dry."		
+"Once the pork is fork tender, if there is still a lot of visible liquid, uncover the wok, turn up the heat, and stir continuously the sauce has reduced to a glistening coating."
+
+Picture: (on desktop)
