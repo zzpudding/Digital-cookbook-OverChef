@@ -11,20 +11,21 @@ import javafx.stage.Stage;
 
 /**
  * This class is used to generated an alert window which contains alert message and cancel and confirm button.
- * @author HU
- * @version 1.0
+ * 
  */
 public class CancelAlert {
 	Button cancel;
 	Button confirm;
 	Stage alertWin;
+
 	/**
 	 * define the handle functions of the two buttons. Any subclass of this class can change the handle function by override this function
 	 */
-	public void buttonReaction(Stage primaryStage) {
+	public void buttonReaction(Stage modifyStage) {
 		cancel.setOnAction(e -> alertWin.close());
-        confirm.setOnAction(e -> {alertWin.close();primaryStage.close();});
+        confirm.setOnAction(e -> {alertWin.close();modifyStage.close();});
 	}
+
 	/**
 	 * generate an alert window with handle functions of the buttons set automatically
 	 * @param title the title of the alert window
@@ -34,7 +35,7 @@ public class CancelAlert {
 		alertWin = new Stage();
         alertWin.initModality(Modality.APPLICATION_MODAL);
         alertWin.setTitle(title);
-        
+
         cancel = new Button("Cancel");
         confirm = new Button("Confirm");
         cancel.setPrefWidth(65);
@@ -43,10 +44,10 @@ public class CancelAlert {
         confirm.setPrefHeight(30);
 
         buttonReaction(primaryStage);
-        
+ 
         Label alertMsg = new Label(msg);
         VBox.setMargin(alertMsg, new Insets(0,0,30,0));
-        
+  
         VBox vBox = new VBox(2);
         vBox.setAlignment(Pos.CENTER);
         vBox.setPrefWidth(400);
@@ -59,7 +60,7 @@ public class CancelAlert {
         vBox.getChildren().add(hBox);
         hBox.getChildren().add(cancel);
         hBox.getChildren().add(confirm);
-        
+  
         alertWin.setScene(new Scene(vBox, 400, 200));
         alertWin.showAndWait();
 	}

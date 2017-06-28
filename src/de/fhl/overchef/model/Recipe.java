@@ -3,7 +3,6 @@ package de.fhl.overchef.model;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -11,7 +10,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+/**
+ * The Recipe class stores all the data and contents of a recipe
+ *
+ */
 public class Recipe {
 	private StringProperty recipeName = null;
 	private IntegerProperty serveNum;
@@ -21,7 +23,6 @@ public class Recipe {
 	private Integer recipeID=0;
 	private List<String> preparationStep = new ArrayList<String>();
 	private List<Ingredient> ingredientList = new ArrayList<Ingredient>();
-	private List<String> ingredientNameList = new LinkedList<String>();
 	private Vector<Picture> pictures = new Vector<Picture>();
 
 	public Recipe(String recipeName, int serveNum, int prepTime, int cookTime) {
@@ -32,21 +33,37 @@ public class Recipe {
 	}
 
 	public Recipe(){
-		
+		//empty
 	}
 
+	/**
+	 * adding an ingredient into the ingredient list
+	 * @param i the ingredient to be added
+	 */
 	public void addIngredient(Ingredient i) {
 		this.ingredientList.add(i);
-		this.ingredientNameList.add(i.getIngredientName());
-
 	}
-
-	public void addIngredientNametoList(String iname) {
-		this.ingredientNameList.add(iname);
-	}
-
+	/**
+	 * adding a preparation step to the preparation step list
+	 * @param s the preparation to be added
+	 */
 	public void addPreparationStep(String s) {
 		this.preparationStep.add(s);
+	}
+
+	/**
+	 * getting the preparation step
+	 * @return
+	 */
+	public String toGetPreparationStep() {
+		StringBuffer toStringPreparationStep = new StringBuffer();
+		for (int i = 0; i < preparationStep.size(); i++) {
+			String item = preparationStep.get(i);
+			int m=i+1;
+			toStringPreparationStep.append(m+": " + item);
+			toStringPreparationStep.append("\r\n");
+		}
+		return toStringPreparationStep.toString();
 	}
 
 	/**
@@ -56,6 +73,7 @@ public class Recipe {
 	 * @param path
 	 * @throws FileNotFoundException
 	 * @throws IOException
+	 * 
 	 */
 	public void addPicture(String path) throws FileNotFoundException, IOException {
 		System.out.println(path);
@@ -64,6 +82,11 @@ public class Recipe {
 		this.pictures.add(picture);
 
 	}
+
+	/**
+	 * changing the quantities of the ingredients according to the serving number
+	 * @param serveNum the serving number give by user or the software's default value
+	 */
 	public void changeQuantity(int serveNum) {
 		int currentNum = getServeNumber();
 		for (Ingredient i : ingredientList) {
@@ -76,14 +99,16 @@ public class Recipe {
 		return recipeName;
 	}
 
+	/**
+	 * getting the names of ingredients'names
+	 * @return
+	 */
 	public String getIngredientNameListProperty() {
 		StringBuffer ing = new StringBuffer();
-		for (int i = 0; i < this.ingredientNameList.size(); i++) {
-			ing.append(this.ingredientNameList.get(i) + ", ");
+		for (int i = 0; i < this.ingredientList.size(); i++) {
+			ing.append(this.ingredientList.get(i).getIngredientName() + "; ");
 		}
-
 		return ing.toString();
-
 	}
 
 	public String getRecipeName() {
@@ -118,17 +143,7 @@ public class Recipe {
 		this.prepTime.set(prepTime);
 	}
 
-	public String toGetPreparationStep() {
-		StringBuffer toStringPreparationStep = new StringBuffer();
-		for (int i = 0; i < preparationStep.size(); i++) {
-			String item = preparationStep.get(i);
-			int m=i+1;
-			toStringPreparationStep.append(m+": " + item);
-			toStringPreparationStep.append("\r\n");
-		}
-		return toStringPreparationStep.toString();
-	}
-
+	
 	public int getCookTime() {
 		return cookTime.get();
 	}
@@ -144,7 +159,10 @@ public class Recipe {
 	public void setPictures(Vector<Picture> pictures) {
 		this.pictures = pictures;
 	}
-
+	/**
+	 * getting ingredients
+	 * @return
+	 */
 	public String toGetIngredients() {
 		StringBuffer toStringIngredients = new StringBuffer();
 		for (Ingredient item : ingredientList) {
@@ -158,6 +176,22 @@ public class Recipe {
 		}
 		return toStringIngredients.toString();
 	}
+
+	/**
+	 * @param preparationStep the preparationStep to set
+	 */
+	public void setPreparationStep(List<String> preparationStep) {
+		this.preparationStep = preparationStep;
+	}
+
+	public void setIngredientList(List<Ingredient> ingredientList) {
+		this.ingredientList = ingredientList;
+	}
+
+	public List<String> getPreparationStep() {
+		return preparationStep;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -165,24 +199,9 @@ public class Recipe {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	/**
-	 * @return the preparationStep
-	 */
-	public List<String> getPreparationStep() {
-		return preparationStep;
-	}
+	
 	public List<Ingredient> getIngredientList() {
 		return ingredientList;
-	}
-
-	public void setIngredientList(List<Ingredient> ingredientList) {
-		this.ingredientList = ingredientList;
-	}
-	/**
-	 * @param preparationStep the preparationStep to set
-	 */
-	public void setPreparationStep(List<String> preparationStep) {
-		this.preparationStep = preparationStep;
 	}
 
 	public Integer getRecipeID() {
@@ -192,6 +211,7 @@ public class Recipe {
 	public int getIntServeNum(){
 		return serveNum.get();
 	}
+
 	public void setRecipeID(Integer recipeID) {
 		this.recipeID = recipeID;
 	}

@@ -1,7 +1,6 @@
 package de.fhl.overchef.view;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import de.fhl.overchef.model.Recipe;
@@ -17,15 +16,13 @@ import javafx.stage.Stage;
 /**
  * realize action for the required component and the based function of the
  * recipe view
- * 
- * @author Bocheng Hu
  *
  */
 public class RecipeViewController {
 
 	Recipe recipe;
 	@FXML
-	Stage stage;
+	Stage primaryStage;
 	@FXML
 	private Label recipeNameText;
 	@FXML
@@ -37,19 +34,21 @@ public class RecipeViewController {
 	@FXML
 	private Label preparationStepText;
 	@FXML
-	private TextField serveNumberText;
-	@FXML
 	private Label totalTimeText;
 	@FXML
 	private Label preparationTimeText;
 	@FXML
 	private Label cookTimeText;
+
 	@FXML
 	private Button delete;
 	@FXML
 	private Button modify;
 	@FXML
 	private Button back;
+
+	@FXML
+	private TextField serveNumberText;
 	@FXML
 	private Pane imagePane;
 	@FXML
@@ -62,14 +61,14 @@ public class RecipeViewController {
 	 * @param stage
 	 */
 	public void setPrimaryStage(Stage stage) {
-		this.stage = stage;
+		this.primaryStage = stage;
 	}
 
 	/**
 	 * initiate the content for the recipe view
 	 * 
 	 * @param recipe
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void initializeRecipeView(Recipe recipe) throws IOException {
 		this.recipe = recipe;
@@ -81,7 +80,7 @@ public class RecipeViewController {
 		totalTimeText.setText(String.valueOf(recipe.getPreparationTime() + recipe.getCookTime()));
 		preparationTimeText.setText(String.valueOf(recipe.getPreparationTime()));
 		cookTimeText.setText(String.valueOf(recipe.getCookTime()));
-
+		warnLabel.setText("");
 		if (!recipe.getPictures().isEmpty()) {
 			imageView.fitWidthProperty().bind(imagePane.widthProperty());
 			imageView.fitHeightProperty().bind(imagePane.heightProperty());
@@ -91,23 +90,33 @@ public class RecipeViewController {
 		}
 	}
 
+	public void recipeViewLayout() {
+		modify.setStyle("-fx-background-color: #E6E6E6;");
+		delete.setStyle("-fx-background-color: 	#E6E6E6;");
+		back.setStyle("-fx-background-color: 	#E6E6E6 ;");
+	}
+
 	/**
 	 * realize the action for the textField serve number
 	 */
 	@FXML
 	private void changeServeNumber() {
 		try {
-			int changeNumber = Integer.valueOf(serveNumberText.getText()).intValue();
-			String indexString = "[1-9]*[a-zA-z][a-zA-z]*[1-9]*";
-			if (serveNumberText.getText().matches(indexString)) {
-				warnLabel.setText("serve number must be number");
+			String numberContent = serveNumberText.getText();
+			int changeNumber;
+			try {
+				changeNumber = Integer.valueOf(numberContent).intValue();
+			} catch (Exception e) {
+				changeNumber = 1;
 			}
-			else
-			if ((serveNumberText.getText() != "") && (changeNumber != 0)) {
-
+			String indexString = "[1-9][0-9]*";
+			if (numberContent.matches(indexString)) {
 				recipe.changeQuantity(changeNumber);
 				ingredientText.setText(recipe.toGetIngredients());
+				warnLabel.setText("");
 
+			} else {
+				warnLabel.setText("the serve number must be pure number");
 			}
 		} catch (Exception e) {
 		}
@@ -120,7 +129,7 @@ public class RecipeViewController {
 	 */
 	@FXML
 	private void modify() throws Exception {
-		new RecipeModifyView(recipe, stage).start(new Stage());
+		new RecipeModifyView(recipe, primaryStage).start(new Stage());
 	}
 
 	/**
@@ -128,7 +137,7 @@ public class RecipeViewController {
 	 */
 	@FXML
 	public void back() {
-		stage.close();
+		primaryStage.close();
 	}
 
 	/**
@@ -138,7 +147,7 @@ public class RecipeViewController {
 	 */
 	@FXML
 	public void delete() throws Exception {
-		new RecipeView().confirmDelete(recipe, stage);
+		new RecipeView().confirmDelete(recipe, primaryStage);
 	}
 
 }

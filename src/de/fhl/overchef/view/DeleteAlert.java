@@ -1,5 +1,7 @@
 package de.fhl.overchef.view;
 
+import java.io.IOException;
+
 import de.fhl.overchef.model.Picture;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,8 +16,7 @@ import javafx.stage.Stage;
 
 /**
  * This class is used to generated an alert window which contains alert message and cancel and confirm button.
- * @author HU
- * @version 1.0
+ * 
  */
 public class DeleteAlert {
 	Button cancel;
@@ -26,7 +27,12 @@ public class DeleteAlert {
 	 */
 	public void buttonReaction(Picture p, ImageView iv) {
 		cancel.setOnAction(e -> alertWin.close());
-        confirm.setOnAction(e -> {p.deletePicture(); iv.setVisible(false);alertWin.close();});
+        confirm.setOnAction(e -> {try {
+			p.deletePicture();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} iv.setVisible(false);alertWin.close();});
         
 	}
 	/**

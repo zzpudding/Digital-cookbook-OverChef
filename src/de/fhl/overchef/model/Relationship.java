@@ -1,5 +1,10 @@
 package de.fhl.overchef.model;
 
+/**
+ * 
+ * @author zhangyujia
+ *
+ */
 public class Relationship {
 	private String recipeName;
 	private double quantiy = 0;

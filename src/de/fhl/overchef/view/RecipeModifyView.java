@@ -9,7 +9,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-
+/**
+ * The GUI of recipe modify view
+ *
+ */
 public class RecipeModifyView extends Application {
 	private Recipe recipe;
 	private Stage recipeStage;
@@ -17,7 +20,7 @@ public class RecipeModifyView extends Application {
 	public RecipeModifyView(Recipe recipe){
 		this.recipe = recipe;		
 	}
-	
+
 	public RecipeModifyView(Recipe recipe, Stage recipeStage){
 		this.recipe = recipe;
 		this.recipeStage = recipeStage;
@@ -34,10 +37,7 @@ public class RecipeModifyView extends Application {
 		RecipeModifyController controller = loader.getController();
 		controller.setRecipe(recipe);
 		controller.setRecipeStage(recipeStage);
-		if(!recipe.getRecipeName().equals("")){
-			controller.setModifyView();
-
-		}
+		controller.setModifyView();
 		controller.setPrimaryStage(primaryStage);
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
 
@@ -47,18 +47,14 @@ public class RecipeModifyView extends Application {
 				CloseAlert closeAlert = new CloseAlert();
 				closeAlert.popUp("Close Recipe Modify View", "All the changes will be lost, are you sure to continue?", primaryStage, event);
 			}
-			
 		});
 		
 		primaryStage.initModality(Modality.APPLICATION_MODAL);	
 		primaryStage.showAndWait();
 	}
-	
-	
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
 
 }

@@ -12,8 +12,7 @@ import javafx.stage.WindowEvent;
 
 /**
  * This class is used to generated an alert window which contains alert message and cancel and confirm button.
- * @author HU
- * @version 1.0
+ * 
  */
 public class CloseAlert {
 	Button cancel;
@@ -22,9 +21,10 @@ public class CloseAlert {
 	/**
 	 * define the handle functions of the two buttons. Any subclass of this class can change the handle function by override this function
 	 */
-	public void buttonReaction(Stage primaryStage, WindowEvent event) {
+	public void buttonReaction(Stage modifyStage, WindowEvent event) {
 		cancel.setOnAction(e -> {alertWin.close(); event.consume();});
-        confirm.setOnAction(e -> {alertWin.close(); primaryStage.close();});
+        confirm.setOnAction(e -> {alertWin.close(); modifyStage.close();});
+        alertWin.setOnCloseRequest(e -> {alertWin.close(); event.consume();});
 	}
 	/**
 	 * generate an alert window with handle functions of the buttons set automatically

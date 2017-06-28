@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
@@ -10,11 +11,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.637123745819398" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeModifyController">
+<SplitPane dividerPositions="0.618" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeModifyController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="286.0">
-         <children>
-            <VBox prefHeight="398.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="427.0" prefViewportHeight="427.0" prefViewportWidth="391.0" prefWidth="555.0">
+         <content>
+            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox nodeOrientation="LEFT_TO_RIGHT">
                      <children>
@@ -31,7 +32,7 @@
                         <VBox>
                            <children>
                               <Label fx:id="recipeNameWarnLabel" />
-                              <TextField fx:id="recipeName" onKeyTyped="#checkRecipeName" prefHeight="25.0" prefWidth="250.0" promptText="name" />
+                              <TextField fx:id="recipeName" prefHeight="25.0" prefWidth="250.0" promptText="name" />
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -109,9 +110,9 @@
                   </VBox>
                </children>
             </VBox>
-         </children>
-      </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="399.0">
+         </content>
+      </ScrollPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="563.0">
          <children>
             <VBox layoutX="33.0" layoutY="88.0" prefHeight="398.0" prefWidth="219.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -151,6 +152,14 @@
                      </children>
                   </HBox>
                   <Region VBox.vgrow="ALWAYS" />
+                  <Label fx:id="warningText1" prefHeight="17.0" prefWidth="215.0" textFill="#e40a0a">
+                     <VBox.margin>
+                        <Insets left="8.0" top="-5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Region HBox.hgrow="ALWAYS" />
@@ -163,7 +172,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="serveNumber" minHeight="-Infinity" minWidth="-Infinity" onAction="#changeServeNumber" onInputMethodTextChanged="#changeServeNumber" onKeyTyped="#changeServeNumber" prefHeight="18.0" prefWidth="36.0">
+                        <TextField fx:id="serveNumber" minHeight="-Infinity" minWidth="-Infinity" onAction="#changeServeNumber" onInputMethodTextChanged="#changeServeNumber" onKeyPressed="#changeServeNumber" onKeyReleased="#changeServeNumber" onKeyTyped="#changeServeNumber" prefHeight="18.0" prefWidth="36.0">
                            <HBox.margin>
                               <Insets left="55.0" right="20.0" />
                            </HBox.margin>
@@ -174,6 +183,14 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="warningText2" prefHeight="17.0" prefWidth="225.0" textFill="#ee0707">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" top="-5.0" />
+                     </VBox.margin>
+                  </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Region HBox.hgrow="ALWAYS" />
@@ -186,7 +203,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="preparationTime" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="36.0">
+                        <TextField fx:id="preparationTime" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#checkPTFormatted" onKeyPressed="#checkPTFormatted" onKeyReleased="#checkPTFormatted" onKeyTyped="#checkPTFormatted" prefHeight="18.0" prefWidth="36.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>
@@ -194,6 +211,14 @@
                         <Region HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
+                  <Label fx:id="warningText3" prefHeight="17.0" prefWidth="226.0" textFill="#e40a0a">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" top="-5.0" />
+                     </VBox.margin>
+                  </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Region HBox.hgrow="ALWAYS" />
@@ -206,7 +231,7 @@
                            </padding>
                         </Label>
                         <Region HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="cookTime" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="34.0">
+                        <TextField fx:id="cookTime" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#checkCTFormatted" onKeyPressed="#checkCTFormatted" onKeyReleased="#checkCTFormatted" onKeyTyped="#checkCTFormatted" prefHeight="18.0" prefWidth="34.0">
                            <HBox.margin>
                               <Insets left="50.0" right="20.0" />
                            </HBox.margin>

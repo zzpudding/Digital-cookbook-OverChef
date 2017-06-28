@@ -2,11 +2,16 @@ package de.fhl.overchef.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import de.fhl.overchef.db.DBOperation;
 import de.fhl.overchef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
+/**
+ * Alert view for user to confirm when the user is deleting a recipe
+ *
+ */
 public class DeleteConfirmViewController {
 	@FXML
 	private Button cance;;
@@ -28,6 +33,10 @@ public class DeleteConfirmViewController {
 		OverchefMainApp.deleteRecipe(recipe);
 		//RecipeView.closePrimaryStage();
 		primaryStage.close();
+		DBOperation.deleteRecipe(recipe.getRecipeID());
+		if(!recipe.getPictures().isEmpty()) {
+			recipe.getPictures().get(0).deletePicture();
+		}
 	}
 
 	public void setStage(Stage confirmStage) {
