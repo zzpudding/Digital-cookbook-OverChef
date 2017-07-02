@@ -1,5 +1,6 @@
 package de.fhl.overchef.view;
 
+import de.fhl.overchef.db.DBOperation;
 import de.fhl.overchef.model.Recipe;
 import de.fhl.overchef.view.OverchefMainApp;
 
@@ -29,10 +30,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 /**
  * Controller class to control the main view
  * 
+ * @author Jiacheng Zhou, Yujia Zhang
  */
 public class MainViewController {
 	@FXML
@@ -70,7 +71,6 @@ public class MainViewController {
 	public int relevanceByRecipe(int i) {
 		String keyword = searchField.getText();
 		int relevance = 0;
-		// replace all escape character
 		for (char c : new char[] { '*', '(', ')', '[', ']', '{', '}', '.' }) {
 			keyword = keyword.replaceAll("\\" + c, "\\\\" + c);
 		}
@@ -131,8 +131,7 @@ public class MainViewController {
 	 * Searched result by keyword would be sorted according to the relevance.
 	 * The search field is in recipe.
 	 * 
-	 * @return relevant recipes in order (or only total matched recipe if there
-	 *         is one)
+	 * @return relevant recipes in order (or only total matched recipe if there is one)
 	 */
 	public ObservableList<Recipe> searchResultByRecipe() {
 		if (searchField.getText().isEmpty()) {
@@ -167,7 +166,7 @@ public class MainViewController {
 			return resultList;
 		}
 	}
-
+	
 	/**
 	 * Searched result by keyword would be sorted according to the relevance.
 	 * The search field is in ingredient.
@@ -175,10 +174,10 @@ public class MainViewController {
 	 * @return relevant recipes in order
 	 */
 	public ObservableList<Recipe> searchResultByIngredient() {
-		if (searchField.getText().isEmpty()) {
+		if (searchField.getText().isEmpty()){
 			return recipeData;
-		} else {
-			ObservableList<Recipe> recipeData = OverchefMainApp.getRecipeData();
+	}else{
+		ObservableList<Recipe> recipeData = OverchefMainApp.getRecipeData();
 			Map<Recipe, Integer> tempMap = new HashMap<>();
 			for (int i = 0; i < recipeData.size(); i++) {
 				Recipe r = recipeData.get(i);
@@ -196,15 +195,15 @@ public class MainViewController {
 			}
 			ObservableList<Recipe> resultList = FXCollections.observableArrayList(tempSet);
 			return resultList;
-		}
 	}
+}
 
+	
 	/**
 	 * Searched result by keyword would be sorted according to the relevance.
 	 * The search fields are in recipe and ingredient.
 	 * 
-	 * @return relevant recipes in order (or only total matched recipe if there
-	 *         is one)
+	 * @return relevant recipes in order (or only total matched recipe if there is one)
 	 */
 	public ObservableList<Recipe> searchResult() {
 		if (searchField.getText().isEmpty()) {
@@ -255,32 +254,30 @@ public class MainViewController {
 	/**
 	 * Reset the table view by searched recipes
 	 * 
-	 * @param RecipeData
-	 *            searched recipe data list
+	 * @param RecipeData 
+	 *          searched recipe data list
 	 */
 	private void searchedTableView(ObservableList<Recipe> RecipeData) {
 		recipeTable.setItems(RecipeData);
 		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
-		ingredientNameCol
-				.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
+		ingredientNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
 	}
 
 	/**
-	 * show the searched result in the table view according to the chosen search
-	 * button
+	 * show the searched result in the table view according to the chosen search button
 	 * 
 	 */
 	public void showSearchResult() {
-		RadioButton chk = (RadioButton) group.getSelectedToggle();
-		if (chk == byRecipe) {
-			searchedTableView(searchResultByRecipe());
-		}
-		if (chk == byIngredient) {
-			searchedTableView(searchResultByIngredient());
-		}
-		if (chk == byBoth) {
-			searchedTableView(searchResult());
-		}
+		RadioButton chk = (RadioButton)group.getSelectedToggle();
+		if(chk == byRecipe){
+    		searchedTableView(searchResultByRecipe());
+    	}
+    	if(chk == byIngredient){
+    		searchedTableView(searchResultByIngredient());
+    	}
+    	if(chk == byBoth){
+    		searchedTableView(searchResult());
+    	}
 	}
 
 	/**
@@ -295,7 +292,7 @@ public class MainViewController {
 	}
 
 	/**
-	 * Open a recipe view with clicked recipe detail on it
+	 *Open a recipe view with clicked recipe detail on it
 	 *
 	 */
 	@FXML
@@ -320,7 +317,8 @@ public class MainViewController {
 	/**
 	 * Sort the recipe data alphabetically
 	 * 
-	 * @return recipeData the sorted recipeData
+	 * @return recipeData
+	 *          the sorted recipeData 
 	 */
 	public ObservableList<Recipe> sortRecipeData() {
 		if (recipeData.size() > 0) {
@@ -346,17 +344,16 @@ public class MainViewController {
 				showSearchResult();
 			}
 		});
-
+		
 		searchButton.setStyle("-fx-background-color: #3498DB;");
 		addButton.setStyle("-fx-background-color: #2C3E50;");
 		this.OverchefMainApp = mainApp;
 		recipeData = mainApp.getRecipeData();
 		recipeTable.setItems(sortRecipeData());
 		recipeNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRecipeName()));
-		ingredientNameCol
-				.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
+		ingredientNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getIngredientNameListProperty()));
 	}
-
+	
 	public ObservableList<Recipe> getRecipeData() {
 		return recipeData;
 	}

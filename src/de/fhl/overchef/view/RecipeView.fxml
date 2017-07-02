@@ -15,7 +15,7 @@
    <children>
       <SplitPane dividerPositions="0.5651629072681704" layoutX="7.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="450.0" style="-fx-background-image: url(file:src/de/fhl/overchef/view/recipeViewPicture/overChef.png); -fx-background-position: center center; -fx-background-size: 640 560; -fx-opaque-insets: 10%;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="450.0" style="-fx-background-image: url(file:src/de/fhl/overchef/view/recipeViewPicture/overChef.jpg); -fx-border-color: #E0FFFF; -fx-border-width: 2px; -fx-padding: 10; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 790 700; -fx-opaque-insets: 10%;">
                <children>
                   <VBox layoutX="22.0" layoutY="29.0" prefHeight="598.0" prefWidth="480.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
@@ -187,7 +187,7 @@
                                     <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <Label minHeight="25.0" minWidth="94.0" text="Prepare Step:">
+                              <Label minHeight="25.0" minWidth="94.0" text="Step:">
                                  <font>
                                     <Font name="Bodoni MT" size="16.0" />
                                  </font>
@@ -265,7 +265,7 @@
                      <children>
                         <Pane fx:id="imagePane" prefHeight="233.0" prefWidth="350.0">
                            <children>
-                              <ImageView fx:id="imageView" fitHeight="220.0" fitWidth="350.0" layoutX="-7.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imageView" fitHeight="220.0" fitWidth="357.0" layoutX="-7.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </Pane>
                         <Label text="Recipe Picture">
@@ -278,9 +278,9 @@
                               <Region prefHeight="128.0" prefWidth="312.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <Label fx:id="warnLabel" prefHeight="17.0" prefWidth="245.0" text="Label" textFill="#e81409">
+                        <Label fx:id="warnLabel" prefHeight="17.0" prefWidth="307.0" text="Label" textFill="#e81409">
                            <VBox.margin>
-                              <Insets bottom="-30.0" left="50.0" top="5.0" />
+                              <Insets bottom="-30.0" left="40.0" top="5.0" />
                            </VBox.margin>
                         </Label>
                         <HBox prefHeight="36.0" prefWidth="302.0" spacing="20.0">
@@ -288,7 +288,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="30.0" />
                            </VBox.margin>
                            <children>
-                              <Label text="Serving Number:">
+                              <Label minHeight="25.0" minWidth="120.0" prefHeight="25.0" prefWidth="120.0" text="Serving Number:">
                                  <HBox.margin>
                                     <Insets left="40.0" />
                                  </HBox.margin>
@@ -315,7 +315,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                            <children>
-                              <Label text="Total Time:">
+                              <Label minHeight="25.0" minWidth="80.0" prefHeight="25.0" prefWidth="80.0" text="Total Time:">
                                  <HBox.margin>
                                     <Insets left="50.0" />
                                  </HBox.margin>
@@ -363,7 +363,7 @@
                         </HBox>
                         <HBox prefHeight="30.0" prefWidth="312.0" spacing="10.0">
                            <children>
-                              <Label text="Cook Time:">
+                              <Label minHeight="25.0" minWidth="81.0" prefHeight="25.0" prefWidth="81.0" text="Cook Time:">
                                  <HBox.margin>
                                     <Insets left="50.0" />
                                  </HBox.margin>
@@ -400,7 +400,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                                  <padding>
-                                    <Insets left="15.0" />
+                                    <Insets left="13.0" />
                                  </padding>
                               </Label>
                               <VBox prefHeight="30.0" prefWidth="0.0" />
@@ -411,7 +411,7 @@
                         </HBox>
                         <HBox prefHeight="30.0" prefWidth="312.0" spacing="5.0">
                            <children>
-                              <Label prefHeight="25.0" prefWidth="103.0" text="Prepare Time:">
+                              <Label minHeight="25.0" minWidth="103.0" prefHeight="25.0" prefWidth="103.0" text="Prepare Time:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -432,7 +432,7 @@
                                     <Insets left="2.0" />
                                  </padding>
                                  <HBox.margin>
-                                    <Insets top="5.0" />
+                                    <Insets left="2.0" top="5.0" />
                                  </HBox.margin>
                               </Label>
                               <VBox prefHeight="30.0" prefWidth="0.0">
@@ -463,7 +463,7 @@
                         </HBox>
                         <HBox prefHeight="41.0" prefWidth="302.0" spacing="20.0">
                            <children>
-                              <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" opacity="0.8" text="Delete" textFill="#ff3824">
+                              <Button fx:id="delete" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#delete" opacity="0.8" prefHeight="25.0" prefWidth="54.0" text="Delete" textFill="#ff3824">
                                  <HBox.margin>
                                     <Insets left="60.0" />
                                  </HBox.margin>
@@ -473,7 +473,7 @@
                                     <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <Button fx:id="modify" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#modify" opacity="0.8" style="-fx-font: #1778EF;" text="Modify">
+                              <Button fx:id="modify" alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#modify" opacity="0.8" prefHeight="25.0" prefWidth="54.0" style="-fx-font: #1778EF;" text="Edit">
                                  <textFill>
                                     <RadialGradient centerX="0.4777777777777778" centerY="0.5" radius="0.5">
                                        <stops>
@@ -487,7 +487,7 @@
                                     <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <Button fx:id="back" alignment="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" opacity="0.8" prefHeight="25.0" prefWidth="56.0" text="Back">
+                              <Button fx:id="back" alignment="CENTER" layoutX="62.0" layoutY="10.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#back" opacity="0.8" prefHeight="25.0" prefWidth="54.0" text="Back">
                                  <textFill>
                                     <RadialGradient centerX="0.4777777777777778" centerY="0.5" radius="0.5">
                                        <stops>

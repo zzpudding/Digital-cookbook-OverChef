@@ -27,8 +27,8 @@ import de.fhl.overchef.view.MainViewController;
 
 /**
  * Main class to initialize and open the app
- * @author zhangyujia
  * 
+ * @author Jiacheng Zhou,Yujia Zhang
  */
 public class OverchefMainApp extends Application {
     private Stage primaryStage;
@@ -86,6 +86,7 @@ public class OverchefMainApp extends Application {
             // Give the controller access to the main app.
             MainViewController controller = loader.getController();
             controller.setMainApp(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,10 +118,11 @@ public class OverchefMainApp extends Application {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
     	ck.setRecipeList(ck.loadRecipesFromDB(DBOperation.selectAllRecipe()));
 		setRecipeData(ck.getRecipeList());
     }
-
+	
 	/**
 	 * Add ingredient to the relationship map
 	 * 
@@ -132,7 +134,7 @@ public class OverchefMainApp extends Application {
 		r.setQuantiy(i.getQuantity());
 		this.ingredients.put(i, r);
 	}
-
+	
 	/**
 	 * Delete recipe from the recipeData list
 	 * 
@@ -141,7 +143,7 @@ public class OverchefMainApp extends Application {
 	public static void deleteRecipe(Recipe recipe){
 		recipeData.remove(recipe);
 	}
-
+	
 	public Map<Ingredient, Relationship> getIngredients() {
 		return ingredients;
 	}
@@ -149,15 +151,15 @@ public class OverchefMainApp extends Application {
 	public void setIngredients(Map<Ingredient, Relationship> ingredients) {
 		this.ingredients = ingredients;
 	}
-
+	
 	public static  void setRecipeData(List<Recipe> recipelist) {
 		recipeData = FXCollections.observableArrayList(recipelist);
 	}
-
+	
     public static void setRecipeData(ObservableList<Recipe> recipeData) {
 		OverchefMainApp.recipeData = recipeData;
 	}
-
+    
 	public static ObservableList<Recipe> getRecipeData() {
         return recipeData;
     }

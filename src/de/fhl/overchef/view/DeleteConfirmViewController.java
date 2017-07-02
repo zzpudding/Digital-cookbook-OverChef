@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 /**
  * Alert view for user to confirm when the user is deleting a recipe
+ * @author Bocheng Hu
  *
  */
 public class DeleteConfirmViewController {
