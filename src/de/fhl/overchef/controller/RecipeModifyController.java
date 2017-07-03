@@ -1,5 +1,4 @@
-
-package de.fhl.overchef.view;
+package de.fhl.overchef.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,12 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.fabric.jdbc.ErrorReportingExceptionInterceptor;
-
 import de.fhl.overchef.db.DBOperation;
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Picture;
 import de.fhl.overchef.model.Recipe;
+import de.fhl.overchef.view.CancelAlert;
+import de.fhl.overchef.view.DeleteAlert;
+import de.fhl.overchef.view.OverchefMainApp;
+import de.fhl.overchef.view.RecipeView;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -385,8 +386,6 @@ public class RecipeModifyController {
 			if(step.equals(""))
 				continue;
 			prepStep.add(modifyPunctuation(step));
-			System.out.println("step");
-			System.out.println(modifyPunctuation(step));
 		}
 		recipe.setPreparationStep(prepStep);
 
@@ -471,9 +470,19 @@ public class RecipeModifyController {
 		else{
 		serveNumber.setText(String.valueOf(recipe.getServeNumber()));
 		}
-		preparationTime.setText(String.valueOf(recipe.getPreparationTime()));
+		if(recipe.getPreparationTime()==0){
+			preparationTime.setText("1");
+		}
+		else{
+			preparationTime.setText(String.valueOf(recipe.getPreparationTime()));
+		}
+		if(recipe.getCookTime()==0)
+		{
+			cookTime.setText("1");
+		}
+		else{
 		cookTime.setText(String.valueOf(recipe.getCookTime()));
-
+		}
 		if (!recipe.getPictures().isEmpty()) {
 			imageView.fitWidthProperty().bind(imagePane.widthProperty());
 			imageView.fitHeightProperty().bind(imagePane.heightProperty());
@@ -492,6 +501,8 @@ public class RecipeModifyController {
 		if (recipeName.getText().equals("")) {
 			recipeNamePreviousState = false;
 			errorNumber += 1;
+			recipeNameWarnLabel.setText("Should Only Contain Letter,Number, & ' _ and Cannot be EMPTY");
+			recipeNameWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 		} else
 			recipeNamePreviousState = true;
 		
@@ -500,6 +511,11 @@ public class RecipeModifyController {
 		
 	}
 	
+	/**
+	 * In order to avoid DB error, transfer ' to ''
+	 * @param string
+	 * @return modified string
+	 */
 	public String modifyPunctuation(String string) {
 		String regex = "'";
 		return string.replaceAll(regex, "''");
@@ -628,20 +644,10 @@ public class RecipeModifyController {
 	 */
 	@FXML
 	private void changeServeNumber() {
-		int changeNumber = 1;
 		String textContent = serveNumber.getText();
-		try {
-			changeNumber = Integer.valueOf(textContent).intValue();
-		} catch (Exception e) {
-		}
 		String indexString = "[1-9][0-9]*";
 		if (textContent.matches(indexString)){
 			warningText1.setText("");
-			recipe.changeQuantity(changeNumber);
-		for (int i = 0; i < recipe.getIngredientList().size(); i++) {
-			((TextField) (ingredientContent.get(i).getChildren().get(2)))
-					.setText(Double.toString(recipe.getIngredientList().get(i).getQuantity()));
-		}
 		}
 		else{
 			warningText1.setText("the serving must be positive pure integer");

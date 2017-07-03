@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.MainViewController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.controller.MainViewController">
    <children>
       <TextField fx:id="searchField" layoutX="237.0" layoutY="39.0" prefHeight="48.0" prefWidth="346.0" promptText="please enter recipe/ingredient..." AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="39.0">
          <font>

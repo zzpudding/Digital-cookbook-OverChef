@@ -2,14 +2,12 @@ package de.fhl.overchef.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import de.fhl.overchef.model.Recipe;
-
 /**
  * A class of operating the database
  * 
- * @author zhangyujia
+ * @author Jiacheng Zhou, Yujia Zhang
  */
 public class DBOperation {
 	/**

@@ -12,7 +12,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
  * The Recipe class stores all the data and contents of a recipe
- *
+ * @author Jiacheng Zhou, Yujia Zhang
+ * @version 2.0
  */
 public class Recipe {
 	private StringProperty recipeName = null;
@@ -31,9 +32,9 @@ public class Recipe {
 		this.prepTime = new SimpleIntegerProperty(prepTime);
 		this.cookTime = new SimpleIntegerProperty(cookTime);
 	}
-
-	public Recipe(){
-		//empty
+	
+	public Recipe() {
+		
 	}
 
 	/**
@@ -52,28 +53,13 @@ public class Recipe {
 	}
 
 	/**
-	 * getting the preparation step
-	 * @return
-	 */
-	public String toGetPreparationStep() {
-		StringBuffer toStringPreparationStep = new StringBuffer();
-		for (int i = 0; i < preparationStep.size(); i++) {
-			String item = preparationStep.get(i);
-			int m=i+1;
-			toStringPreparationStep.append(m+": " + item);
-			toStringPreparationStep.append("\r\n");
-		}
-		return toStringPreparationStep.toString();
-	}
-
-	/**
 	 * add a picture to recipe with the given path of picture chosen by user and
 	 * save it in file system
 	 * 
 	 * @param path
 	 * @throws FileNotFoundException
 	 * @throws IOException
-	 * 
+	 * @author Zhengjiang Hu
 	 */
 	public void addPicture(String path) throws FileNotFoundException, IOException {
 		System.out.println(path);
@@ -82,7 +68,6 @@ public class Recipe {
 		this.pictures.add(picture);
 
 	}
-
 	/**
 	 * changing the quantities of the ingredients according to the serving number
 	 * @param serveNum the serving number give by user or the software's default value
@@ -94,11 +79,10 @@ public class Recipe {
 		}
 		this.setServeNum(serveNum);
 	}
-
+	
 	public StringProperty recipeNameProperty() {
 		return recipeName;
 	}
-
 	/**
 	 * getting the names of ingredients'names
 	 * @return
@@ -109,6 +93,7 @@ public class Recipe {
 			ing.append(this.ingredientList.get(i).getIngredientName() + "; ");
 		}
 		return ing.toString();
+
 	}
 
 	public String getRecipeName() {
@@ -142,8 +127,21 @@ public class Recipe {
 	public void setPrepTime(int prepTime) {
 		this.prepTime.set(prepTime);
 	}
+	/**
+	 * getting the preparation step
+	 * @return
+	 */
+	public String toGetPreparationStep() {
+		StringBuffer toStringPreparationStep = new StringBuffer();
+		for (int i = 0; i < preparationStep.size(); i++) {
+			String item = preparationStep.get(i);
+			int m=i+1;
+			toStringPreparationStep.append(m+": " + item);
+			toStringPreparationStep.append("\r\n");
+		}
+		return toStringPreparationStep.toString();
+	}
 
-	
 	public int getCookTime() {
 		return cookTime.get();
 	}
@@ -169,29 +167,13 @@ public class Recipe {
 			StringBuffer itemReal = new StringBuffer();
 			itemReal.append(item.getIngredientName());
 			itemReal.append("   " + item.getQuantity());
-			itemReal.append("   " + item.getUnit());
+			itemReal.append("" + item.getUnit());
 			itemReal.append("      " + item.getDescription());
 			toStringIngredients.append(itemReal);
 			toStringIngredients.append("\r\n");
 		}
 		return toStringIngredients.toString();
 	}
-
-	/**
-	 * @param preparationStep the preparationStep to set
-	 */
-	public void setPreparationStep(List<String> preparationStep) {
-		this.preparationStep = preparationStep;
-	}
-
-	public void setIngredientList(List<Ingredient> ingredientList) {
-		this.ingredientList = ingredientList;
-	}
-
-	public List<String> getPreparationStep() {
-		return preparationStep;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -199,9 +181,24 @@ public class Recipe {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	/**
+	 * @return the preparationStep
+	 */
+	public List<String> getPreparationStep() {
+		return preparationStep;
+	}
 	public List<Ingredient> getIngredientList() {
 		return ingredientList;
+	}
+
+	public void setIngredientList(List<Ingredient> ingredientList) {
+		this.ingredientList = ingredientList;
+	}
+	/**
+	 * @param preparationStep the preparationStep to set
+	 */
+	public void setPreparationStep(List<String> preparationStep) {
+		this.preparationStep = preparationStep;
 	}
 
 	public Integer getRecipeID() {
@@ -211,7 +208,6 @@ public class Recipe {
 	public int getIntServeNum(){
 		return serveNum.get();
 	}
-
 	public void setRecipeID(Integer recipeID) {
 		this.recipeID = recipeID;
 	}

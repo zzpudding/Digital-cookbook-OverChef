@@ -1,12 +1,12 @@
-package de.fhl.overchef.view;
+package de.fhl.overchef.controller;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import de.fhl.overchef.model.Recipe;
+import de.fhl.overchef.view.RecipeModifyView;
+import de.fhl.overchef.view.RecipeView;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -120,7 +120,7 @@ public class RecipeViewController {
 	private void changeServeNumber() {
 		try {
 			String numberContent = serveNumberText.getText();
-			int changeNumber;// = Integer.valueOf(numberContent).intValue();
+			int changeNumber;
 
 			try {
 				changeNumber = Integer.valueOf(numberContent).intValue();

@@ -1,13 +1,13 @@
 package de.fhl.overchef.db;
-import java.sql.*;
 
+import java.sql.*;
 /**
  * Database connection class of connection and disconnection to the database
  * 
- * @author zhangyujia
+ * @author Jiacheng Zhou,Yujia Zhang
  */
 public class DBConnector {
-	static Connection connection;
+	public static Connection connection;
 	private static DBConnector dbConnection = new DBConnector();
 	
 	
@@ -18,7 +18,8 @@ public class DBConnector {
 	 * @throws SQLException
 	 */
 	public static Connection connect() throws SQLException {
-		return connection = DriverManager.getConnection("jdbc:mysql://localhost:8889/cookbook", "root", "root");		
+		return connection = DriverManager.getConnection("jdbc:mysql://localhost:8889/overchefdb", "root", "root");
+		
 	}
 	
 	/**

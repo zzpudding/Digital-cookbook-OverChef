@@ -7,13 +7,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 /**
  * This Class is used to save and process image, such as loading, storing and deleting image.
- *
+ * @author Zhengjiang Hu
+ * @version 5.0
  */
 public class Picture {
 	int width;
@@ -27,47 +27,40 @@ public class Picture {
 	FileOutputStream imageOut;
 	FileInputStream imageIn;
 	File file;
-
+	
 	public String getPictureName() {
 		return pictureName;
 	}
-
 	public void setPictureName(String pictureName) {
 		this.pictureName = pictureName;
 	}
-
+	
 	public Image getImage() {
 		return image;
 	}
-
 	public void setImage(Image image) {
 		this.image = image;
 	}
-
 	public String getRoot() {
 		return root;
 	}
-
 	public void setRoot(String root) {
 		this.root = root;
 	}
-
 	/**
 	 * construct a instance of Picture and read the image from file system onto the ImageIOstream
-	 * @param root
+	 * @param path picture's path
 	 */
 	public Picture(String path) {
 		try {
 			imageIn = new FileInputStream(path);
 			image = new Image(imageIn);
 			imageIn.close();
-			// System.out.println("Picture " + image.getHeight());
 			file = new File(path);
 			this.pictureName = file.getName();
 		} catch (Exception e) {
 		}
 	}
-
 	/**
 	 * Check if there is file with the same name in the file system
 	 * @return true: no file with the same name; false: file with the same name already exists
@@ -87,7 +80,6 @@ public class Picture {
 		}	
 		return true;
 	}
-
 	/**
 	 * write the image file to the given directory
 	 * @throws FileNotFoundException
@@ -103,7 +95,6 @@ public class Picture {
 			ImageIO.write(bufferImage, pictureName.substring(pictureName.lastIndexOf(".") + 1), imageOut);
 			imageOut.close();
 	}
-
 	/**
 	 * delete the picture saved at the specific directory
 	 * @throws IOException 

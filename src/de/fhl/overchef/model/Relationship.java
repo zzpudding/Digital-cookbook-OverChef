@@ -1,7 +1,7 @@
 package de.fhl.overchef.model;
 
 /**
- * 
+ * The Relationship class stores ingredient and recipe's relationship
  * @author zhangyujia
  *
  */
@@ -12,6 +12,14 @@ public class Relationship {
 	private String ingredientDesp = "";
 	private String ingredientName = "";
 
+	/**
+	 * constructor
+	 * @param ingredientName
+	 * @param recipeName
+	 * @param quantity
+	 * @param unit
+	 * @param ingredientDesp
+	 */
 	public Relationship(String ingredientName, String recipeName, int quantity, String unit, String ingredientDesp) {
 		this.ingredientName = ingredientName;
 		this.recipeName = recipeName;

@@ -2,16 +2,13 @@ package de.fhl.overchef.view;
 
 import java.io.IOException;
 
+import de.fhl.overchef.controller.DeleteConfirmViewController;
+import de.fhl.overchef.controller.RecipeViewController;
 import de.fhl.overchef.model.Recipe;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;

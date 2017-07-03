@@ -7,6 +7,7 @@ import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Recipe;
 /**
  * This class is used to edit recipes to be saved in the database at the first time when the software is set up
+ * @author Zhengjiang Hu, Fangtian Li
  *
  */
 public class CreateRecipe {
@@ -59,7 +60,7 @@ public class CreateRecipe {
 	public static Recipe createRecipe_03() throws FileNotFoundException, IOException {
 		Recipe recipe = new Recipe("Chicken Soup", 4, 20, 60);
 		recipe.addIngredient(new Ingredient("Chicken", 1 , "kg"," Main material "));
-		recipe.addIngredient(new Ingredient("Mushroom", 100, "g","make the chicken soup better"));
+		recipe.addIngredient(new Ingredient("Marsroom", 100, "g","make the chicken soup better"));
 		recipe.addIngredient(new Ingredient("Mu er", 100, "g"," a traditional Chinese ingredient"));
 		recipe.addIngredient(new Ingredient("salt", 5, "g", ""));
 		recipe.addIngredient(new Ingredient("green onion", 200, "g","important flavor"));
@@ -67,7 +68,7 @@ public class CreateRecipe {
 
 		recipe.addPreparationStep("Clean and cut the chicken into pieces");
 		recipe.addPreparationStep("Put these pieces into boiling water for 5 minutes and then take them out");
-		recipe.addPreparationStep("Cut the mushroom into pieces");
+		recipe.addPreparationStep("Cut the marshroom and mu er into pieces");
 		recipe.addPreparationStep("Change the water in the pot and then put chicken back into the pot with green onion and ginger");
 		recipe.addPreparationStep("Boil the stuff for 20 minute and add marshroom and salt");
 		recipe.addPreparationStep("Put mu er into the pot 10 minutes before the dish finished");
@@ -156,36 +157,35 @@ public class CreateRecipe {
 	}
 
 	public static Recipe createRecipe_09() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Mexican chicken burger", 1, 10, 8);
+		Recipe recipe = new Recipe("Chicken burger", 1, 10, 8);
 		recipe.addIngredient(new Ingredient("chicken breast", 500 , "g"," Main material "));
-		recipe.addIngredient(new Ingredient("tsp chipotle paste", 100, "g","Main material"));
+		recipe.addIngredient(new Ingredient("chipotle paste", 100, "g","Main material"));
 		recipe.addIngredient(new Ingredient("lime juiced", 10 , "g"," important flavor"));
 		recipe.addIngredient(new Ingredient("slices cheese", 2 , "piece", "important flavor"));
 		recipe.addIngredient(new Ingredient("cherry tomatoes", 2 , "piece", "important flavor"));
 
-		recipe.addPreparationStep("Put the chicken breast between two pieces of cling film and bash with a rolling pin or pan to about 1cm thick.");
-		recipe.addPreparationStep("Mix the chipotle paste with half the lime juice and spread over the chicken.");
-		recipe.addPreparationStep("Heat a griddle pan over a high heat. Once hot, cook the chicken for 3 mins each side until cooked through, adding the cheese for the final 2 mins of cooking. ");
-		recipe.addPreparationStep(" Add the bun, cut-side down, to the griddle pan to toast lightly. Season the chicken.");
-		recipe.addPreparationStep(" Meanwhile, mash the avocado with the remaining lime juice. Stir in the cherry tomatoes, jalape帽o and garlic, and season with a little salt. ");
-		recipe.addPreparationStep(" Spread over the base of the bun, then add the chicken followed by the top of the bun.");
+		recipe.addPreparationStep("put the chicken on a plate and cut it into 1cm cube.");
+		recipe.addPreparationStep("Mix the sauce in the ingredient and spread it on the chicken.");
+		recipe.addPreparationStep("Heat a pan and cook the chicken chest for 3 minutes, then add the cheese at the last. ");
+		recipe.addPreparationStep("Choose two bread, add the meat to the middle of the breads.");
+		recipe.addPreparationStep(" Meanwhile, add some other sauce such as pepper.");
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
 		return recipe;
 	}
 
 	public static Recipe createRecipe_10() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Teriyaki salmon with sesame pak choi", 2, 10, 10);
-		recipe.addIngredient(new Ingredient("skinless salmon fillets", 2 , "piece"," Main material "));
+		Recipe recipe = new Recipe("Salmon", 2, 10, 10);
+		recipe.addIngredient(new Ingredient("Salmon fillets", 2 , "piece"," Main material "));
 		recipe.addIngredient(new Ingredient("sweet chilli sauce", 1 , "tbsp"," important flavor"));
 		recipe.addIngredient(new Ingredient("honey", 1 , "tbsp", "important flavor"));
-		recipe.addIngredient(new Ingredient("sesame oil", 1 , "tbsp", "important flavor"));
+		recipe.addIngredient(new Ingredient("oil", 1 , "tbsp", "important flavor"));
 
 
-		recipe.addPreparationStep("Heat oven to 200C/180C fan/gas 6 and put the salmon in a shallow baking dish. ");
-		recipe.addPreparationStep("Mix the sweet chilli, honey, sesame oil, mirin, soy and ginger in a small bowl and pour over the salmon so the steaks are completely covered. Bake for 10 mins while you cook the pak choi.");
-		recipe.addPreparationStep("Cut a slice across the base of the pak choi so the leaves separate. Heat the oils in a wok, add the garlic and stir-fry briefly to soften. Add the pak choi and fry until the leaves start to wilt.");
-		recipe.addPreparationStep("Pour over the stock, tightly cover the pan and allow to cook for 5 mins 鈥� you are aiming for the stems of the pak choi to be tender but still have a bit of bite.");
-		recipe.addPreparationStep("Serve the pak choi in shallow bowls, top with the salmon steaks and spoon over the juices. Scatter with the toasted sesame seeds and serve on its own or with brown rice or noodles.");
+		recipe.addPreparationStep("Heat the pan and put the salmon into it.");
+		recipe.addPreparationStep("Mix the sweet chilli, honey, oil, in a small bowl and pour over the salmon. Bake for 10 mins.");
+		recipe.addPreparationStep("Cut a slice across the base so the fish separate. Heat the oils in another pan, add the garlic briefly to soften.");
+		recipe.addPreparationStep("Pour over the oil, cover the pan and allow to cook for 5 mins.");
+		recipe.addPreparationStep("Serve the garlic in shallow bowls, put the salmon on the top and add the juices. you can eat it with rice or noodle.");
 
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
@@ -193,15 +193,15 @@ public class CreateRecipe {
 	}
 
 	public static Recipe createRecipe_11() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Soba noodles with wasabi garlic prawns", 2, 5, 10);
+		Recipe recipe = new Recipe("Noodles", 2, 5, 10);
 		recipe.addIngredient(new Ingredient("soba noodles", 150 , "gram"," Main material "));
-		recipe.addIngredient(new Ingredient("raw peeled king prawns", 180 , "gram"," important flavor"));
+		recipe.addIngredient(new Ingredient("raw prawns", 180 , "gram"," important flavor"));
 		recipe.addIngredient(new Ingredient("soy sauce", 3 , "tbsp", "important flavor"));
 		recipe.addIngredient(new Ingredient("wasabi", 1 , "tbsp", "important flavor"));
 
-		recipe.addPreparationStep("Mix the wasabi, soy sauce and garlic in a small bowl. Bring a large pan of water to the boil and cook the noodles following pack instructions.");
-		recipe.addPreparationStep("Meanwhile, heat the butter in a frying pan. Once foaming, stir in the prawns and cook for a few mins until pink. Stir in the wasabi mixture with a couple of spoonfuls of the noodle cooking water and heat through.");
-		recipe.addPreparationStep("Add the noodles to the pan with the spring onions, toss together and divide between two plates.");
+		recipe.addPreparationStep("Mix the wasabi, soy sauce and garlic in a small bowl. Bring a large pan of water to the boil.");
+		recipe.addPreparationStep("in the meanwhile, heat the butter in a frying pan. Once steaming, cook for a few mins until it become pink. Stir in the wasabi mixture with a couple of spoonfuls of the noodle cooking water and heat through.");
+		recipe.addPreparationStep("Add the noodles to the pan with the onions, toss together and divide between two plates.");
 
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
@@ -209,73 +209,68 @@ public class CreateRecipe {
 	}
 
 	public static Recipe createRecipe_12() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Jerk prawn coconut rice bowls", 2, 2, 6);
+		Recipe recipe = new Recipe("Sandwich", 2, 2, 6);
 		recipe.addIngredient(new Ingredient("pack raw peeled king prawns", 150 , "gram"," Main material "));
 		recipe.addIngredient(new Ingredient("can kidney beans in chilli sauce", 400 , "gram"," Main material "));
-		recipe.addIngredient(new Ingredient("pouch coconut rice", 250 , "gram"," Main material "));
+		recipe.addIngredient(new Ingredient("rice", 250 , "gram"," Main material "));
 		recipe.addIngredient(new Ingredient("jerk seasoning", 1.5 , "tbsp"," important flavor"));
+		
+		recipe.setDescription("This quick, lazy food can reserve for 2 days");
 
-		recipe.addPreparationStep("Heat 1 tbsp flavourless oil in a large frying pan. Add the prawns and the jerk seasoning, and cook for 1-2 mins. Drain the beans, reserving 3 tbsp of the chilli sauce.");
-		recipe.addPreparationStep("Add the beans to the pan along with the reserved sauce and the coconut rice. Fry for 3-4 mins, then season with salt to taste and spoon into two bowls to serve.");
+		recipe.addPreparationStep("Heat 1 tbsp oil in a large frying pan. Add the jerk seasoning, and cook for 1-2 mins. Drain the beans, add 3 tbsp of the chilli sauce.");
+		recipe.addPreparationStep("Add the beans to the pan along with the reserved sauce and the coconut rice. Fry for 3-4 mins, then season with salt to taste and spoon into two bowls to eat.");
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
 		return recipe;
 	}
 
 	public static Recipe createRecipe_13() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Penne with a punchy tuna sauce", 4, 5, 15);
+		Recipe recipe = new Recipe("Penne with tuna sauce", 4, 5, 15);
 		recipe.addIngredient(new Ingredient("penne", 350 , "gram"," Main material "));
 		recipe.addIngredient(new Ingredient("pouch coconut rice", 250 , "gram"," Main material "));
 		recipe.addIngredient(new Ingredient("jerk seasoning", 1.5 , "tbsp"," important flavor"));
 
-		recipe.setDescription("This quick, zesty supper is packed with Mediterranean flavours. Leftovers will keep well for lunch the next day");
+		recipe.setDescription("easy to handle");
 
-		recipe.addPreparationStep("Heat 1 tbsp flavourless oil in a large frying pan. Add the prawns and the jerk seasoning, and cook for 1-2 mins. Drain the beans, reserving 3 tbsp of the chilli sauce.");
-		recipe.addPreparationStep("Add the beans to the pan along with the reserved sauce and the coconut rice. Fry for 3-4 mins, then season with salt to taste and spoon into two bowls to serve.");
+		recipe.addPreparationStep("pour half pot of water into a empty pot and heat it to boiling.");
+		recipe.addPreparationStep("keep heating for 5 minutes and season it with jerk.");
+		recipe.addPreparationStep("pour the water and mix the penne with rice.");
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
 		return recipe;
 	}
 
 	public static Recipe createRecipe_14() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Frying pan pizza with aubergine, ricotta and mint", 2, 25, 35);
-		recipe.addIngredient(new Ingredient("strong white bread flourstrong white bread flour", 200 , "gram"," plus a little for dusting "));
-		recipe.addIngredient(new Ingredient("pouch coconut rice", 250 , "gram"," Main material "));
-		recipe.addIngredient(new Ingredient("jerk seasoning", 1.5 , "tbsp"," important flavor"));
+		Recipe recipe = new Recipe("banane pie", 2, 25, 35);
+		recipe.addIngredient(new Ingredient("banane", 200 , "gram","main material"));
+		recipe.addIngredient(new Ingredient("dumpling warpper", 250 , "gram"," Main material "));
 
-		recipe.setDescription("This recipe ensures a crispy-bottomed pizza without ever turning on the oven. It is easy, veggie and 2 of your 5-a-day");
+		recipe.setDescription("easy but time consuming.");
 
-		recipe.addPreparationStep("Weigh the ingredients for the dough into a large bowl and add 1/2 tsp salt and 125ml warm water. Mix to form a soft dough, then tip onto your work surface and knead for 5 mins or until the dough feels stretchy. ");
-		recipe.addPreparationStep("Clean and grease the bowl and return the dough. Cover with cling film and leave somewhere warm to rise for 1 hr, or until the dough has doubled in size.");
-		recipe.addPreparationStep("Meanwhile, make the sauce. Heat 1 tbsp olive oil in a pan and add the garlic. Sizzle gently for 30 secs, making sure the garlic doesn鈥檛 brown, then add the passata. ");
-		recipe.addPreparationStep("Season well and bubble for 8-10 mins until you have a rich sauce 鈥� add a pinch of sugar if it tastes a little too tart. Set aside.");
-		recipe.addPreparationStep("When the dough has risen, knock out the air and roll it into a pizza base the same size as a large frying pan. Oil the surface of the dough, cover with cling film , then leave on the work surface for 15 mins to puff up a little. ");
-		recipe.addPreparationStep("Meanwhile, heat 2 tbsp oil in the frying pan and add the aubergines in a single layer (you may have to cook in batches). Season well and cook for 4-5 mins on each side until really tender and golden. Transfer to a dish and cover with foil to keep warm.");
-		recipe.addPreparationStep("Heat the remaining 1 tbsp of oil in the pan and carefully lift the dough into it. You may have to reshape it a little to fit. Cook over a low-medium heat until the underside is golden brown and the edges of the dough are starting to look dry and set 鈥� this should take about 6 mins, but it鈥檚 best to go by eye. ");
-		recipe.addPreparationStep("Flip over, drizzle a little more oil around the edge of the pan so it trickles underneath the pizza base, and cook for another 5-6 mins until golden and cooked through. ");
-		recipe.addPreparationStep("Reheat the sauce if you need to and spread it over the base. Top with the warm aubergines and dot with spoonfuls of ricotta. Scatter with mint and drizzle with a little extra virgin olive oil just before serving.");
+		recipe.addPreparationStep("Mash the banane");
+		recipe.addPreparationStep("Prepare the dumling warppers and place them on a platform.");
+		recipe.addPreparationStep("Warp the banane with dumpling warppers, you can stick the warpper edges with some water");
+		recipe.addPreparationStep("Heat a pan and fry the pie, each for 1 minute");
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
 		return recipe;
 	}
 
 	public static Recipe createRecipe_15() throws FileNotFoundException, IOException {
-		Recipe recipe = new Recipe("Thai fried prawn and pineapple rice", 4, 10, 15);
+		Recipe recipe = new Recipe("pineapple rice", 4, 10, 15);
 		recipe.addIngredient(new Ingredient("pineapple", 140 , "gram","chopped into bite-sized chunks"));
 		recipe.addIngredient(new Ingredient("spring onions", 250 , "gram","both sliced"));
 		recipe.addIngredient(new Ingredient("Thai green curry paste", 3 , "tbsp"," important flavor"));
 		recipe.addIngredient(new Ingredient("egg", 2 , "piece","beaten"));
 		recipe.addIngredient(new Ingredient("pea", 140 , "gram","frozen"));
-		recipe.addIngredient(new Ingredient("light soy sauce", 4 , "tbsp","plus extra to serve"));
-		recipe.addIngredient(new Ingredient("coriander leave", 0 , "handful","optional"));
 
-		recipe.setDescription("This quick, low calorie supper is perfect for a busy weeknight. Cook your rice in advance to get ahead - run it under cold water to chill quickly, then freeze in a food bag for up to one month");
+		recipe.setDescription("Cook your rice in advance to get ahead, suitable for busy time.");
 
-		recipe.addPreparationStep("Heat the oil in a wok or non-stick frying pan and fry the spring onion whites for 2 mins until softened. ");
+		recipe.addPreparationStep("Heat the oil in a pot or non-stick frying pan and fry the onion whites for 2 mins until softened. ");
 		recipe.addPreparationStep("Stir in the pepper for 1 min, followed by the pineapple for 1 min more, then stir in the green curry paste and soy sauce.");
-		recipe.addPreparationStep("Add the rice, stir-frying until piping hot, then push the rice to one side of the pan and scramble the eggs on the other side. ");
-		recipe.addPreparationStep("Stir the peas, bamboo shoots and prawns into the rice and eggs, then heat through for 2 mins until the prawns are hot and the peas tender.");
-		recipe.addPreparationStep("Finally, stir in the spring onion greens, lime juice and coriander, if using. Spoon into bowls and serve with extra lime wedges and soy sauce.");
+		recipe.addPreparationStep("Add the rice, then push the rice to one side of the pan and scramble the eggs on the other side. ");
+		recipe.addPreparationStep("pare the pea and cut it into 1cm cube, and add them to the rice");
+		
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
 		return recipe;
@@ -283,17 +278,226 @@ public class CreateRecipe {
 
 	public static Recipe createRecipe_16() throws FileNotFoundException, IOException {
 		Recipe recipe = new Recipe("Vegetarian chilli", 2, 2, 30);
-		recipe.addIngredient(new Ingredient("pack oven-roasted vegetable", 400 , "gram"," Main material "));
+		recipe.addIngredient(new Ingredient("oven-roasted vegetable", 400 , "gram","Main material"));
 		recipe.addIngredient(new Ingredient("can kidney bean", 1 , "piece","in chilli sauce"));
-		recipe.addIngredient(new Ingredient("can chopped tomatoe", 1 , "piece",""));
+		recipe.addIngredient(new Ingredient("tomatoe", 1 , "piece","chopped"));
 
-		recipe.setDescription("The easiest chilli you will ever make, with ready-to-eat grains, kidney beans in chilli sauce and summer veggies - it is 4 of your 5-a-day too!");
+		recipe.setDescription("The easiest chilli you will ever make");
 
-		recipe.addPreparationStep("Heat oven to 200C/180C fan/ gas 6. Cook the vegetables in a casserole dish for 15 mins. Tip in the beans and tomatoes, season, and cook for another 10-15 mins until piping hot.");
-		recipe.addPreparationStep("Heat the pouch in the microwave on High for 1 min and serve with the chilli.");
+		recipe.addPreparationStep("Heat the pot. Cook the vegetables in a dish for 15 mins. Tip in the beans and tomatoes, season, and cook for another 10-15 mins until piping hot.");
+		recipe.addPreparationStep("Heat the plate in the microwave on 600W for 1 min and mix with the chilli.");
 
 //		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
 		return recipe;
+	}
+	public static Recipe createRecipe_17() throws FileNotFoundException, IOException {
+		Recipe recipe = new Recipe("lemon chicken",6 ,20,60 );
+		recipe.addIngredient(new Ingredient("charlotte potatoes", 1 , "kg" ,"large ones cut in half"));
+		recipe.addIngredient(new Ingredient("lemon", 2 , "piece" ,""));
+		recipe.addIngredient(new Ingredient("olive oil", 125 , "ml" ,""));
+		recipe.addIngredient(new Ingredient("red-wine vinegar", 1 , "tbsp" ,""));
+		recipe.addIngredient(new Ingredient("dried oregano", 0.5 , "tsp" ,""));
+		recipe.addIngredient(new Ingredient("Salt and freshly ground black pepper", 1 ,"spoon",""));
+		recipe.addIngredient(new Ingredient("chicken ", 1.6 , "kg" ,"medium"));
+		recipe.addIngredient(new Ingredient("garlic cloves", 2 , "" ,""));
+		recipe.addIngredient(new Ingredient(" green olives", 150 , "g" ,"stoned and halved"));
+		recipe.addIngredient(new Ingredient("fresh thyme", 0.5 , "small bunch" ,"picked"));
+		
+		recipe.setDescription("This golden chicken and potato combo is made vibrant by its lemon and olive dressing.");
+		
+		recipe.addPreparationStep("Heat the oven to 200C mark 6. Steam the potatoes for 10-15 minutes,then drain and leave uncovered to steam dry.");
+		recipe.addPreparationStep("Make the marinade by whisking the lemon juice and zest, half the oil, the vinegar and the oregano.");
+		recipe.addPreparationStep("Spatchcock the chicken by cutting out the backbone with kitchen scissors.");
+		recipe.addPreparationStep("Bash together the garlic, thyme and a teaspoon of salt in a mortar . ");
+		recipe.addPreparationStep("Turn out the potatoes into a large baking tin and gently crush them with a potato masher.");
+		recipe.addPreparationStep("Cook the chicken at the same time as the spuds. ");
+		recipe.addPreparationStep("Let the chicken rest for five minutes and keep the potatoes warm, then carve and serve.");
+
+		//		recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+		return recipe;
+	}
+	public static Recipe createRecipe_18() throws FileNotFoundException, IOException {
+		Recipe recipe = new Recipe("Cake ", 5, 30, 40);
+		recipe.addIngredient(new Ingredient("butter", 140 , "g" ,"softened, plus extra for greasing"));
+		recipe.addIngredient(new Ingredient("demerara sugar", 260 , "g",""));
+		recipe.addIngredient(new Ingredient("egg", 5 , "piece",""));
+		recipe.addIngredient(new Ingredient("Greek yoghurt", 125 , "g",""));
+		recipe.addIngredient(new Ingredient("self-raising flour", 375 , "g",""));
+		recipe.addIngredient(new Ingredient("baking powder", 1 , "tsp",""));
+		recipe.addIngredient(new Ingredient("pinch salt", 1 , "pinch",""));
+		recipe.addIngredient(new Ingredient("lemon", 2 , "piece",""));
+		recipe.addIngredient(new Ingredient("amaretti biscuits", 75 , "g",""));
+		recipe.addIngredient(new Ingredient("peach", 7, "piece","stoned and quartered"));
+		recipe.setDescription("Full of the flavours of summer");
+
+		recipe.addPreparationStep("To make the cake batter, cream the butter and sugar in a food processor.");
+		recipe.addPreparationStep("Beat in the eggs one at a time, then incorporate the yoghurt.");
+		recipe.addPreparationStep("Put the biscuits into a plastic bag and bash to a fine crumb, then toss the peach quarters in the crumbs");
+		recipe.addPreparationStep("While the cake is baking, make the crumble.");
+		recipe.addPreparationStep("Leave to cool completely, then remove from the tin, cut into slices and serve with creme fraiche.");
+		return recipe;
+	}
+		public static Recipe createRecipe_19() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("custard tart",6,30,60);
+			recipe.addIngredient(new Ingredient(" plain flour", 225 , "g" ,"plus extra for dusting"));
+			recipe.addIngredient(new Ingredient("icing sugar", 3 , "tbsp" ,""));
+			recipe.addIngredient(new Ingredient("unsalted butter", 140 , "g" ,"diced and chilled"));
+			recipe.addIngredient(new Ingredient("egg yolk", 1 , "medium" ,"plus 1 medium egg yolk beaten, for glazing"));
+			recipe.addIngredient(new Ingredient("vanilla bean paste", 1, "tsp" ,""));
+			recipe.addIngredient(new Ingredient("whole milk", 250 , "ml" ,""));
+			recipe.addIngredient(new Ingredient("cornflour", 250 , "g" ,""));
+			recipe.addIngredient(new Ingredient("thin forced rhubarb", 700 , "g" ,""));
+			recipe.addIngredient(new Ingredient("pistachio", 1 , " tbsp" ,""));
+			recipe.setDescription("The flavour of my favourite boiled sweet in a delicious dessert.  ");
+			recipe.addPreparationStep("Put the flour, icing sugar and a pinch of salt in a large bowl and mix together.");
+			recipe.addPreparationStep("Put the vanilla beans scraped from the pod  in a pan,add the milk and bring to the boil. ");
+			recipe.addPreparationStep("Meanwhile, tip the egg, yolks, sugar and cornflour into a bowl and whisk together until smooth.  ");
+			recipe.addPreparationStep("Chill for 30 mins or until the pastry is firm.");
+			recipe.addPreparationStep("Heat oven to 180C the tart with a piece of crumpled baking parchment and fill with baking beans or rice and place on a baking tray.");
+			recipe.addPreparationStep("emove the custard from the fridge, beat to loosen, then pour over the pastry and smooth with a spatula. ");
+			recipe.addPreparationStep("Top with the roasted rhubarb, brushing a little of the syrup on top, then sprinkle over the pistachios.");
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+		public static Recipe createRecipe_20() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe(" Peanut butter chicken", 3,10,60 );
+			recipe.addIngredient(new Ingredient(" vegetable oil", 2 , "tbsp" ,""));
+			recipe.addIngredient(new Ingredient("skinless boneless chicken thighs", 8 , "piece" ,"cut into chunks"));
+			recipe.addIngredient(new Ingredient("red chillies", 2 , "piece" ,"finely sliced "));
+			recipe.addIngredient(new Ingredient("fresh ginger", 2 , "tsp" ,""));
+			recipe.addIngredient(new Ingredient("garam masala", 2 , " tsp" ,""));
+			recipe.addIngredient(new Ingredient("smooth peanut butter", 100 , "g" ,""));
+			recipe.addIngredient(new Ingredient("coconut milk", 400 , "g" ,""));
+			recipe.addIngredient(new Ingredient("hopped tomatoes", 400 , "g" ,""));
+			recipe.addIngredient(new Ingredient("coriander", 1 , "bunch " ,""));
+			recipe.setDescription("The whole family will love this new, budget chicken dish. Any leftovers freeze well and make a handy lunch");
+			recipe.addPreparationStep("Heat 1 tbsp of the oil in a deep frying pan over a medium heat. Brown the chicken in batches. ");
+			recipe.addPreparationStep("Fry the garlic, chilli and ginger in the other 1 tbsp oil for 1 min. ");
+			recipe.addPreparationStep("Stir in the peanut butter, coconut milk and tomatoes, and bring to a simmer.");
+			recipe.addPreparationStep("Return the chicken to the pan and add the chopped coriander.");
+			recipe.addPreparationStep("Cook for 30 mins until the sauce thickens and the chicken is cooked through");
+			recipe.addPreparationStep("Serve with the remaining coriander, roasted peanuts and rice, if you like.");
+
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+		public static Recipe createRecipe_21() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("Secret",3,10 ,40 );
+			recipe.addIngredient(new Ingredient("soft butter", 140 , "g" ,""));
+			recipe.addIngredient(new Ingredient("caster sugar", 140 , "g" ,""));
+			recipe.addIngredient(new Ingredient("large egg", 2 , "piece" ,"beaten"));
+			recipe.addIngredient(new Ingredient("self-raising flour", 140 , "g" ,""));
+			recipe.addIngredient(new Ingredient("baking powder", 1 , "tsp" ,""));
+			recipe.addIngredient(new Ingredient("ripe bananas mashed", 2 , "piece" ,""));
+			
+			recipe.setDescription("This is an easy recipe that gives perfect results every time.  ");
+			recipe.addPreparationStep("Preheat your oven to 180C .");
+			recipe.addPreparationStep("Butter your loaf tin and line the base and sides with baking parchment paper.");
+			recipe.addPreparationStep("Cream the butter and sugar until light and fluffy, then slowly add the eggs with a little flour.");
+			recipe.addPreparationStep("Fold in the remaining flour, baking powder and mashed bananas.");
+			recipe.addPreparationStep("Pour into the tin and bake for about 30 mins until a skewer comes out clean. ");
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+		public static Recipe createRecipe_22() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("Banana blueberry smoothie",2 ,10 ,30 );
+			recipe.addIngredient(new Ingredient("fresh blueberries", 1 , "cup" ,""));
+			recipe.addIngredient(new Ingredient("banana", 1 , "piece" ,""));
+			recipe.addIngredient(new Ingredient("Pomegranate juice", 50 , "ml" ,""));
+			recipe.addIngredient(new Ingredient("Natural yogurt", 1 , "cup" ,""));
+			recipe.addIngredient(new Ingredient(" Ground cinnamon", 1 , "tsp" ,""));
+			recipe.addIngredient(new Ingredient(" Berry powder of your choice", 2 , "tsp" ,""));
+			recipe.setDescription("Simple Summer Smoothie Recipe. Healthy, easy, and quick to prepare it is a refreshing treat.");
+			recipe.addPreparationStep("Combine the ingredients in a blender and blend until smooth. ");
+
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+	public static Recipe createRecipe_23() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("Sliced Boiled Chicken", 3, 20, 50);
+			recipe.addIngredient(new Ingredient("chicken", 1.5 , "kg",""));
+			recipe.addIngredient(new Ingredient("salt", 1 , "tsp",""));
+			recipe.addIngredient(new Ingredient("ginger", 1 , "piece",""));
+			recipe.addIngredient(new Ingredient("soya sauce", 1.5 , "tsp",""));
+			recipe.addIngredient(new Ingredient("oil", 3 , "tsp",""));
+			recipe.addIngredient(new Ingredient("garlic", 1 , "piece",""));
+			
+			recipe.setDescription("That is very nice chinese style food");
+
+			recipe.addPreparationStep("prepare a pot of boiled water and put the chicken into the water ");
+			recipe.addPreparationStep("put the garlic and salt into the water");
+			recipe.addPreparationStep("Remove the chicken to cool or refrigerate refrigerated for up to 10 minutes, and finally into the chicken pieces");
+			recipe.addPreparationStep("Combine all sauce ingredients juice, chicken with dipping sauce");
+
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+	}
+	public static Recipe createRecipe_24() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("Fried Chicken Wings", 3, 20, 60);
+			recipe.addIngredient(new Ingredient("chicken Wings", 1 , "kg",""));
+			recipe.addIngredient(new Ingredient("cola", 300 , "ml",""));
+			recipe.addIngredient(new Ingredient("ginger", 1 , "piece",""));
+			recipe.addIngredient(new Ingredient("soya sauce", 2 , "tsp",""));
+			recipe.addIngredient(new Ingredient("salt", 1 , "tsp",""));
+			recipe.addIngredient(new Ingredient("oil", 3 , "tsp",""));
+			recipe.addIngredient(new Ingredient("rice wine", 2, "tsp",""));
+			
+			recipe.setDescription("Home Dishes");
+
+			recipe.addPreparationStep("Scratch wings on the back by knife, make it tasty and easy cooked");
+			recipe.addPreparationStep("Add chicken wings and marinated with spices");
+			recipe.addPreparationStep("put the chicken into the pot and add the cola,ginger and rice wine");
+			recipe.addPreparationStep("keep fire until there is few water");
+
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+		public static Recipe createRecipe_25() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("hong shao pai gu", 4, 30,45);
+			recipe.addIngredient(new Ingredient("pork ribs", 2 , "kg",""));
+			recipe.addIngredient(new Ingredient("ginger", 1 , "piece",""));
+			recipe.addIngredient(new Ingredient("soya sauce", 2 , "tsp",""));
+			recipe.addIngredient(new Ingredient("salt", 1 , "tsp",""));
+			recipe.addIngredient(new Ingredient("oil", 3 , "tsp",""));
+			recipe.addIngredient(new Ingredient("rice wine", 2, "tsp",""));
+			
+			recipe.setDescription("Home Dishes");
+
+			recipe.addPreparationStep("Scratch pork on the back by knife, make it tasty and easy cooked");
+			recipe.addPreparationStep("Add pork and marinated with spices");
+			recipe.addPreparationStep("add oil and put the pork into the pot ");
+			recipe.addPreparationStep("add the sauce,ginger,salt and rice wine");
+			recipe.addPreparationStep("keep fire until there is few water");
+
+
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+		public static Recipe createRecipe_26() throws FileNotFoundException, IOException {
+			Recipe recipe = new Recipe("Lion Head Soup", 2, 20, 50);
+			recipe.addIngredient(new Ingredient("pound pork", 0.8 , "kg",""));
+			recipe.addIngredient(new Ingredient("egg", 1 , "piece",""));
+			recipe.addIngredient(new Ingredient("cornstarch", 1 , "tsp",""));
+			recipe.addIngredient(new Ingredient("oil", 2 , "tsp",""));
+			recipe.addIngredient(new Ingredient("ginger", 1 , "piece",""));
+			recipe.addIngredient(new Ingredient("salt", 1 , "tsp",""));
+			recipe.addIngredient(new Ingredient("chicken broth", 500 , "ml",""));
+
+			
+			recipe.setDescription("This is my family''s version of lion''s head soup ");
+
+			recipe.addPreparationStep("Mix the ground pork, egg, cornstarch, 2 teaspoons of sesame oil, ginger, salt, and half of the chopped green onions together in a bowl. ");
+			recipe.addPreparationStep(" Pour in the chicken broth, water, and soy sauce. Bring to a boil, then lower the heat to medium.");
+			recipe.addPreparationStep("Drop them into the boiling soup. ");
+
+//			recipe.addPicture(System.getProperty("user.dir") + "\\src\\de\\fhl\\overchef\\model\\Pictures\\IMG_3578.PNG");
+			return recipe;
+		}
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

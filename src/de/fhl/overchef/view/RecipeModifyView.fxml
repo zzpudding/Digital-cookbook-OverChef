@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.618" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.view.RecipeModifyController">
+<SplitPane dividerPositions="0.618" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhl.overchef.controller.RecipeModifyController">
   <items>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="427.0" prefViewportHeight="427.0" prefViewportWidth="391.0" prefWidth="555.0">
          <content>

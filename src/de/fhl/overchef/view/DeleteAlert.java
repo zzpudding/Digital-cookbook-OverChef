@@ -31,7 +31,6 @@ public class DeleteAlert {
         confirm.setOnAction(e -> {try {
 			p.deletePicture();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} iv.setVisible(false);alertWin.close();});
         

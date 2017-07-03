@@ -1,8 +1,9 @@
-package de.fhl.overchef.view;
+package de.fhl.overchef.controller;
 
-import de.fhl.overchef.db.DBOperation;
 import de.fhl.overchef.model.Recipe;
 import de.fhl.overchef.view.OverchefMainApp;
+import de.fhl.overchef.view.RecipeModifyView;
+import de.fhl.overchef.view.RecipeView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,8 +65,7 @@ public class MainViewController {
 	 * Will also do boundary check and replace characters which could cause
 	 * exception.
 	 * 
-	 * @param keyword
-	 *            user's input
+	 * @param i index of recipe in recipeList
 	 * @return a relevance value
 	 */
 	public int relevanceByRecipe(int i) {
@@ -97,8 +97,7 @@ public class MainViewController {
 	 * their relevance. Will also do boundary check and replace characters which
 	 * could cause exception.
 	 * 
-	 * @param keyword
-	 *            user's input
+	 * @param i index of recipe in recipeList
 	 * @return a relevance value
 	 */
 	public int relevanceByIngredient(int i) {

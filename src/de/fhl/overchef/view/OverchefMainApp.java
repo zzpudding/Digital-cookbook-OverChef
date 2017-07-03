@@ -19,11 +19,10 @@ import java.util.Map;
 import de.fhl.overchef.db.DBConnector;
 import de.fhl.overchef.db.DBOperation;
 import de.fhl.overchef.model.Cookbook;
-import de.fhl.overchef.model.CreateRecipe;
 import de.fhl.overchef.model.Ingredient;
 import de.fhl.overchef.model.Recipe;
 import de.fhl.overchef.model.Relationship;
-import de.fhl.overchef.view.MainViewController;
+import de.fhl.overchef.controller.MainViewController;
 
 /**
  * Main class to initialize and open the app
