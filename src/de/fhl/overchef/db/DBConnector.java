@@ -4,7 +4,6 @@ import java.sql.*;
 /**
  * Database connection class of connection and disconnection to the database
  * 
- * @author Jiacheng Zhou,Yujia Zhang
  */
 public class DBConnector {
 	public static Connection connection;

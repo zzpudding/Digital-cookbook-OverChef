@@ -16,7 +16,6 @@ import javafx.stage.StageStyle;
 
 /**
  * realize recipe view and the pop-up box
- * @author Bocheng Hu
  *
  */
 public class RecipeView extends Application {

@@ -7,7 +7,6 @@ import de.fhl.overchef.model.Recipe;
 /**
  * A class of operating the database
  * 
- * @author Jiacheng Zhou, Yujia Zhang
  */
 public class DBOperation {
 	/**
@@ -79,8 +78,8 @@ public class DBOperation {
 	/**
 	 * Insert the preparation step to the PREPARATIONSTEP table
 	 *
-	 * @param r
-	 * @param rid
+	 * @param r recipe
+	 * @param rid id of recipe
 	 * @throws SQLException
 	 */
 	public static void addPrepStep(Recipe r,Integer rid) throws SQLException{
@@ -92,8 +91,8 @@ public class DBOperation {
 	/**
 	 * Insert the picture path to the PICTURE table
 	 *
-	 * @param r
-	 * @param rid
+	 * @param r recipe
+	 * @param rid id of recipe
 	 * @throws SQLException
 	 */
 	public static void addPicture(Recipe r,Integer rid) throws SQLException{
@@ -112,8 +111,7 @@ public class DBOperation {
 	/**
 	 * Delete the specific recipe from database
 	 * 
-	 * @param rid 
-	 * 			recipe id
+	 * @param rid id of recipe
 	 *         
 	 */
 	public static void deleteRecipe(Integer rid) {

@@ -27,7 +27,6 @@ import de.fhl.overchef.controller.MainViewController;
 /**
  * Main class to initialize and open the app
  * 
- * @author Jiacheng Zhou,Yujia Zhang
  */
 public class OverchefMainApp extends Application {
     private Stage primaryStage;
@@ -151,7 +150,7 @@ public class OverchefMainApp extends Application {
 		this.ingredients = ingredients;
 	}
 	
-	public static  void setRecipeData(List<Recipe> recipelist) {
+	public static void setRecipeData(List<Recipe> recipelist) {
 		recipeData = FXCollections.observableArrayList(recipelist);
 	}
 	

@@ -34,7 +34,6 @@ import javafx.stage.Stage;
 /**
  * Controller class to control the main view
  * 
- * @author Jiacheng Zhou, Yujia Zhang
  */
 public class MainViewController {
 	@FXML

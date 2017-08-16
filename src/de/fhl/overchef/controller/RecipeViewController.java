@@ -18,8 +18,6 @@ import javafx.stage.Stage;
 /**
  * realize action for the required component and the based function of the
  * recipe view
- * 
- * @author Bocheng Hu
  *
  */
 public class RecipeViewController {
@@ -38,13 +36,13 @@ public class RecipeViewController {
 	@FXML
 	private Label preparationStepText;
 	@FXML
-	private TextField serveNumberText;
-	@FXML
 	private Label totalTimeText;
 	@FXML
 	private Label preparationTimeText;
 	@FXML
 	private Label cookTimeText;
+	@FXML
+	private TextField serveNumberText;
 	@FXML
 	private Button delete;
 	@FXML
@@ -60,7 +58,7 @@ public class RecipeViewController {
 	/**
 	 * provide the living stage to the controller
 	 * 
-	 * @param stage
+	 * @param stage stage
 	 */
 	public void setPrimaryStage(Stage stage) {
 		this.primaryStage = stage;
@@ -69,7 +67,7 @@ public class RecipeViewController {
 	/**
 	 * initiate the content for the recipe view
 	 * 
-	 * @param recipe
+	 * @param recipe past recipe
 	 * @throws IOException 
 	 */
 	public void initializeRecipeView(Recipe recipe) throws IOException {
@@ -111,7 +109,6 @@ public class RecipeViewController {
 		modify.setStyle("-fx-background-color: #E6E6E6;");
 		delete.setStyle("-fx-background-color: 	#E6E6E6;");
 		back.setStyle("-fx-background-color: 	#E6E6E6 ;");
-
 	}
 	/**
 	 * realize the action for the textField serve number
@@ -139,7 +136,6 @@ public class RecipeViewController {
 		} catch (Exception e) {
 		}
 	}
-
 
 	/**
 	 * realize the action for the button modify

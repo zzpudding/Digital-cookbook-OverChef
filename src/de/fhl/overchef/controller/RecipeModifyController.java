@@ -29,8 +29,6 @@ import javafx.stage.Stage;
 
 /**
  * Controller for modifying recipe and adding recipe
- * 
- * @author fangtian LI, Zhengjiang HU
  *
  */
 public class RecipeModifyController {
@@ -57,15 +55,14 @@ public class RecipeModifyController {
 	private Label ingredientWarnLabel;
 	@FXML
 	private Label recipeNameWarnLabel;
-
+	@FXML
+	private Label warningText1;
+	@FXML
+	private Label warningText2;
+	@FXML
+	private Label warningText3;
 	@FXML
 	private TextField recipeName;
-
-	@FXML
-	private TextArea description;
-	@FXML
-
-	private Button saveButton;
 	@FXML
 	private TextField serveNumber;
 	@FXML
@@ -75,15 +72,13 @@ public class RecipeModifyController {
 	@FXML
 	private TextField cookTime;
 	@FXML
+	private TextArea description;
+	@FXML
+	private Button saveButton;
+	@FXML
 	private Button addIngredient;
 	@FXML
 	private Button addStep;
-	@FXML
-	private Label warningText1;
-	@FXML
-	private Label warningText2;
-	@FXML
-	private Label warningText3;
 	@FXML
 	private VBox ingredientArea;
 	@FXML
@@ -91,7 +86,6 @@ public class RecipeModifyController {
 	
 	@FXML
 	private List<HBox> stepContent = new ArrayList<>();
-
 	@FXML
 	private List<HBox> ingredientContent = new ArrayList<>();
 
@@ -99,11 +93,10 @@ public class RecipeModifyController {
 	private boolean recipeNamePreviousState;
 	private List<Boolean> ingredientNamePreviousStateList = new ArrayList<>();
 	private List<Boolean> ingredientQuantityPreviousStateList = new ArrayList<>();
-
 	private Recipe recipe;
 
 	/**
-	 * // check if the recipe name are pure-letter words
+	 * check if the recipe name are pure-letter words
 	 */
 	public void checkRecipeName() {
 		String msg = recipeName.getText();
@@ -111,23 +104,17 @@ public class RecipeModifyController {
 
 		if (msg.matches(regex)) {
 			recipeName.setStyle("");
-			
 			//if state turn from false to true, error - 1
 			if (recipeNamePreviousState == false)
 				errorNumber -= 1;
-
 			// set warning label
 			recipeNameWarnLabel.setText("");
 			recipeNamePreviousState = true;
-
 		} else {
-			
 			//if state turn from true to false, error + 1
 			if (recipeNamePreviousState == true)
 				errorNumber += 1;
-
 			recipeName.setStyle("-fx-text-inner-color: #EE2C2C;");
-
 			// set warning label
 			recipeNameWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 			recipeNameWarnLabel.setText("Should Only Contain Letter,Number, & ' _ and Cannot be EMPTY");
@@ -141,7 +128,7 @@ public class RecipeModifyController {
 	 */
 	@FXML
 	public void addIngredient() {
-		
+
 		//initialize the previous state of the ingredient
 		boolean ingredientNamePreviousState = true;
 		ingredientNamePreviousStateList.add(ingredientNamePreviousState);
@@ -165,16 +152,12 @@ public class RecipeModifyController {
 		newIngredientName.textProperty().addListener(e -> {
 			String msg = newIngredientName.getText();
 			String regex = "[\\w&'\\s]*";
-
 			if (msg.matches(regex)) {
-				
 				//set font color to default
 				newIngredientName.setStyle("");
-				
 				//if the state turn from false to true, error - 1
 				if (ingredientNamePreviousStateList.get(index) == false)
 					errorNumber -= 1;
-				
 				//set the exact state to true
 				ingredientNamePreviousStateList.set(index, true);
 
@@ -190,13 +173,10 @@ public class RecipeModifyController {
 					ingredientWarnLabel.setText("Ingredient Name Should Only Contain Letter,Number, & ' _");
 				} else
 					ingredientWarnLabel.setText("Ingredient Name Should Only Contain Letter,Number, & ' _");
-
 			} else {
-
 				// set warning label
 				ingredientWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 				ingredientWarnLabel.setText("Ingredient Name Should Only Contain Letter,Number, & ' _");
-
 				newIngredientName.setStyle("-fx-text-inner-color: #EE2C2C;");
 				
 				//if state turn from true to false, error + 1
@@ -220,10 +200,9 @@ public class RecipeModifyController {
 				//if the state turn from false to true, error - 1
 				if (ingredientQuantityPreviousStateList.get(index) == false)
 					errorNumber -= 1;
-				
+			
 				//set the current state to true
 				ingredientQuantityPreviousStateList.set(index, true);
-
 				// set warning label
 				if (!ingredientNamePreviousStateList.contains(false)
 						&& !ingredientQuantityPreviousStateList.contains(false)) {
@@ -236,8 +215,6 @@ public class RecipeModifyController {
 					ingredientWarnLabel.setText("Ingredient Name Should Only Contain Letter,Number, & ' _");
 				} else
 					ingredientWarnLabel.setText("Ingredient Name Should Only Contain Letter,Number, & ' _");
-
-
 			} else {
 				//when the input are validate
 				// set warning label
@@ -249,7 +226,6 @@ public class RecipeModifyController {
 				//if state turn from true to false, error + 1
 				if (ingredientQuantityPreviousStateList.get(index) == true)
 					errorNumber += 1;
-				
 				//set current state to false
 				ingredientQuantityPreviousStateList.set(index, false);
 			}
@@ -265,17 +241,14 @@ public class RecipeModifyController {
 		//add the ingredient components to the new ingredient row
 		newIngredientBox.getChildren().addAll(delete, newIngredientName, newIngredientQuantity, newIngredientUnit,
 				newIngredientDescription);
-		
 		//add the new ingredient row HBox to a logical list
 		ingredientContent.add(newIngredientBox);
 
 		delete.setOnAction(e -> {
 			//remove the specific row from GUI
 			ingredientArea.getChildren().remove(delete.getParent());
-			
 			//remove the specific row from logical list
 			ingredientContent.remove(newIngredientBox);
-			
 			//check if the errors are reduced when a ingredient row is deleted 
 			if (ingredientNamePreviousStateList.get(index) == false
 					&& ingredientQuantityPreviousStateList.get(index) == false) {
@@ -317,23 +290,17 @@ public class RecipeModifyController {
 
 		Button delete = new Button("-");
 		HBox.setMargin(delete, new Insets(0, 5, 0, 104));
-
-		//create a new step area HBox
 		HBox newStepBox = new HBox();
-		
-		//add the new step row in GUI
 		stepArea.getChildren().add(newStepBox);
 		
 		//add components to the new step row
 		newStepBox.getChildren().addAll(delete, newStep);
-		
 		//add new row the logical list
 		stepContent.add(newStepBox);
 
 		delete.setOnAction(e -> {
 			//delete the whole row of the specific delete button
 			stepArea.getChildren().remove(delete.getParent());
-			
 			//delete the row from the logical list
 			stepContent.remove(newStepBox);
 		});
@@ -348,8 +315,11 @@ public class RecipeModifyController {
 	 */
 	@FXML
 	public boolean handleSave() throws FileNotFoundException, IOException, SQLException {
-		//checkRecipeName();
 		if (errorNumber != 0) {
+			if(recipeName.getText().equals("")) {
+				recipeNameWarnLabel.setText("Should Only Contain Letter,Number, & ' _ and Cannot be EMPTY");
+				recipeNameWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
+			}
 			return false;
 		}
 		if (!savePicture()) {
@@ -388,9 +358,7 @@ public class RecipeModifyController {
 			prepStep.add(modifyPunctuation(step));
 		}
 		recipe.setPreparationStep(prepStep);
-
 		recipe.setRecipeName(modifyPunctuation(recipeName.getText()));
-
 		recipe.setDescription(modifyPunctuation(description.getText()));
 
 		// save ingredient information to recipe
@@ -439,20 +407,12 @@ public class RecipeModifyController {
 	 * @throws IOException
 	 */
 	public void setModifyView() throws IOException {
-
-		// display the content of the recipe preparation step
 		for (int i = 0; i < recipe.getPreparationStep().size(); i++) {
 			addStep();
 			((TextArea) (stepContent.get(i).getChildren().get(1))).setText(recipe.getPreparationStep().get(i));
 		}
-
-		// display recipe name
 		recipeName.setText(recipe.getRecipeName());
-
-		// display recipe description
 		description.setText(recipe.getDescription());
-
-		// display ingredients
 		for (int i = 0; i < recipe.getIngredientList().size(); i++) {
 			addIngredient();
 			((TextField) (ingredientContent.get(i).getChildren().get(1)))
@@ -501,8 +461,6 @@ public class RecipeModifyController {
 		if (recipeName.getText().equals("")) {
 			recipeNamePreviousState = false;
 			errorNumber += 1;
-			recipeNameWarnLabel.setText("Should Only Contain Letter,Number, & ' _ and Cannot be EMPTY");
-			recipeNameWarnLabel.setStyle("-fx-text-fill: #EE2C2C;");
 		} else
 			recipeNamePreviousState = true;
 		

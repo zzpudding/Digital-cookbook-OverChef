@@ -3,6 +3,11 @@ package de.fhl.overchef.view;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 
+/**
+ * 
+ * @author zhangyujia
+ *
+ */
 public class FxDialogs {
 
     public static void showInformation(String title, String message) {

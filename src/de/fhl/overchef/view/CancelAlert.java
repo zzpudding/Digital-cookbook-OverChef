@@ -12,8 +12,7 @@ import javafx.stage.Stage;
 
 /**
  * This class is used to generated an alert window which contains alert message and cancel and confirm button.
- * @author Zhengjiang Hu
- * @version 2.0
+ *
  */
 public class CancelAlert {
 	Button cancel;
