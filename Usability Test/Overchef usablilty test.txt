@@ -1,0 +1,61 @@
+Overchef usability test(for Developer)      by yujiaZHANG
+
+Task 1: It is summer. You and your friends are on a diet, so you decide to make some salat for breakfast and the salat should be exactly for 3 people.
+Aim: Test “Search field”, see if user select radio button “by name” to simple result, and test ”Change quantity”.
+Record: step of the user searching for “salat”; time of getting a right recipe; time of changing serving number. (user activity; user’s feedback)
+
+Task 2: A chocolate cake has too many calories. Since you are on a diet, you should delete this recipe.
+Aim: Test “Search field” and delete function.
+Record: time of deleting this recipe successfully. (user’s feedback, time consumption)
+
+Task 3: For lunch you want to have some low calorie meat, like chicken. Chose one recipe that contains chicken.
+Aim: Test “Search field”, see if user select radio button “by ingredient” or “by both” to simple result.
+Record: time of finding recipes contain “chicken”; ask which part do the user firstly want to look at. (user activity; user’s feedback, time consumption)
+
+Task 4: After reading it, you want to make some change. Maybe creating a more interesting name or adding/deleting some ingredient/step/picture would make this recipe better.
+Aim: Test modify and save function. 
+Record: Degree of difficulty for the user to modify/save. (user’s feedback, time consumption)
+
+Task 5: Tonight you are having a party in your apartment. During the party, one of your China buddy shares with you a secret recipe he learned from his grandma, and you want to record it. Find a way to do that. Also, remember you are still in the party, you may not have enough time to type in all details of this recipe. The details of this secret recipe is in the back of this paper.
+Aim: Test add function and see which parts do user think should be necessarily non-empty to save a new recipe in limited time.
+Record: Parts that user have input; time of adding a new recipe; after that tell the user how long he/she spend on adding a new recipe, and ask how long does he/she think is appropriate for adding a new recipe. (user activity; user’s feedback, time consumption)
+
+Task 6: Congratulation! You have done all the task. Now you can do anything with this app and we will be grateful for your feedback! Thank you so much for your cooperation!
+Aim: Get user’s feedback/evaluation.
+Record: user activity; window entry; user feedback or evaluation
+
+General Record: (for each task)
+		 time consumption
+		 user activity, window entry
+		 user feedback or evaluation
+
+
+
+Additional material:
+
+Recipe name: Hong Shao Rou
+
+Description:
+Shanghai-Style Braised Pork Belly (Hong Shao Rou), or “red cooked pork,” is a very famous dish in China. Everyone knows it, and there are many versions and twists based on the original. Some of the more well-known variations include the addition of squid (sounds odd, but boy, is it tasty), hard boiled eggs, and tofu knots.
+
+Ingredient:	3 /4 lb. of lean pork belly (cut into 3/4-inch thick pieces)
+		2 tablespoons oil
+			1 tablespoon sugar (rock sugar is preferred if you have it)
+			½ tablespoon dark soy sauce
+			1 tablespoon light soy sauce
+			3 tablespoons shaoxing wine
+			2 cups water
+Serving Number: 2
+
+Step:
+”Bring a pot of water to a boil and blanch the pork for a couple minutes.		
+”Take the pork out of the pot and set aside."		
+"Over low heat, add oil and sugar to your wok."		
+"Melt the sugar slightly and add the pork."		
+"Raise the heat to medium and cook until the pork is lightly browned."			
+"Turn the heat back down to low and add cooking wine, light soy sauce, dark soy sauce, and chicken stock."		
+"Cover and simmer for about 60 minutes to 90 minutes until pork is fork tender."	
+"Every 5-10 minutes, stir to prevent burning and add water if it gets too dry."		
+"Once the pork is fork tender, if there is still a lot of visible liquid, uncover the wok, turn up the heat, and stir continuously the sauce has reduced to a glistening coating."
+
+Picture: (on desktop):
