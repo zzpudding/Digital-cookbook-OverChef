@@ -10,7 +10,7 @@
 
 **Database Requirement**
  - Build connection between Eclipse and MySQL server (the port number and password can be changed in `DBConnector.java`).
- - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the `'overchefdb.sql'` file into the 'overchefdb'.
+ - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the `overchefdb.sql` file into the 'overchefdb'.
  - Buid your own `mysql-connector.jar` path to the project.
  
 ## Function 
@@ -28,13 +28,16 @@
   - Click 'Edit' button to modify current recipe.
   - All the content of a recipe can be modified, including a picture.
   
-  **Add recipe** 
+  **Add a recipe** 
   - Click the 'Add' button to create a new recipe.
   - A recipe name is a must for saving the newly-added recipe.
   
-  **Delete recipe**
+  **Delete a recipe**
   - Click 'Delete' button and confirm.
 
 ## More About *OverChef*
 - A FHL software engineering project
 - An immature software which cannot run independently (which means you need to run it in Eclipse)
+- Contact me if you have any suggestion or not
+&emsp;&emsp; [Yujia Zhang](<yujia.zhang@stud.fh-luebeck.de>)
+
