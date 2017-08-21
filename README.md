@@ -18,21 +18,21 @@
   - Ensure you have installed the javafx runtime environment.
 
 ## *OverChef* provides following functions
-  **Search recipes**
+  **Search recipes
   - Search recipes by keywords (can be recipe's name or ingredient's name).
   - Choose keywords field (can be in recipes/ingredients/both).
   - Search results will be displayed by its degree of relevance.
 
-  ** View recipes **
+  ** View recipes 
   - Double click a recipe will lead user to its details.
   - Serve number can be changed and the quantity of each ingredient will change automatically.
   - Click 'Back' button to go back to the main view.
 
-  ** Edit recipes **
+  ** Edit recipes 
   - Click 'Edit' button to modify current recipe.
   - All the content of a recipe can be modified, including a picture.
   
-  ** Add recipe **
+  ** Add recipe 
   - Click the 'Add' button to create a new recipe.
   - A recipe name is a must for saving the newly-added recipe.
 
