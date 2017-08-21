@@ -7,14 +7,16 @@
 - Installed Eclipse and MySQL server (such as MAMP, MySQL Workbench)
 - Installed JavaFX Runtime Environment
 - Java SE Runtime Environment<br>
+
 **Database Requirement**
  - Build connection between Eclipse and MySQL server (the port number and password can be changed in DBConnector.java).
  - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the 'overchefdb.sql' file into the 'overchefdb'.
  - Buid your own mysql-connector.jar path to the project.<br>
+ 
  **FX Requirement**
   - Ensure you have installed the javafx runtime environment.
 
-## *OverChef* provides following functions
+## Functions
   **Search recipes**
   - Search recipes by keywords (can be recipe's name or ingredient's name).
   - Choose keywords field (can be in recipes/ingredients/both).
@@ -32,4 +34,7 @@
   **Add recipe** 
   - Click the 'Add' button to create a new recipe.
   - A recipe name is a must for saving the newly-added recipe.
+  
+  **Delete recipe**
+  - Click 'Delete' button and confirm.
 
