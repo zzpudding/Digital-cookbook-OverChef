@@ -6,11 +6,11 @@
 ## Requirement
 - Installed Eclipse and MySQL server (such as MAMP, MySQL Workbench)
 - Installed JavaFX Runtime Environment
-- Java SE Runtime Environment
+- Java SE Runtime Environment<br>
 **Database Requirement**
  - Build connection between Eclipse and MySQL server (the port number and password can be changed in DBConnector.java).
  - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the 'overchefdb.sql' file into the 'overchefdb'.
- - Buid your own mysql-connector.jar path to the project.
+ - Buid your own mysql-connector.jar path to the project.<br>
  **FX Requirement**
   - Ensure you have installed the javafx runtime environment.
 
