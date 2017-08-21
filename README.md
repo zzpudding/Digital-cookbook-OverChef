@@ -1,26 +1,23 @@
 # Digital-cookbook-OverChef
 
-## What is OverChef
->*OverChef*, is a digital cooking software, providing functionalities such as quickly off-line searching, updating recipes based on users’ preference and add use’s own recipe. It helps users to cook a dish in an efficient and less wasting way.
+## What is *OverChef*
+>*OverChef*, a digital cooking software, provides functionalities such as quickly off-line searching and add/delete recipes. It helps users to cook a dish in an efficient and less wasting way.
 
 ## Requirement
-- Installed Eclipse and MySQL server (such as MAMP, MySQL Workbench)
-- Installed JavaFX Runtime Environment
-- Java SE Runtime Environment<br>
+- Install Eclipse and MySQL server (such as MAMP, MySQL Workbench)
+- Java SE Runtime Environment
+- JavaFX Runtime Environment<br>
 
 **Database Requirement**
- - Build connection between Eclipse and MySQL server (the port number and password can be changed in DBConnector.java).
- - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the 'overchefdb.sql' file into the 'overchefdb'.
- - Buid your own mysql-connector.jar path to the project.<br>
+ - Build connection between Eclipse and MySQL server (the port number and password can be changed in `DBConnector.java`).
+ - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the `'overchefdb.sql'` file into the 'overchefdb'.
+ - Buid your own `mysql-connector.jar` path to the project.
  
- **FX Requirement**
-  - Ensure you have installed the javafx runtime environment.
-
-## Functions
+## Function 
   **Search recipes**
-  - Search recipes by keywords (can be recipe's name or ingredient's name).
+  - Search recipes by keywords (can be recipe's or ingredient's name).
   - Choose keywords field (can be in recipes/ingredients/both).
-  - Search results will be displayed by its degree of relevance.
+  - Search results will be sorted and displayed according to its degree of relevance.
 
   **View recipes** 
   - Double click a recipe will lead user to its details.
@@ -38,3 +35,6 @@
   **Delete recipe**
   - Click 'Delete' button and confirm.
 
+## More About *OverChef*
+- A FHL software engineering project
+- An immature software which cannot run independently (which means you need to run it in Eclipse)
