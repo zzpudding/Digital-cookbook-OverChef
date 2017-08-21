@@ -9,8 +9,9 @@
 - Java SE Runtime Environment
 
 ## Instructions
-&emsp;&emsp; ### Before opening:
-    ####  Database Requirement
+&emsp;&emsp;
+### Before opening:
+####  Database Requirement
   - Build connection between Eclipse and MySQL server (the port number and password can be changed in DBConnector.java).
   - Create or forward engineering a local database named 'overchefdb'in the created connection and then choose 'Import from self-contained file' to import the 'overchefdb.sql' file into the 'overchefdb'.
   - Buid your own mysql-connector.jar path to the project.
