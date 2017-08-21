@@ -39,5 +39,5 @@
 - A FHL software engineering project
 - An immature software which cannot run independently (which means you need to run it in Eclipse)
 - Contact me if you have any suggestion or not
-&emsp;&emsp; [Yujia Zhang] <yujia.zhang@stud.fh-luebeck.de>
+&emsp;&emsp; [Yujia Zhang] (yujia.zhang@stud.fh-luebeck.de)
 
