@@ -1,7 +1,7 @@
 # Digital-cookbook-OverChef
 
 ## What is *OverChef*
->*OverChef*, a digital cooking software, provides functionalities such as quickly off-line searching and add/delete recipes. It helps users to cook a dish in an efficient and less wasting way.
+>*OverChef*, a digital cookbook software, provides functionalities such as quickly off-line searching and add/delete recipes. It helps users to cook a dish in an efficient and less wasting way.
 
 ## Requirement
 - Install Eclipse and MySQL server (such as MAMP, MySQL Workbench)
