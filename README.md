@@ -1,6 +1,6 @@
 # Digital-cookbook-OverChef
 
-##What is OverChef
+## What is OverChef
 >*OverChef*, is a digital cooking software, providing functionalities such as quickly off-line searching, updating recipes based on users’ preference and add use’s own recipe. It helps users to cook a dish in an efficient and less wasting way.
 
 Instructions before opening the Overchef App.
