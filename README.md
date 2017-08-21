@@ -1,7 +1,11 @@
 # Digital-cookbook-OverChef
 
+##What is OverChef
+>*OverChef*, is a digital cooking software, providing functionalities such as quickly off-line searching, updating recipes based on users’ preference and add use’s own recipe. It helps users to cook a dish in an efficient and less wasting way.
+
 Instructions before opening the Overchef App.
-***********************************************************
+
+
 Before opening:
 
   Database Requirement:
@@ -11,15 +15,18 @@ Before opening:
  
   FX Requirement:
   -Ensure you have installed the javafx runtime environment.
-------------------------------------------------------------
+
+
 1.Open the App
   -Open the OverchefMainApp.java file in de.fhl.overchef.view package.
------------------------------------------------------------------------------------------------------------------------
+
+
 2.Search recipes
   -After the app is opened,user can search recipes by entering keywords in the txt field.
   -3 search type buttons can be chosen to search recipes only or search ingredients only or search both.
   -User can click 'search' button,when want to refresh the result list after some recipes are modified or deleted.
------------------------------------------------------------------------------------------------------------------------
+
+
 3.View recipes
   -User can double click the certain recipe in the result list below the txt field to see recipe details.
   -User can change serve numbers in the serve number text field to view different ingredient quantities with entered number.
