@@ -4,7 +4,7 @@
 >*OverChef*, a digital cookbook software, provides functionalities such as quickly off-line searching and add/delete recipes. It helps users to cook a dish in an efficient and less wasting way.
 
 ## Requirement
-- Install Eclipse and MySQL server (e.g., MAMP, MySQL Workbench)
+- Install Eclipse and MySQL server (e.g., MAMP, MySQLWorkbench)
 - Java SE Runtime Environment
 - JavaFX Runtime Environment<br>
 
